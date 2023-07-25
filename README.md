@@ -1,17 +1,17 @@
 <p align="center"><img width="450" src="/art/logo.svg" alt="Laravel Volt Package Logo"></p>
 
 <p align="center">
-    <a href="https://github.com/laravel/volt/actions">
-        <img src="https://github.com/laravel/volt/workflows/tests/badge.svg" alt="Build Status">
+    <a href="https://github.com/livewire/volt/actions">
+        <img src="https://github.com/livewire/volt/workflows/tests/badge.svg" alt="Build Status">
     </a>
-    <a href="https://packagist.org/packages/laravel/volt">
-        <img src="https://poser.pugx.org/laravel/volt/d/total.svg" alt="Total Downloads">
+    <a href="https://packagist.org/packages/livewire/volt">
+        <img src="https://poser.pugx.org/livewire/volt/d/total.svg" alt="Total Downloads">
     </a>
-    <a href="https://packagist.org/packages/laravel/volt">
-        <img src="https://poser.pugx.org/laravel/volt/v/stable.svg" alt="Latest Stable Version">
+    <a href="https://packagist.org/packages/livewire/volt">
+        <img src="https://poser.pugx.org/livewire/volt/v/stable.svg" alt="Latest Stable Version">
     </a>
-    <a href="https://packagist.org/packages/laravel/volt">
-        <img src="https://poser.pugx.org/laravel/volt/license.svg" alt="License">
+    <a href="https://packagist.org/packages/livewire/volt">
+        <img src="https://poser.pugx.org/livewire/volt/license.svg" alt="License">
     </a>
 </p>
 
@@ -68,7 +68,7 @@ $increment = fn () => $this->count++;
 First, install Volt into your project using the Composer package manager:
 
 ```bash
-composer require laravel/volt
+composer require livewire/volt
 ```
 
 After installing Volt, you may execute the `volt:install` Artisan command, which will install Volt's service provider file into your application:
@@ -789,7 +789,7 @@ In order to ensure that the Laravel community is welcoming to all, please review
 ## Security Vulnerabilities
 <a name="security-vulnerabilities"></a>
 
-Please review [our security policy](https://github.com/laravel/volt/security/policy) on how to report security vulnerabilities.
+Please review [our security policy](https://github.com/livewire/volt/security/policy) on how to report security vulnerabilities.
 
 ## License
 <a name="license"></a>
