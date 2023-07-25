@@ -1,0 +1,64 @@
+{
+    "name": "livewire/volt",
+    "description": "An elegantly crafted functional API for Laravel Livewire.",
+    "keywords": ["laravel", "livewire", "volt"],
+    "homepage": "https://github.com/livewire/volt",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/livewire/volt/issues",
+        "source": "https://github.com/livewire/volt"
+    },
+    "authors": [
+        {
+            "name": "Taylor Otwell",
+            "email": "taylor@laravel.com"
+        },
+        {
+            "name": "Nuno Maduro",
+            "email": "nuno@laravel.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "laravel/framework": "^10.16|^11.0",
+        "livewire/livewire": "^3.0"
+    },
+    "require-dev": {
+        "laravel/folio": "^1.0",
+        "mockery/mockery": "^1.6",
+        "orchestra/testbench": "^8.5",
+        "pestphp/pest": "^2.9.5",
+        "phpstan/phpstan": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Livewire\\Volt\\": "src/"
+        },
+        "files": [
+            "functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Livewire\\Volt\\VoltServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
