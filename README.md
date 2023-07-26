@@ -1,4 +1,4 @@
-<p align="center"><img width="450" src="/art/logo.svg" alt="Livewire Volt Package Logo"></p>
+<p align="center"><img width="450" src="/art/logo.svg" alt="Volt Package Logo"></p>
 
 <p align="center">
     <a href="https://github.com/livewire/volt/actions">
@@ -41,7 +41,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-Livewire Volt is an elegantly crafted functional API for [Livewire](https://livewire.laravel.com/), allowing component's PHP logic and Blade templates to coexist in the same file. Behind the scenes, the functional API is compiled to Livewire class components and linked with the template present in the same file.
+Volt is an elegantly crafted functional API for [Livewire](https://livewire.laravel.com/), allowing component's PHP logic and Blade templates to coexist in the same file. Behind the scenes, the functional API is compiled to Livewire class components and linked with the template present in the same file.
 
 A simple Volt component looks like the following:
 
@@ -794,4 +794,4 @@ Please review [our security policy](https://github.com/livewire/volt/security/po
 ## License
 <a name="license"></a>
 
-Livewire Volt is open-sourced software licensed under the [MIT license](LICENSE.md).
+Volt is open-sourced software licensed under the [MIT license](LICENSE.md).
