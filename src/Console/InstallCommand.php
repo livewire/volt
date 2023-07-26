@@ -40,18 +40,6 @@ class InstallCommand extends Command
     }
 
     /**
-     * Ensure the livewire directory exists.
-     */
-    protected function ensureLivewireDirectoryExists(): void
-    {
-        if (! is_dir($directory = resource_path('views/livewire'))) {
-            File::ensureDirectoryExists($directory);
-
-            File::put($directory.'/.gitkeep', '');
-        }
-    }
-
-    /**
      * Register the Volt service provider in the application configuration file.
      */
     protected function registerVoltServiceProvider(): void
@@ -88,5 +76,17 @@ class InstallCommand extends Command
             "namespace {$namespace}\Providers;",
             file_get_contents(app_path('Providers/VoltServiceProvider.php'))
         ));
+    }
+
+    /**
+     * Ensure the Livewire directory exists.
+     */
+    protected function ensureLivewireDirectoryExists(): void
+    {
+        if (! is_dir($directory = resource_path('views/livewire'))) {
+            File::ensureDirectoryExists($directory);
+
+            File::put($directory.'/.gitkeep', '');
+        }
     }
 }
