@@ -17,6 +17,8 @@
 
 ## Introduction
 
+Volt is an elegantly crafted functional API for Livewire that supports single-file components, allowing a component's PHP logic and Blade templates to coexist in the same file.
+
 ## Official Documentation
 
 Documentation for Volt can be found on the [Livewire website](https://livewire.laravel.com/docs/volt).
