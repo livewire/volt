@@ -1,4 +1,4 @@
-<p align="center"><img width="450" src="/art/logo.svg" alt="Volt Package Logo"></p>
+<p align="center"><img width="200" src="/art/logo.svg" alt="Volt Package Logo"></p>
 
 <p align="center">
     <a href="https://github.com/livewire/volt/actions">
