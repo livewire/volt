@@ -1,9 +1,9 @@
 <?php
 
+use Livewire\Form;
 use Livewire\Volt\CompileContext;
 use Livewire\Volt\Compiler;
 use function Livewire\Volt\form;
-use Livewire\Form;
 
 class UserForm extends Form
 {
@@ -25,4 +25,4 @@ it('may be defined', function () {
 
 it('can not be defined with non-form classes', function () {
     form(static::class);
-})->throws(AssertionError::class, 'The given class must be a Livewire form object.');
+})->throws(InvalidArgumentException::class, 'The given class must be a Livewire form object.');

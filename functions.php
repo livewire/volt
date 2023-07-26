@@ -5,6 +5,8 @@ namespace Livewire\Volt;
 use Closure;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Arr;
+use InvalidArgumentException;
+use Livewire\Form;
 use Livewire\Volt\Exceptions\PlaceholderAlreadyDefinedException;
 use Livewire\Volt\Exceptions\WithAlreadyDefinedException;
 use Livewire\Volt\Methods\ActionMethod;
@@ -14,7 +16,6 @@ use Livewire\Volt\Methods\ProtectedMethod;
 use Livewire\Volt\Options\RuleOptions;
 use Livewire\Volt\Options\StateOptions;
 use Livewire\Volt\Options\TraitOptions;
-use Livewire\Form;
 
 /**
  * Define the component's state.
@@ -119,10 +120,14 @@ function with(mixed ...$data): void
  * Define a "form" property for the component.
  *
  * @param  class-string<Form>  $class
+ *
+ * @throws \InvalidArgumentException
  */
 function form(string $class, string $propertyName = 'form'): void
 {
-    assert(is_subclass_of($class, Form::class), 'The given class must be a Livewire form object.');
+    if (! is_subclass_of($class, Form::class)) {
+        throw new InvalidArgumentException('The given class must be a Livewire form object.');
+    }
 
     state($propertyName)->type($class);
 }

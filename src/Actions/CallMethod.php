@@ -5,13 +5,13 @@ namespace Livewire\Volt\Actions;
 use BadMethodCallException;
 use Closure;
 use Illuminate\Support\Str;
+use Livewire\Exceptions\MissingRulesException;
+use Livewire\Exceptions\PropertyNotFoundException;
 use Livewire\Volt\CompileContext;
 use Livewire\Volt\Component;
 use Livewire\Volt\Contracts\Action;
 use Livewire\Volt\Methods\Method;
 use Livewire\Volt\Support\Reflection;
-use Livewire\Exceptions\MissingRulesException;
-use Livewire\Exceptions\PropertyNotFoundException;
 
 class CallMethod implements Action
 {

@@ -2,11 +2,11 @@
 
 namespace Livewire\Volt\Options;
 
-use Livewire\Volt\Property;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Modelable;
 use Livewire\Attributes\Reactive;
 use Livewire\Attributes\Url;
+use Livewire\Volt\Property;
 
 class StateOptions
 {

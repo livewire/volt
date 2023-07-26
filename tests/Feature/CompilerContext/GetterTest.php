@@ -1,9 +1,9 @@
 <?php
 
+use Livewire\Attributes\Computed;
 use Livewire\Volt\CompileContext;
 use function Livewire\Volt\computed;
 use Livewire\Volt\Methods\Method;
-use Livewire\Attributes\Computed;
 
 it('may not be defined', function () {
     $context = CompileContext::instance();

@@ -1,8 +1,8 @@
 <?php
 
+use Livewire\Attributes\Url;
 use Livewire\Volt\CompileContext;
 use function Livewire\Volt\state;
-use Livewire\Attributes\Url;
 use Pest\Expectation;
 
 it('may be defined', function () {

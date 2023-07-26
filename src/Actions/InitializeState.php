@@ -4,10 +4,10 @@ namespace Livewire\Volt\Actions;
 
 use Closure;
 use Illuminate\Container\Container;
+use Livewire\Attributes\Url;
 use Livewire\Volt\CompileContext;
 use Livewire\Volt\Component;
 use Livewire\Volt\Contracts\Action;
-use Livewire\Attributes\Url;
 
 class InitializeState implements Action
 {

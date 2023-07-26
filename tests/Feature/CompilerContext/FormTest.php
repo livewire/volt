@@ -1,9 +1,9 @@
 <?php
 
+use Livewire\Form;
 use Livewire\Volt\CompileContext;
 use function Livewire\Volt\form;
 use Livewire\Volt\Property;
-use Livewire\Form;
 
 class ProductForm extends Form
 {

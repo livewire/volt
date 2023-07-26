@@ -4,9 +4,9 @@ namespace Livewire\Volt;
 
 use AllowDynamicProperties;
 use Illuminate\Support\Facades\View;
-use Livewire\Volt\Actions\ReturnViewData;
 use Livewire\Component as LivewireComponent;
 use Livewire\Mechanisms\ComponentRegistry;
+use Livewire\Volt\Actions\ReturnViewData;
 
 #[AllowDynamicProperties]
 abstract class Component extends LivewireComponent

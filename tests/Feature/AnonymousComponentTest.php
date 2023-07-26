@@ -1,9 +1,9 @@
 <?php
 
 use Laravel\Folio\Folio;
+use Livewire\Exceptions\ComponentNotFoundException;
 use Livewire\Volt\FragmentMap;
 use Livewire\Volt\Volt;
-use Livewire\Exceptions\ComponentNotFoundException;
 
 beforeEach(function () {
     Volt::mount([

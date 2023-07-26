@@ -3,11 +3,11 @@
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Collection;
+use Livewire\Attributes\Computed;
+use Livewire\Attributes\On;
 use Livewire\Volt\Exceptions\SignatureMismatchException;
 use Livewire\Volt\Methods\ActionMethod;
 use Livewire\Volt\Support\Reflection;
-use Livewire\Attributes\Computed;
-use Livewire\Attributes\On;
 use Psr\Log\LogLevel;
 
 it('converts a closure to a method signature', function (Closure $closure, string $expectedSignature) {

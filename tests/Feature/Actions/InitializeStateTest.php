@@ -1,10 +1,10 @@
 <?php
 
+use Livewire\Attributes\Url;
 use Livewire\Volt\Actions\InitializeState;
 use Livewire\Volt\CompileContext;
 use Livewire\Volt\Component;
 use Livewire\Volt\Property;
-use Livewire\Attributes\Url;
 
 it('sets properties on the component', function () {
     $context = CompileContext::make();

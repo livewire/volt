@@ -5,10 +5,10 @@ namespace Livewire\Volt;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
-use Livewire\Volt\Precompilers\ExtractFragments;
-use Livewire\Volt\Precompilers\ExtractTemplate;
 use Livewire\Livewire;
 use Livewire\LivewireServiceProvider;
+use Livewire\Volt\Precompilers\ExtractFragments;
+use Livewire\Volt\Precompilers\ExtractTemplate;
 
 class VoltServiceProvider extends ServiceProvider
 {

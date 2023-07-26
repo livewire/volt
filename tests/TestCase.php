@@ -3,8 +3,8 @@
 namespace Tests;
 
 use Laravel\Folio\FolioServiceProvider;
-use Livewire\Volt\VoltServiceProvider;
 use Livewire\LivewireServiceProvider;
+use Livewire\Volt\VoltServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase

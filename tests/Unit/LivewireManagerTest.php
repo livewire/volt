@@ -1,9 +1,9 @@
 <?php
 
-use Livewire\Volt\Component;
-use Livewire\Volt\LivewireManager;
 use Livewire\Exceptions\ComponentNotFoundException;
 use Livewire\Livewire;
+use Livewire\Volt\Component;
+use Livewire\Volt\LivewireManager;
 
 it('resolves an "custom" manager instance', function () {
     $instance = Livewire::getFacadeRoot();

@@ -2,10 +2,10 @@
 
 namespace Livewire\Volt;
 
-use Livewire\Volt\Actions\InitializeState;
-use Livewire\Volt\Support\Reflection;
 use Livewire\Exceptions\MethodNotFoundException;
 use Livewire\LivewireManager as BaseLivewireManager;
+use Livewire\Volt\Actions\InitializeState;
+use Livewire\Volt\Support\Reflection;
 
 class LivewireManager extends BaseLivewireManager
 {

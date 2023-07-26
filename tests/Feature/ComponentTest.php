@@ -2,17 +2,17 @@
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
-use Livewire\Volt\CompileContext;
-use Livewire\Volt\Compiler;
-use Livewire\Volt\ComponentFactory;
-use Livewire\Volt\ComponentResolver;
-use Livewire\Volt\Volt;
 use Livewire\Exceptions\ComponentNotFoundException;
 use Livewire\Exceptions\MethodNotFoundException;
 use Livewire\Exceptions\MissingRulesException;
 use Livewire\Exceptions\PropertyNotFoundException;
 use Livewire\Livewire;
 use Livewire\Mechanisms\ComponentRegistry;
+use Livewire\Volt\CompileContext;
+use Livewire\Volt\Compiler;
+use Livewire\Volt\ComponentFactory;
+use Livewire\Volt\ComponentResolver;
+use Livewire\Volt\Volt;
 use Pest\TestSuite;
 use Tests\Fixtures\GlobalTrait;
 
