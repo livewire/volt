@@ -41,7 +41,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-Livewire Volt is an elegantly crafted functional API for [Livewire](https://laravel-livewire.com/), allowing component's PHP logic and Blade templates to coexist in the same file. Behind the scenes, the functional API is compiled to Livewire class components and linked with the template present in the same file.
+Livewire Volt is an elegantly crafted functional API for [Livewire](https://livewire.laravel.com/), allowing component's PHP logic and Blade templates to coexist in the same file. Behind the scenes, the functional API is compiled to Livewire class components and linked with the template present in the same file.
 
 A simple Volt component looks like the following:
 
