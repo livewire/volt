@@ -68,7 +68,7 @@ $increment = fn () => $this->count++;
 First, install Volt into your project using the Composer package manager:
 
 ```bash
-composer require livewire/volt
+composer require livewire/volt:^1.0@beta
 ```
 
 After installing Volt, you may execute the `volt:install` Artisan command, which will install Volt's service provider file into your application:
