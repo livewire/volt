@@ -3,6 +3,7 @@
 namespace Livewire\Volt\Console;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 
@@ -33,7 +34,21 @@ class InstallCommand extends Command
 
         $this->registerVoltServiceProvider();
 
+        $this->ensureLivewireDirectoryExists();
+
         $this->components->info('Volt scaffolding installed successfully.');
+    }
+
+    /**
+     * Ensure the livewire directory exists.
+     */
+    protected function ensureLivewireDirectoryExists(): void
+    {
+        if (! is_dir($directory = resource_path('views/livewire'))) {
+            File::ensureDirectoryExists($directory);
+
+            File::put($directory.'/.gitkeep', '');
+        }
     }
 
     /**
