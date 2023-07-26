@@ -68,6 +68,7 @@ $increment = fn () => $this->count++;
 First, install Volt into your project using the Composer package manager:
 
 ```bash
+composer require livewire/livewire:^3.0@beta # Or ensure Livewire v3.x is installed...
 composer require livewire/volt:^1.0@beta
 ```
 
