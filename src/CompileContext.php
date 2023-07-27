@@ -29,6 +29,8 @@ class CompileContext
         public array $traits,
         public ?Closure $viewData,
         public ?Closure $placeholder,
+
+        // Hooks...
         public ?Closure $boot,
         public ?Closure $booted,
         public Closure $mount,
