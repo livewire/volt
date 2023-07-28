@@ -46,7 +46,7 @@ class ExtractTemplate
         $phpScript = trim(preg_replace('/^use\s+function\s+Livewire\\\\Volt.*$/m', '', $phpScript));
 
         if (! empty($phpScript)) {
-            $phpScript = '<?php'.PHP_EOL.PHP_EOL.$phpScript.PHP_EOL.PHP_EOL.'?>'.PHP_EOL.PHP_EOL;
+            $phpScript = '<?php'."\n\n".$phpScript."\n\n".'?>'."\n\n";
         }
 
         return $phpScript;
