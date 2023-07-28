@@ -35,7 +35,7 @@ class ExtractFragments
             }
 
             File::put(
-                $this->compiledViewPath.'/'.md5($name).'.blade.php',
+                $this->compiledViewPath.DIRECTORY_SEPARATOR.md5($name).'.blade.php',
                 $matches[2]
             );
 
@@ -46,7 +46,7 @@ class ExtractFragments
             $name = 'volt-anonymous-fragment-'.md5($matches[1]);
 
             File::put(
-                $this->compiledViewPath.'/'.md5($name).'.blade.php',
+                $this->compiledViewPath.DIRECTORY_SEPARATOR.md5($name).'.blade.php',
                 $matches[1]
             );
 

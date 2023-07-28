@@ -25,7 +25,7 @@ class PublicProperties implements Compiler
                     PHP;
 
                 if (! empty($attributes)) {
-                    $code = $attributes.PHP_EOL.$code;
+                    $code = $attributes."\n".$code;
                 }
 
                 return $code;

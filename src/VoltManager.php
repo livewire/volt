@@ -29,10 +29,16 @@ class VoltManager
      */
     public function mount(array|string $paths = [], array|string $uses = []): void
     {
-        $this->mountedDirectories->mount(empty($paths) ? [
+        $paths = collect(empty($paths) ? [
             config('view.paths')[0].'/livewire',
             config('view.paths')[0].'/pages',
-        ] : $paths, $uses);
+        ] : $paths)->map(fn (string $p) => str_replace(
+            '/',
+            DIRECTORY_SEPARATOR,
+            $p,
+        ))->all();
+
+        $this->mountedDirectories->mount($paths, $uses);
     }
 
     /**

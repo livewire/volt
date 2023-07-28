@@ -168,7 +168,7 @@ class Reflection
                         })
                         ->implode(', ')
                 );
-            })->map(fn (string $code) => '    '.$code)->implode(PHP_EOL);
+            })->map(fn (string $code) => '    '.$code)->implode("\n");
     }
 
     /**

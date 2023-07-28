@@ -18,7 +18,7 @@ class FragmentAlias
 
         return 'volt-anonymous-fragment-'.base64_encode(json_encode([
             'name' => $componentName,
-            'path' => str_replace($basePath.'/', '', $path),
+            'path' => str_replace($basePath.DIRECTORY_SEPARATOR, '', $path),
         ]));
     }
 
@@ -43,7 +43,7 @@ class FragmentAlias
 
         return [
             'name' => $decoded['name'],
-            'path' => $basePath.'/'.$decoded['path'],
+            'path' => $basePath.DIRECTORY_SEPARATOR.$decoded['path'],
         ];
     }
 

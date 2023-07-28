@@ -531,8 +531,8 @@ it('reuses components within the same request', function () {
     $resolver->shouldHaveReceived('resolve')
         ->once()
         ->with('basic-component', [
-            __DIR__.'/resources/views/pages',
-            __DIR__.'/resources/views/livewire',
+            __DIR__.DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'pages',
+            __DIR__.DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'livewire',
         ]);
 });
 
@@ -571,7 +571,7 @@ it('reuses fragments within the same request', function () {
                     'new class extends Component',
                 ]);
         });
-});
+})->skip(windows_os());
 
 it('reuses cached fragment components in subsequent requests', function () {
     Volt::test('basic-component')
@@ -607,7 +607,7 @@ it('reuses cached fragment components in subsequent requests', function () {
                     'new class extends Component',
                 ]);
         });
-});
+})->skip(windows_os());
 
 it('reuses fragment components in subsequent requests', function () {
     Volt::test('basic-component')
@@ -649,7 +649,7 @@ it('reuses fragment components in subsequent requests', function () {
                 return true;
             }
         });
-});
+})->skip(windows_os());
 
 it('does not reuse component components in subsequent requests if `view:clear` was used', function () {
     Volt::test('basic-component')
