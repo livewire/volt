@@ -5,7 +5,7 @@ use Livewire\Volt\FragmentAlias;
 it('may encode a component', function () {
     $alias = FragmentAlias::encode(
         'my-component',
-        __DIR__ . DIRECTORY_SEPARATOR . 'my-path',
+        __DIR__.DIRECTORY_SEPARATOR.'my-path',
         __DIR__
     );
 
@@ -21,7 +21,7 @@ it('may decode a component', function () {
 
     expect($component)->toBe([
         'name' => 'my-component',
-        'path' => __DIR__ . DIRECTORY_SEPARATOR . 'my-path',
+        'path' => __DIR__.DIRECTORY_SEPARATOR.'my-path',
     ]);
 });
 
