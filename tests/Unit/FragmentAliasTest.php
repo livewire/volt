@@ -9,11 +9,7 @@ it('may encode a component', function () {
         __DIR__
     );
 
-    if (windows_os()) {
-        expect($alias)->toBe('volt-anonymous-fragment-eyJuYW1lIjoibXktY29tcG9uZW50IiwicGF0aCI6Im15LXBhdGgifQ==');
-    } else {
-        expect($alias)->toBe('volt-anonymous-fragment-eyJuYW1lIjoibXktY29tcG9uZW50IiwicGF0aCI6Im15LXBhdGgifQ==');
-    }
+    expect($alias)->toBe('volt-anonymous-fragment-eyJuYW1lIjoibXktY29tcG9uZW50IiwicGF0aCI6Im15LXBhdGgifQ==');
 });
 
 it('may decode a component', function () {
