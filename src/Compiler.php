@@ -42,7 +42,7 @@ class Compiler
             ProtectedMethods::class,
         ])->map(function (string $compiler) use ($context) {
             return (new $compiler)->compile($context);
-        })->flatten()->values()->implode(PHP_EOL);
+        })->flatten()->values()->implode("\n");
 
         return str(<<<PHP
             <?php
