@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  * @method static void mount(array|string $paths = [], array|string $uses = [])
  * @method static array paths()
- * @method static \Livewire\Testing\TestableLivewire test(string $name, array $params = [])
+ * @method static \Livewire\Features\SupportTesting\Testable test(string $name, array $params = [])
  */
 class Volt extends Facade
 {
