@@ -44,6 +44,10 @@ class Compiler
             return (new $compiler)->compile($context);
         })->flatten()->values()->implode("\n");
 
+        $interfaces = collect((new Compilers\Interfaces)->compile($context))->whenNotEmpty(function ($interfaces) {
+            return ' implements '.collect($interfaces)->implode(', ');
+        }, fn () => '');
+
         return str(<<<PHP
             <?php
 
@@ -52,7 +56,7 @@ class Compiler
             use Livewire\Volt\Contracts\Compiled;
             use Livewire\Volt\Component;
 
-            return new class extends Component
+            return new class extends Component$interfaces
             {
                 public static CompileContext \$__context;
 

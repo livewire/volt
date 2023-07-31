@@ -29,7 +29,7 @@ class ComponentFactory
 
         foreach ($this->mountedDirectories->paths() as $mountedPath) {
             if (str_starts_with($path, $mountedPath->path)) {
-                $context->traits = array_merge($context->traits, $mountedPath->uses);
+                $context->uses = array_merge($context->uses, $mountedPath->uses);
             }
         }
 

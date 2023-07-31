@@ -8,6 +8,7 @@ use Illuminate\Support\Arr;
 use InvalidArgumentException;
 use Livewire\Form;
 use Livewire\Volt\Exceptions\PlaceholderAlreadyDefinedException;
+use Livewire\Volt\Exceptions\TraitOrInterfaceNotFound;
 use Livewire\Volt\Exceptions\WithAlreadyDefinedException;
 use Livewire\Volt\Methods\ActionMethod;
 use Livewire\Volt\Methods\ComputedMethod;
@@ -15,7 +16,7 @@ use Livewire\Volt\Methods\JsMethod;
 use Livewire\Volt\Methods\ProtectedMethod;
 use Livewire\Volt\Options\RuleOptions;
 use Livewire\Volt\Options\StateOptions;
-use Livewire\Volt\Options\TraitOptions;
+use Livewire\Volt\Options\UsesOptions;
 
 /**
  * Define the component's state.
@@ -268,28 +269,36 @@ function rules(mixed ...$rules): RuleOptions
 /**
  * Indicate that the component supports file uploads.
  */
-function usesFileUploads(): TraitOptions
+function usesFileUploads(): UsesOptions
 {
-    return (new TraitOptions)->usesFileUploads();
+    return (new UsesOptions)->usesFileUploads();
 }
 
 /**
  * Indicate that the component supports pagination.
  */
-function usesPagination(string $view = null, string $theme = null): TraitOptions
+function usesPagination(string $view = null, string $theme = null): UsesOptions
 {
-    return (new TraitOptions)->usesPagination($view, $theme);
+    return (new UsesOptions)->usesPagination($view, $theme);
 }
 
 /**
- * Indicate that the component should use the given trait.
+ * Indicate that the component should use the given trait or interface.
  */
-function uses(array|string $name): TraitOptions
+function uses(array|string $name): UsesOptions
 {
-    CompileContext::instance()->traits = array_values(array_unique(array_merge(
-        CompileContext::instance()->traits,
+    $uses = Arr::wrap($name);
+
+    foreach ($uses as $use) {
+        if (! trait_exists($use) && ! interface_exists($use)) {
+            throw new TraitOrInterfaceNotFound($use);
+        }
+    }
+
+    CompileContext::instance()->uses = array_values(array_unique(array_merge(
+        CompileContext::instance()->uses,
         Arr::wrap($name),
     )));
 
-    return new TraitOptions;
+    return new UsesOptions;
 }
