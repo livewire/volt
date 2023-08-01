@@ -10,7 +10,7 @@ use Tests\Fixtures\User;
 beforeEach(function () {
     Volt::mount([
         __DIR__.'/resources/views/pages',
-        __DIR__.'/resources/views/livewire',
+        __DIR__.'/resources/views/functional-api',
     ]);
 
     $this->app['config']->set('database.default', 'testbench');

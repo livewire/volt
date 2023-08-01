@@ -21,9 +21,13 @@ class ComponentFactory
     {
         CompileContext::flush();
 
-        $this->requirePath(
+        $potentialComponentInstance = $this->requirePath(
             CompileContext::instance()->path = $path
         );
+
+        if ($potentialComponentInstance instanceof Component) {
+            return $potentialComponentInstance;
+        }
 
         $context = tap(CompileContext::instance(), fn () => CompileContext::flush());
 
@@ -46,15 +50,17 @@ class ComponentFactory
     /**
      * Imports the component definition into the compilation context.
      */
-    protected function requirePath(string $path): void
+    protected function requirePath(string $path): ?Component
     {
         try {
             ob_start();
 
             $__path = $path;
 
-            CompileContext::instance()->variables = (static function () use ($__path) {
-                require $__path;
+            $variablesOrComponent = (function () use ($__path) {
+                if (($potentiallyComponentInstance = require $__path) instanceof Component) {
+                    return $potentiallyComponentInstance;
+                }
 
                 return array_map(function (mixed $variable) {
                     return $variable instanceof Closure
@@ -65,5 +71,13 @@ class ComponentFactory
         } finally {
             ob_get_clean();
         }
+
+        if ($variablesOrComponent instanceof Component) {
+            return $variablesOrComponent;
+        }
+
+        CompileContext::instance()->variables = $variablesOrComponent;
+
+        return null;
     }
 }

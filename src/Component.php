@@ -19,11 +19,13 @@ abstract class Component extends LivewireComponent
     /**
      * Render the component.
      */
-    public function render(): mixed
+    final public function render(): mixed
     {
         $alias = $this->getAlias();
 
-        $data = (new ReturnViewData)->execute(static::$__context, $this, []); // @phpstan-ignore-line
+        $data = property_exists($this, '__context')
+            ? (new ReturnViewData)->execute(static::$__context, $this, []) // @phpstan-ignore-line
+            : [];
 
         return ($fragment = ExtractedFragment::fromAlias($alias))
             ? View::file($fragment->extractIfStale()->path(), $data)

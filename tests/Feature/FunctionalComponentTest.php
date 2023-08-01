@@ -17,7 +17,7 @@ use Pest\TestSuite;
 use Tests\Fixtures\GlobalTrait;
 
 beforeEach(function () {
-    Volt::mount([__DIR__.'/resources/views/pages', __DIR__.'/resources/views/livewire'], [GlobalTrait::class]);
+    Volt::mount([__DIR__.'/resources/views/pages', __DIR__.'/resources/views/functional-api'], [GlobalTrait::class]);
 });
 
 it('can be rendered', function () {
@@ -380,7 +380,7 @@ it('does not reuse components compiled classes in subsequent requests if `view:c
 });
 
 it('does not reuse components compiled classes when the component file changes', function () {
-    $original = __DIR__.'/resources/views/livewire/basic-component.blade.php';
+    $original = __DIR__.'/resources/views/functional-api/basic-component.blade.php';
 
     File::partialMock();
 
@@ -449,7 +449,7 @@ test('generated code', function (string $filename) {
 })->with(function () {
     $files = [];
 
-    foreach (glob(__DIR__.'/resources/views/livewire/*.blade.php') as $file) {
+    foreach (glob(__DIR__.'/resources/views/functional-api/*.blade.php') as $file) {
         $files[basename($file)] = str_replace(
             TestSuite::getInstance()->rootPath,
             '',
@@ -541,7 +541,7 @@ it('reuses components within the same request', function () {
         ->once()
         ->with('basic-component', [
             __DIR__.DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'pages',
-            __DIR__.DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'livewire',
+            __DIR__.DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'functional-api',
         ]);
 });
 
