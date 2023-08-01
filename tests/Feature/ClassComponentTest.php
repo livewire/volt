@@ -13,4 +13,25 @@ it('can be rendered', function () {
 
     Volt::test('basic-component')
         ->assertSee('Hello World');
-})->only();
+});
+
+it('can have url attribute', function () {
+    $component = Livewire::test('component-with-url-attribute');
+
+    $component->assertSeeHtml([
+        '<li>Nuno Maduro</li>',
+        '<li>Nuno</li>',
+        '<li>Taylor</li>',
+    ]);
+
+    $component->set('search', 'Nuno');
+
+    $component->assertSeeHtml([
+        '<li>Nuno Maduro</li>',
+        '<li>Nuno</li>',
+    ]);
+
+    $component->assertDontSeeHtml([
+        '<li>Taylor</li>',
+    ]);
+});
