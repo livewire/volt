@@ -4,6 +4,7 @@ namespace Livewire\Volt\Console;
 
 use Illuminate\Console\Concerns\CreatesMatchingTest;
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Livewire\Volt\Volt;
@@ -170,6 +171,20 @@ class MakeCommand extends GeneratorCommand
     {
         return [
             ['force', 'f', InputOption::VALUE_NONE, 'Create the Volt component even if the component already exists'],
+        ];
+    }
+
+    /**
+     * Prompt for missing input arguments using the returned questions.
+     *
+     * @return array
+     */
+    protected function promptForMissingArgumentsUsing()
+    {
+        return [
+            'name' => version_compare(Application::VERSION, '10.17.0', '>=')
+                ? ['What should the Volt component be named?', 'E.g. counter']
+                : 'What should the Volt component be named?',
         ];
     }
 }
