@@ -54,13 +54,15 @@ class ProtectedMethods implements Compiler
                 $attributes = Reflection::toAttributesSignature($reflection->attributes);
                 $signature = Reflection::toMethodSignatureFromClosure($methodName, $reflection->closure);
 
+                $return = str_ends_with($signature, 'void') ? '' : 'return ';
+
                 return <<<PHP
                     $attributes
                     protected $signature
                     {
                         \$arguments = [static::\$__context, \$this, func_get_args()];
 
-                        return (new Actions\CallMethod('$methodName'))->execute(...\$arguments);
+                        $return(new Actions\CallMethod('$methodName'))->execute(...\$arguments);
                     }
 
                 PHP;

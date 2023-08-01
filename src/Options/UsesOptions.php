@@ -7,7 +7,7 @@ use function Livewire\Volt\uses;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
-class TraitOptions
+class UsesOptions
 {
     /**
      * Indicate that the component should be compiled with file upload support.

@@ -7,7 +7,7 @@ use Livewire\WithPagination;
 it('is not used by default', function () {
     $context = CompileContext::instance();
 
-    expect($context->traits)->not->toContain(WithPagination::class);
+    expect($context->uses)->not->toContain(WithPagination::class);
 });
 
 it('may be used', function () {
@@ -15,7 +15,7 @@ it('may be used', function () {
 
     usesPagination();
 
-    expect($context->traits)->toContain(WithPagination::class)
+    expect($context->uses)->toContain(WithPagination::class)
         ->and($context->paginationView)->toBeNull()
         ->and($context->paginationTheme)->toBeNull();
 });

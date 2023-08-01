@@ -420,6 +420,15 @@ it('caches components using their compiled view paths', function () {
         });
 });
 
+it('may use external interfaces', function () {
+    Livewire::test('component-with-external-interfaces')
+        ->assertSet('counter', 0)
+        ->call('increment')
+        ->call('alsoIncrement')
+        ->call('alsoIncrementButReturnInt')
+        ->assertSet('counter', 3);
+});
+
 it('may use external traits', function () {
     Livewire::test('component-with-external-traits')
         ->assertSet('counter', 0)

@@ -26,7 +26,7 @@ class CompileContext
         public array $validationAttributes,
         public ?string $paginationView,
         public ?string $paginationTheme,
-        public array $traits,
+        public array $uses,
         public ?Closure $viewData,
         public ?Closure $placeholder,
 
@@ -68,9 +68,9 @@ class CompileContext
             validationAttributes: [],
             paginationView: null,
             paginationTheme: null,
-            placeholder: null,
-            traits: [],
+            uses: [],
             viewData: null,
+            placeholder: null,
 
             // Hooks...
             boot: null,
