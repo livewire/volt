@@ -9,7 +9,9 @@
 
 <?php
 
-use function Livewire\Volt\{protect, mount, state};
+use function Livewire\Volt\mount;
+use function Livewire\Volt\protect;
+use function Livewire\Volt\state;
 
 state(['counter' => 0]);
 

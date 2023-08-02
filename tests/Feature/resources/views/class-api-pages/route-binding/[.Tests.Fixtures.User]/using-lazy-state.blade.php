@@ -1,7 +1,7 @@
 <?php
 
-use Tests\Fixtures\User;
 use Livewire\Volt\Component;
+use Tests\Fixtures\User;
 
 new class extends Component
 {

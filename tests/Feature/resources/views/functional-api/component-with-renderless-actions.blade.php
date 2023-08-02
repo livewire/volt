@@ -1,6 +1,7 @@
 <?php
 
-use function Livewire\Volt\{action, state};
+use function Livewire\Volt\action;
+use function Livewire\Volt\state;
 
 state('counter', 0);
 

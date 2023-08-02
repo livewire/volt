@@ -1,12 +1,12 @@
 <?php
 
-use Livewire\Volt\Component;
 use function Laravel\Folio\withTrashed;
-use function Livewire\Volt\state;
+use Livewire\Volt\Component;
 
 withTrashed();
 
-new class extends Component {
+new class extends Component
+{
     public $user;
 };
 

@@ -1,7 +1,5 @@
 <?php
 
-use Tests\Fixtures\Say;
-
 ?>
 
 <div>

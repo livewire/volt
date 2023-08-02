@@ -14,10 +14,9 @@
 
 <?php
 
+use function Laravel\Folio\{middleware};
 use Livewire\Volt\Component;
 use function Livewire\Volt\{state};
-use function Laravel\Folio\{middleware};
-use Illuminate\Support\Str;
 
 middleware(function ($request, $next) {
     return $next($request);

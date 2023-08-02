@@ -14,9 +14,9 @@
 
 <?php
 
-use function Livewire\Volt\{state};
-use function Laravel\Folio\{middleware};
 use Illuminate\Support\Str;
+use function Laravel\Folio\{middleware};
+use function Livewire\Volt\{state};
 
 state('number', Str::upper(1));
 

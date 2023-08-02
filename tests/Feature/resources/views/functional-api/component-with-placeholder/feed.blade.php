@@ -2,7 +2,7 @@
 
 use function Livewire\Volt\placeholder;
 
-placeholder(view()->file(__DIR__ . '/placeholder.blade.php'));
+placeholder(view()->file(__DIR__.'/placeholder.blade.php'));
 
 ?>
 

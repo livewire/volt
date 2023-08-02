@@ -9,8 +9,8 @@
 
 <?php
 
-use Tests\Fixtures\BookForm;
 use function Livewire\Volt\{form};
+use Tests\Fixtures\BookForm;
 
 form(BookForm::class);
 

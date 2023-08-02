@@ -3,10 +3,13 @@
 namespace Livewire\Volt;
 
 use AllowDynamicProperties;
+use BadMethodCallException;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Str;
 use Livewire\Component as LivewireComponent;
 use Livewire\Mechanisms\ComponentRegistry;
 use Livewire\Volt\Actions\ReturnViewData;
+use Livewire\Volt\Support\Reflection;
 
 #[AllowDynamicProperties]
 abstract class Component extends LivewireComponent
@@ -50,5 +53,29 @@ abstract class Component extends LivewireComponent
         return $this->__alias ??= array_search(static::class, (fn () => $this->aliases)->call(
             app(ComponentRegistry::class),
         ));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function __call($method, $params)
+    {
+        try {
+            return parent::__call($method, $params);
+        } catch (BadMethodCallException $e) {
+            $message = $e->getMessage();
+
+            if (str_starts_with($message, 'Method Livewire\Volt\Component@anonymous') &&
+                str_ends_with($message, 'does not exist.')
+            ) {
+                $classAndMethodName = explode(' ', preg_replace('/Method (.*) does not exist./', '$1', $message))[0];
+
+                $methodName = Str::afterLast($classAndMethodName, '::');
+
+                Reflection::setExceptionMessage($e, "Method, action or protected callable [{$methodName}] not found on component [{$this->voltComponentName()}].");
+            }
+
+            throw $e;
+        }
     }
 }

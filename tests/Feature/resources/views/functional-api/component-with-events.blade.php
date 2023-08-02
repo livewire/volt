@@ -4,7 +4,8 @@
 
 <?php
 
-use function Livewire\Volt\{on, state};
+use function Livewire\Volt\on;
+use function Livewire\Volt\state;
 
 state(counter: 0);
 

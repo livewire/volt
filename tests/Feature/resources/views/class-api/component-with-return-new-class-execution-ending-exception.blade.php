@@ -2,11 +2,14 @@
 
 use Livewire\Volt\Component;
 
-new class extends Component {
+new class extends Component
+{
     public $name = 'World';
+
     public $counter = 0;
 
-    public function increment() {
+    public function increment()
+    {
         $this->counter++;
     }
 }; ?>

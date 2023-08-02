@@ -1,6 +1,8 @@
 <?php
 
-use function Livewire\Volt\{computed, boot, state};
+use function Livewire\Volt\boot;
+use function Livewire\Volt\computed;
+use function Livewire\Volt\state;
 
 state('search', '')->url();
 
@@ -13,7 +15,7 @@ if (! class_exists(PostRepositoryWithDynamicProperties::class)) {
                 ['name' => 'Nuno'],
                 ['name' => 'Nuno Maduro'],
                 ['name' => 'Taylor'],
-            ])->filter(fn(array $post) => str_contains($post['name'], $search))->toArray();
+            ])->filter(fn (array $post) => str_contains($post['name'], $search))->toArray();
         }
     }
 }

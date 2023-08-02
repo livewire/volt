@@ -1,6 +1,7 @@
 <?php
 
-use function Livewire\Volt\{computed, state};
+use function Livewire\Volt\computed;
+use function Livewire\Volt\state;
 
 state('search')->url();
 

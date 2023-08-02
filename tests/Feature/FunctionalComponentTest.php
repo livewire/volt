@@ -281,7 +281,7 @@ it('throws exception when "action" is not found', function () {
         ->call('missing-action');
 })->throws(
     MethodNotFoundException::class,
-    'Closure [missing-action] does not exist on component [basic-component].',
+    'Method or action [missing-action] does not exist on component [basic-component].',
 );
 
 it('throws exception when rules are not found', function () {
@@ -297,7 +297,7 @@ it('throws exception when method is not found within action', function () {
         ->call('action');
 })->throws(
     BadMethodCallException::class,
-    'Action or protected callable [missingActionOrHelper] not found on component [component-with-action-that-calls-bad-method].',
+    'Method, action or protected callable [missingActionOrHelper] not found on component [component-with-action-that-calls-bad-method].',
 );
 
 it('throws exception when state definition is not found', function () {
