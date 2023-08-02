@@ -329,7 +329,7 @@ it('reuses components compiled classes within the same request', function () {
         });
 });
 
-it('reuses components compiled classes "name" in subsequent requests', function () {
+it('does not reuse components compiled classes in subsequent requests', function () {
     File::partialMock();
 
     $componentA = Livewire::test('basic-component', ['name' => 'Taylor']);
@@ -349,10 +349,11 @@ it('reuses components compiled classes "name" in subsequent requests', function 
                 && str_contains($contents, 'new class extends Component');
         });
 
-    expect($componentAClass)->toBe($componentBClass);
+    // In different requests, while the "compiled" class is the same, the "anonymous" class name is different...
+    expect($componentAClass)->not->toBe($componentBClass);
 });
 
-it('does reuse components compiled classes "name" in subsequent requests if `view:clear` was used', function () {
+it('does not reuse components compiled classes in subsequent requests if `view:clear` was used', function () {
     File::partialMock();
 
     $componentA = Livewire::test('basic-component', ['name' => 'Taylor']);
@@ -375,10 +376,10 @@ it('does reuse components compiled classes "name" in subsequent requests if `vie
                 && str_contains($contents, 'new class extends Component');
         });
 
-    expect($componentAClass)->toBe($componentBClass);
+    expect($componentAClass)->not->toBe($componentBClass);
 });
 
-it('does reuse components compiled classes "name" when the component file changes', function () {
+it('does not reuse components compiled classes when the component file changes', function () {
     $original = __DIR__.'/resources/views/functional-api/basic-component.blade.php';
 
     File::partialMock();
@@ -403,7 +404,7 @@ it('does reuse components compiled classes "name" when the component file change
                 && str_contains($contents, 'new class extends Component');
         });
 
-    expect($componentAClass)->toBe($componentBClass);
+    expect($componentAClass)->not->toBe($componentBClass);
 });
 
 it('caches components using their compiled view paths', function () {

@@ -4,6 +4,7 @@ namespace Livewire\Volt;
 
 use AllowDynamicProperties;
 use BadMethodCallException;
+use Illuminate\Container\Container;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 use Livewire\Component as LivewireComponent;
@@ -19,6 +20,16 @@ abstract class Component extends LivewireComponent
      * The locally cached component alias for this command.
      */
     protected ?string $__alias = null;
+
+    /**
+     * Create a new component instance.
+     */
+    public function __construct()
+    {
+        Container::getInstance()
+            ->make(ComponentFactory::class)
+            ->setLatestCreatedComponentClass(static::class);
+    }
 
     /**
      * Render the component.

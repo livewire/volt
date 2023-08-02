@@ -8,6 +8,11 @@ use Livewire\Volt\Methods\ActionMethod;
 class ComponentFactory
 {
     /**
+     * The latest created component class.
+     */
+    static protected ?string $latestCreatedComponentClass = null;
+
+    /**
      * Create a new component factory instance.
      */
     public function __construct(protected MountedDirectories $mountedDirectories)
@@ -15,18 +20,30 @@ class ComponentFactory
     }
 
     /**
+     * Set the latest created component class.
+     *
+     * @param  class-string<\Livewire\Volt\Component>  $componentClass
+     */
+    public function setLatestCreatedComponentClass(string $componentClass): void
+    {
+        static::$latestCreatedComponentClass = $componentClass;
+    }
+
+    /**
      * Make a new component instance from the given path.
      */
     public function make(string $componentName, string $path): string
     {
+        static::$latestCreatedComponentClass = null;
+
         CompileContext::flush();
 
         $this->requirePath(
             CompileContext::instance()->path = $path
         );
 
-        if ($componentClass = $this->getComponentClass($path)) {
-            return $componentClass;
+        if (static::$latestCreatedComponentClass) {
+            return static::$latestCreatedComponentClass;
         }
 
         $context = tap(CompileContext::instance(), fn () => CompileContext::flush());
@@ -44,7 +61,7 @@ class ComponentFactory
         require $file->path();
 
         return tap(
-            $this->getComponentClass($file->path()),
+            static::$latestCreatedComponentClass,
             fn (string $componentClass) => $componentClass::$__context = $context
         );
     }
@@ -71,14 +88,5 @@ class ComponentFactory
         } finally {
             ob_get_clean();
         }
-    }
-
-    /**
-     * Extract the component class from the declared classes, if it exists.
-     */
-    protected function getComponentClass(string $path): ?string
-    {
-        return collect(get_declared_classes())
-            ->first(fn (string $class) => str_starts_with($class, Component::class."@anonymous\x00".$path));
     }
 }
