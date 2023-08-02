@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Livewire\Component as LivewireComponent;
 use Livewire\Mechanisms\ComponentRegistry;
 use Livewire\Volt\Actions\ReturnViewData;
+use Livewire\Volt\Contracts\FunctionalComponent;
 use Livewire\Volt\Support\Reflection;
 
 #[AllowDynamicProperties]
@@ -26,7 +27,7 @@ abstract class Component extends LivewireComponent
     {
         $alias = $this->getAlias();
 
-        $data = property_exists($this, '__context')
+        $data = $this instanceof FunctionalComponent
             ? (new ReturnViewData)->execute(static::$__context, $this, []) // @phpstan-ignore-line
             : [];
 
