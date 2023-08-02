@@ -40,7 +40,7 @@ class LivewireManager extends BaseLivewireManager
                     'Public method [%s]', $call['method'],
                 )), fn () => throw $e)['method'];
 
-                Reflection::setExceptionMessage($e, "Closure [$method] does not exist on component [{$componentInstance->voltComponentName()}].");
+                Reflection::setExceptionMessage($e, "Method or action [$method] does not exist on component [{$componentInstance->voltComponentName()}].");
             }
 
             throw $e;

@@ -3,6 +3,7 @@
 namespace Livewire\Volt\Precompilers;
 
 use Illuminate\Support\Facades\Blade;
+use Livewire\Volt\Exceptions\ReturnNewClassExecutionEndingException;
 use Livewire\Volt\MountedDirectories;
 use Livewire\Volt\Volt;
 
@@ -23,6 +24,8 @@ class ExtractTemplate
         if (! $this->shouldExtractTemplate($template)) {
             return $template;
         }
+
+        $this->ensureNoReturnNewClassExecutionEnding($template);
 
         return $this->imports($template).
                $this->html($template);
@@ -58,5 +61,15 @@ class ExtractTemplate
     protected function html(string $template): string
     {
         return trim(preg_replace('/<\?php\s*(.*?)\s*\?>/s', '', $template));
+    }
+
+    /**
+     * Ensures the given template does not contain any "return new class" execution ending.
+     */
+    protected function ensureNoReturnNewClassExecutionEnding(string $template): void
+    {
+        if (preg_match('/return\s+new\s+class\s+extends\s+Component/', $template) > 0) {
+            throw new ReturnNewClassExecutionEndingException;
+        }
     }
 }

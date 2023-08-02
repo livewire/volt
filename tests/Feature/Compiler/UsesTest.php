@@ -20,7 +20,7 @@ it('may be defined', function () {
     $code = Compiler::contextToString(CompileContext::instance());
 
     expect($code)
-        ->toContain('implements Tests\Fixtures\IncrementInterface')
+        ->toContain('implements Livewire\Volt\Contracts\FunctionalComponent, Tests\Fixtures\IncrementInterface')
         ->toContain(<<<'PHP'
         use Livewire\WithFileUploads;
     PHP

@@ -7,8 +7,8 @@ use Livewire\Volt\Volt;
 
 beforeEach(function () {
     Volt::mount([
-        __DIR__.'/resources/views/pages',
-        __DIR__.'/resources/views/livewire',
+        __DIR__.'/resources/views/functional-api-pages',
+        __DIR__.'/resources/views/functional-api',
     ]);
 
     $this->app['config']->set('database.default', 'testbench');
@@ -43,7 +43,7 @@ it('may be tested', function () {
 });
 
 it('may be lazy', function () {
-    Folio::route(__DIR__.'/resources/views/pages');
+    Folio::route(__DIR__.'/resources/views/functional-api-pages');
 
     Volt::test('named-lazy-fragment-component')
         ->assertSee('Hello From Named Lazy');

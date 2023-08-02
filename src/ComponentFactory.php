@@ -8,6 +8,11 @@ use Livewire\Volt\Methods\ActionMethod;
 class ComponentFactory
 {
     /**
+     * The latest created component class.
+     */
+    protected static ?string $latestCreatedComponentClass = null;
+
+    /**
      * Create a new component factory instance.
      */
     public function __construct(protected MountedDirectories $mountedDirectories)
@@ -17,13 +22,19 @@ class ComponentFactory
     /**
      * Make a new component instance from the given path.
      */
-    public function make(string $componentName, string $path): Component
+    public function make(string $componentName, string $path): string
     {
+        static::$latestCreatedComponentClass = null;
+
         CompileContext::flush();
 
         $this->requirePath(
             CompileContext::instance()->path = $path
         );
+
+        if (static::$latestCreatedComponentClass) {
+            return static::$latestCreatedComponentClass;
+        }
 
         $context = tap(CompileContext::instance(), fn () => CompileContext::flush());
 
@@ -37,14 +48,16 @@ class ComponentFactory
 
         Compiler::compile($file, $context);
 
+        require $file->path();
+
         return tap(
-            require $file->path(),
-            fn (Component $component) => $component::$__context = $context
+            static::$latestCreatedComponentClass,
+            fn (string $componentClass) => $componentClass::$__context = $context
         );
     }
 
     /**
-     * Imports the component definition into the compilation context.
+     * Imports the component definition into the compilation context, or returns the component class name.
      */
     protected function requirePath(string $path): void
     {
@@ -65,5 +78,15 @@ class ComponentFactory
         } finally {
             ob_get_clean();
         }
+    }
+
+    /**
+     * Set the latest created component class.
+     *
+     * @param  class-string<\Livewire\Volt\Component>  $componentClass
+     */
+    public function setLatestCreatedComponentClass(string $componentClass): void
+    {
+        static::$latestCreatedComponentClass = $componentClass;
     }
 }

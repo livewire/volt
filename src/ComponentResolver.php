@@ -37,6 +37,6 @@ class ComponentResolver
      */
     protected function extractComponentClass(string $componentName, string $componentPath): string
     {
-        return get_class($this->factory->make($componentName, $componentPath));
+        return $this->factory->make($componentName, $componentPath);
     }
 }

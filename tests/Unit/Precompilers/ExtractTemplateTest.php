@@ -1,5 +1,6 @@
 <?php
 
+use Livewire\Volt\Exceptions\ReturnNewClassExecutionEndingException;
 use Livewire\Volt\MountedDirectories;
 use Livewire\Volt\Precompilers\ExtractTemplate;
 
@@ -74,3 +75,24 @@ it('extracts the php uses from the given template', function () {
 
     expect($this->precompiler->__invoke($template))->toBe($expected);
 });
+
+it('does not allow "return new class extends Component" ending execution', function () {
+    $template = <<<'HTML'
+        <?php
+
+        return new class extends Component
+        {
+            //
+        };
+
+        ?>
+
+        <div>
+            <h1>{{ $name }}</h1>
+        </div>
+
+        ?>
+        HTML;
+
+    $this->precompiler->__invoke($template);
+})->throws(ReturnNewClassExecutionEndingException::class);
