@@ -10,7 +10,7 @@ class ComponentFactory
     /**
      * The latest created component class.
      */
-    static protected ?string $latestCreatedComponentClass = null;
+    protected static ?string $latestCreatedComponentClass = null;
 
     /**
      * Create a new component factory instance.
