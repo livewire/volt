@@ -59,7 +59,7 @@ class ComponentFactory
 
             $__path = $path;
 
-            CompileContext::instance()->variables = (function () use ($__path) {
+            CompileContext::instance()->variables = (static function () use ($__path) {
                 require $__path;
 
                 return array_map(function (mixed $variable) {
