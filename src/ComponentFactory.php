@@ -20,16 +20,6 @@ class ComponentFactory
     }
 
     /**
-     * Set the latest created component class.
-     *
-     * @param  class-string<\Livewire\Volt\Component>  $componentClass
-     */
-    public function setLatestCreatedComponentClass(string $componentClass): void
-    {
-        static::$latestCreatedComponentClass = $componentClass;
-    }
-
-    /**
      * Make a new component instance from the given path.
      */
     public function make(string $componentName, string $path): string
@@ -88,5 +78,15 @@ class ComponentFactory
         } finally {
             ob_get_clean();
         }
+    }
+
+    /**
+     * Set the latest created component class.
+     *
+     * @param  class-string<\Livewire\Volt\Component>  $componentClass
+     */
+    public function setLatestCreatedComponentClass(string $componentClass): void
+    {
+        static::$latestCreatedComponentClass = $componentClass;
     }
 }
