@@ -325,11 +325,11 @@ it('reuses components compiled classes within the same request', function () {
         ->once()
         ->withArgs(function (string $path, string $contents) {
             return str_contains($path, storage_path())
-                && str_contains($contents, 'return new class extends Component');
+                && str_contains($contents, 'new class extends Component');
         });
 });
 
-it('reuses components compiled classes in subsequent requests', function () {
+it('reuses components compiled classes "name" in subsequent requests', function () {
     File::partialMock();
 
     $componentA = Livewire::test('basic-component', ['name' => 'Taylor']);
@@ -346,14 +346,13 @@ it('reuses components compiled classes in subsequent requests', function () {
         ->once()
         ->withArgs(function (string $path, string $contents) {
             return str_contains($path, storage_path())
-                && str_contains($contents, 'return new class extends Component');
+                && str_contains($contents, 'new class extends Component');
         });
 
-    // In different requests, while the "compiled" class is the same, the "anonymous" class name is different...
-    expect($componentAClass)->not->toBe($componentBClass);
+    expect($componentAClass)->toBe($componentBClass);
 });
 
-it('does not reuse components compiled classes in subsequent requests if `view:clear` was used', function () {
+it('does reuse components compiled classes "name" in subsequent requests if `view:clear` was used', function () {
     File::partialMock();
 
     $componentA = Livewire::test('basic-component', ['name' => 'Taylor']);
@@ -373,13 +372,13 @@ it('does not reuse components compiled classes in subsequent requests if `view:c
         ->times(2)
         ->withArgs(function (string $path, string $contents) {
             return str_contains($path, storage_path())
-                && str_contains($contents, 'return new class extends Component');
+                && str_contains($contents, 'new class extends Component');
         });
 
-    expect($componentAClass)->not->toBe($componentBClass);
+    expect($componentAClass)->toBe($componentBClass);
 });
 
-it('does not reuse components compiled classes when the component file changes', function () {
+it('does reuse components compiled classes "name" when the component file changes', function () {
     $original = __DIR__.'/resources/views/functional-api/basic-component.blade.php';
 
     File::partialMock();
@@ -401,10 +400,10 @@ it('does not reuse components compiled classes when the component file changes',
         ->twice()
         ->withArgs(function (string $path, string $contents) {
             return str_contains($path, storage_path())
-                && str_contains($contents, 'return new class extends Component');
+                && str_contains($contents, 'new class extends Component');
         });
 
-    expect($componentAClass)->not->toBe($componentBClass);
+    expect($componentAClass)->toBe($componentBClass);
 });
 
 it('caches components using their compiled view paths', function () {

@@ -17,16 +17,16 @@ class ComponentFactory
     /**
      * Make a new component instance from the given path.
      */
-    public function make(string $componentName, string $path): Component
+    public function make(string $componentName, string $path): string
     {
         CompileContext::flush();
 
-        $potentialComponentClass = $this->requirePath(
+        $this->requirePath(
             CompileContext::instance()->path = $path
         );
 
-        if ($potentialComponentClass) {
-            return new $potentialComponentClass;
+        if ($componentClass = $this->getComponentClass($path)) {
+            return $componentClass;
         }
 
         $context = tap(CompileContext::instance(), fn () => CompileContext::flush());
@@ -41,19 +41,19 @@ class ComponentFactory
 
         Compiler::compile($file, $context);
 
+        require $file->path();
+
         return tap(
-            require $file->path(),
-            fn (Component $component) => $component::$__context = $context
+            $this->getComponentClass($file->path()),
+            fn (string $componentClass) => $componentClass::$__context = $context
         );
     }
 
     /**
      * Imports the component definition into the compilation context, or returns the component class name.
      */
-    protected function requirePath(string $path): ?string
+    protected function requirePath(string $path): void
     {
-        $previouslyDeclaredClasses = get_declared_classes();
-
         try {
             ob_start();
 
@@ -71,9 +71,14 @@ class ComponentFactory
         } finally {
             ob_get_clean();
         }
+    }
 
+    /**
+     * Extract the component class from the declared classes, if it exists.
+     */
+    protected function getComponentClass(string $path): ?string
+    {
         return collect(get_declared_classes())
-            ->diff($previouslyDeclaredClasses)
-            ->first(fn (string $class) => is_subclass_of($class, Component::class));
+            ->first(fn (string $class) => str_starts_with($class, Component::class."@anonymous\x00".$path));
     }
 }

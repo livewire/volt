@@ -56,7 +56,8 @@ class Compiler
             use Livewire\Volt\Contracts\Compiled;
             use Livewire\Volt\Component;
 
-            return new class extends Component$interfaces
+            new class extends Component$interfaces
+
             {
                 public static CompileContext \$__context;
 

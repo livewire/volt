@@ -8,6 +8,7 @@ state(name: '', counter: 0);
 mount(fn ($name = null) => $this->name = $name ?? 'World');
 
 $increment = fn () => $this->counter++;
+
 ?>
 
 <div>

@@ -5,7 +5,7 @@ use Livewire\Volt\CompileContext;
 use Livewire\Volt\Contracts\Compiled;
 use Livewire\Volt\Component;
 
-return new class extends Component
+new class extends Component
 {
     public static CompileContext $__context;
 

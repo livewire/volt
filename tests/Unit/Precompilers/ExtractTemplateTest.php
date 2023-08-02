@@ -77,7 +77,7 @@ it('extracts the php uses from the given template', function () {
 });
 
 it('does not allow "return new class extends Component" ending execution', function () {
-    $template = <<<HTML
+    $template = <<<'HTML'
         <?php
 
         return new class extends Component
@@ -88,7 +88,7 @@ it('does not allow "return new class extends Component" ending execution', funct
         ?>
 
         <div>
-            <h1>{{ \$name }}</h1>
+            <h1>{{ $name }}</h1>
         </div>
 
         ?>
