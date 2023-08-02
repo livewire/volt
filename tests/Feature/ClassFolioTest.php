@@ -9,8 +9,8 @@ use Tests\Fixtures\User;
 
 beforeEach(function () {
     Volt::mount([
-        __DIR__.'/resources/views/pages',
-        __DIR__.'/resources/views/functional-api',
+        __DIR__.'/resources/views/class-api-pages',
+        __DIR__.'/resources/views/class-api',
     ]);
 
     $this->app['config']->set('database.default', 'testbench');
@@ -34,7 +34,7 @@ beforeEach(function () {
 });
 
 test('page definition after template and component', function () {
-    Folio::route(__DIR__.'/resources/views/pages');
+    Folio::route(__DIR__.'/resources/views/class-api-pages');
 
     $response = $this->get('page-definition-after-component');
 
@@ -44,7 +44,7 @@ test('page definition after template and component', function () {
 
 test('route binding using lazy state', function () {
     Route::get('/route-binding/{user}/using-lazy-state', function (User $user) {
-        $contents = File::get(__DIR__.'/resources/views/pages/route-binding/[.Tests.Fixtures.User]/using-lazy-state.blade.php');
+        $contents = File::get(__DIR__.'/resources/views/class-api-pages/route-binding/[.Tests.Fixtures.User]/using-lazy-state.blade.php');
 
         return Blade::render($contents, [
             'user' => $user,
@@ -64,7 +64,7 @@ test('route binding using lazy state', function () {
 });
 
 test('route binding using state', function () {
-    Folio::route(__DIR__.'/resources/views/pages');
+    Folio::route(__DIR__.'/resources/views/class-api-pages');
 
     User::create([
         'name' => 'Taylor Otwell',
@@ -79,7 +79,7 @@ test('route binding using state', function () {
 });
 
 test('route binding with trashed using state', function () {
-    Folio::route(__DIR__.'/resources/views/pages');
+    Folio::route(__DIR__.'/resources/views/class-api-pages');
 
     $response = $this->get('route-binding/1/using-state-with-trashed');
 
@@ -103,7 +103,7 @@ test('route binding with trashed using state', function () {
 });
 
 test('route binding using mount', function () {
-    Folio::route(__DIR__.'/resources/views/pages');
+    Folio::route(__DIR__.'/resources/views/class-api-pages');
 
     User::create([
         'name' => 'Taylor Otwell',
@@ -117,33 +117,8 @@ test('route binding using mount', function () {
     $response->assertSee('Volt 1 using mount.');
 });
 
-test('authorization with folio middleware', function () {
-    Folio::route(__DIR__.'/resources/views/pages');
-
-    $response = $this->get('authorization-with-folio-middleware');
-
-    $response->assertStatus(401);
-});
-
-test('authorization with folio php tags', function () {
-    Folio::route(__DIR__.'/resources/views/pages');
-
-    $response = $this->get('authorization-with-folio-php-tags');
-
-    $response->assertStatus(402);
-});
-
-test('folio imports dont conflict with fragments imports', function () {
-    Folio::route(__DIR__.'/resources/views/pages');
-
-    $response = $this->get('folio-imports-dont-conflict-with-fragments-imports');
-
-    $response->assertStatus(200)
-        ->assertSee('Taylor');
-});
-
 test('authorization with mount', function () {
-    Folio::route(__DIR__.'/resources/views/pages');
+    Folio::route(__DIR__.'/resources/views/class-api-pages');
 
     $response = $this->get('authorization-with-mount');
 

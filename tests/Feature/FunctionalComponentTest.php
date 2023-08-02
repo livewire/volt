@@ -17,7 +17,7 @@ use Pest\TestSuite;
 use Tests\Fixtures\GlobalTrait;
 
 beforeEach(function () {
-    Volt::mount([__DIR__.'/resources/views/pages', __DIR__.'/resources/views/functional-api'], [GlobalTrait::class]);
+    Volt::mount([__DIR__.'/resources/views/functional-api-pages', __DIR__.'/resources/views/functional-api'], [GlobalTrait::class]);
 });
 
 it('can be rendered', function () {
@@ -540,7 +540,7 @@ it('reuses components within the same request', function () {
     $resolver->shouldHaveReceived('resolve')
         ->once()
         ->with('basic-component', [
-            __DIR__.DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'pages',
+            __DIR__.DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'functional-api-pages',
             __DIR__.DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'functional-api',
         ]);
 });
@@ -551,22 +551,22 @@ it('reuses fragments within the same request', function () {
 
     File::partialMock();
 
-    view()->file(__DIR__.'/resources/views/pages/page-with-multiple-fragments.blade.php')->render();
+    view()->file(__DIR__.'/resources/views/functional-api-pages/page-with-multiple-fragments.blade.php')->render();
 
     Volt::test('first-fragment-component', ['name' => 'Taylor'])
         ->assertSee('First - Hello Taylor');
 
-    view()->file(__DIR__.'/resources/views/pages/page-with-multiple-fragments.blade.php')->render();
+    view()->file(__DIR__.'/resources/views/functional-api-pages/page-with-multiple-fragments.blade.php')->render();
 
     Volt::test('first-fragment-component', ['name' => 'Nuno'])
         ->assertSee('First - Hello Nuno');
 
-    view()->file(__DIR__.'/resources/views/pages/page-with-multiple-fragments.blade.php')->render();
+    view()->file(__DIR__.'/resources/views/functional-api-pages/page-with-multiple-fragments.blade.php')->render();
 
     Volt::test('first-fragment-component', ['name' => 'Nuno'])
         ->assertSee('First - Hello Nuno');
 
-    view()->file(__DIR__.'/resources/views/pages/page-with-multiple-fragments.blade.php')->render();
+    view()->file(__DIR__.'/resources/views/functional-api-pages/page-with-multiple-fragments.blade.php')->render();
 
     Volt::test('first-fragment-component', ['name' => 'Nuno'])
         ->assertSee('First - Hello Nuno');
@@ -598,11 +598,11 @@ it('reuses cached fragment components in subsequent requests', function () {
 
     (fn () => $this->aliases = [])->call(app(ComponentRegistry::class));
 
-    view()->file(__DIR__.'/resources/views/pages/page-with-multiple-fragments.blade.php')->render();
+    view()->file(__DIR__.'/resources/views/functional-api-pages/page-with-multiple-fragments.blade.php')->render();
 
     (fn () => $this->aliases = [])->call(app(ComponentRegistry::class));
 
-    view()->file(__DIR__.'/resources/views/pages/page-with-multiple-fragments.blade.php')->render();
+    view()->file(__DIR__.'/resources/views/functional-api-pages/page-with-multiple-fragments.blade.php')->render();
 
     Volt::test('first-fragment-component', ['name' => 'Taylor'])
         ->assertSee('First - Hello Taylor');
@@ -734,7 +734,7 @@ it('does not reuse component template if original view changed', function () {
                 ]);
         });
 
-    touch(__DIR__.'/resources/views/pages/page-with-multiple-fragments.blade.php');
+    touch(__DIR__.'/resources/views/functional-api-pages/page-with-multiple-fragments.blade.php');
 
     Volt::test('first-fragment-component', ['name' => 'Taylor'])
         ->assertSee('First - Hello Taylor');

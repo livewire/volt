@@ -21,12 +21,12 @@ class ComponentFactory
     {
         CompileContext::flush();
 
-        $potentialComponentInstance = $this->requirePath(
+        $potentialComponentClass = $this->requirePath(
             CompileContext::instance()->path = $path
         );
 
-        if ($potentialComponentInstance instanceof Component) {
-            return $potentialComponentInstance;
+        if ($potentialComponentClass) {
+            return new $potentialComponentClass;
         }
 
         $context = tap(CompileContext::instance(), fn () => CompileContext::flush());
@@ -48,19 +48,19 @@ class ComponentFactory
     }
 
     /**
-     * Imports the component definition into the compilation context.
+     * Imports the component definition into the compilation context, or returns the component class name.
      */
-    protected function requirePath(string $path): ?Component
+    protected function requirePath(string $path): ?string
     {
+        $previouslyDeclaredClasses = get_declared_classes();
+
         try {
             ob_start();
 
             $__path = $path;
 
-            $variablesOrComponent = (function () use ($__path) {
-                if (($potentiallyComponentInstance = require $__path) instanceof Component) {
-                    return $potentiallyComponentInstance;
-                }
+            CompileContext::instance()->variables = (function () use ($__path) {
+                require $__path;
 
                 return array_map(function (mixed $variable) {
                     return $variable instanceof Closure
@@ -72,12 +72,8 @@ class ComponentFactory
             ob_get_clean();
         }
 
-        if ($variablesOrComponent instanceof Component) {
-            return $variablesOrComponent;
-        }
-
-        CompileContext::instance()->variables = $variablesOrComponent;
-
-        return null;
+        return collect(get_declared_classes())
+            ->diff($previouslyDeclaredClasses)
+            ->first(fn (string $class) => is_subclass_of($class, Component::class));
     }
 }

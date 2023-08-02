@@ -4,7 +4,7 @@ use Livewire\Attributes\Computed;
 use Livewire\Attributes\Url;
 use Livewire\Volt\Component;
 
-return new class extends Component
+new class extends Component
 {
     #[Url]
     public $search = '';

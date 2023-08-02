@@ -4,7 +4,7 @@ use Livewire\Livewire;
 use Livewire\Volt\Volt;
 
 beforeEach(function () {
-    Volt::mount([__DIR__.'/resources/views/pages', __DIR__.'/resources/views/class-api']);
+    Volt::mount([__DIR__.'/resources/views/class-api-pages', __DIR__.'/resources/views/class-api']);
 });
 
 it('can be rendered', function () {
