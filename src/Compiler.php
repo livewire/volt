@@ -57,7 +57,6 @@ class Compiler
             use Livewire\Volt\Component;
 
             new class extends Component$interfaces
-
             {
                 public static CompileContext \$__context;
 
