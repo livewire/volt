@@ -4,6 +4,8 @@ namespace Livewire\Volt\Precompilers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\File;
+use Laravel\Folio\Folio;
+use Livewire\Volt\Exceptions\VoltDirectiveMissingException;
 use Livewire\Volt\FragmentAlias;
 use Livewire\Volt\FragmentMap;
 
@@ -24,6 +26,8 @@ class ExtractFragments
     public function __invoke(string $template): string
     {
         if (! str_contains($template, '@volt')) {
+            $this->ensurePagesUsingFragmentsUseDirective($template);
+
             return $template;
         }
 
@@ -90,6 +94,26 @@ class ExtractFragments
         FragmentMap::add($name, $alias = FragmentAlias::encode($name, Blade::getPath()));
 
         return '@livewire("'.$alias.'", '.$argumentsAsString.')';
+    }
+
+    /**
+     * Ensure that Folio pages using fragments have the "@volt" directive.
+     *
+     * @throws \Livewire\Volt\Exceptions\VoltDirectiveMissingException
+     */
+    protected function ensurePagesUsingFragmentsUseDirective(string $template): void
+    {
+        if (! class_exists(Folio::class)
+            || ! str_contains($template, 'Livewire\Volt')
+            || (bool) preg_match('/{{.*?}}/s', $template) === false) {
+            return;
+        }
+
+        foreach (Folio::paths() as $path) {
+            if (str_starts_with($bladePath = Blade::getPath(), $path)) {
+                throw new VoltDirectiveMissingException($bladePath);
+            }
+        }
     }
 
     /**
