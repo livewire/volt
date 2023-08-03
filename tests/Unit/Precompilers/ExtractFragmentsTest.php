@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Blade;
+use Laravel\Folio\Folio;
+use Livewire\Volt\Exceptions\VoltDirectiveMissingException;
 use Livewire\Volt\Precompilers\ExtractFragments;
 
 beforeEach(function () {
@@ -19,7 +21,7 @@ beforeEach(function () {
         }
     };
 
-    Blade::shouldReceive('getPath')->once()->andReturn('my-component-path');
+    Blade::shouldReceive('getPath')->once()->andReturn(__DIR__.'/my-component-path.blade.php');
 });
 
 test('eager', function () {
@@ -143,6 +145,43 @@ test('named and lazy on load with extra arguments', function () {
             'my-argument' => 'my-value',
         ]);
 });
+
+test('folio pages using volt anonymous components require the @volt directive', function (string $html) {
+    Folio::route(__DIR__);
+
+    precompileFragments($html);
+})->throws(VoltDirectiveMissingException::class)->with([
+    <<<'HTML'
+        <?php use function Livewire\Volt\state;
+
+        state(count: 0);
+
+        ?>
+
+        <div>{{ $count }}</div>
+        HTML,
+    <<<'HTML'
+        <?php use Livewire\Volt\Component;
+
+        new class extends Component {
+            public $count = 0;
+        };
+
+        ?>
+
+        <div>{{ $count }}</div>
+        HTML,
+
+    <<<'HTML'
+        <?php use function Livewire\Volt\state;
+
+        state(count: 0);
+
+        ?>
+
+        <div>{{ Str::upper($count) }}</div>
+        HTML,
+]);
 
 function precompileFragments(string $template): array
 {
