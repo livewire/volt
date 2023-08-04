@@ -124,3 +124,11 @@ test('authorization with mount', function () {
 
     $response->assertStatus(403);
 });
+
+test('`@livewireStyles` and `@livewireScripts` blade directives may be used in a page with fragments', function () {
+    Folio::route(__DIR__.'/resources/views/class-api-pages');
+
+    $response = $this->get('page-livewire-styles-and-scripts');
+
+    $response->assertStatus(200)->assertSee('Page Livewire Styles and Scripts');
+})->only();
