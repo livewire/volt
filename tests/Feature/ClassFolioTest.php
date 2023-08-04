@@ -131,4 +131,4 @@ test('`@livewireStyles` and `@livewireScripts` blade directives may be used in a
     $response = $this->get('page-livewire-styles-and-scripts');
 
     $response->assertStatus(200)->assertSee('Page Livewire Styles and Scripts');
-})->only();
+});
