@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 use Livewire\Component as LivewireComponent;
 use Livewire\Mechanisms\ComponentRegistry;
+use Livewire\Volt\Actions\ReturnLayout;
 use Livewire\Volt\Actions\ReturnViewData;
 use Livewire\Volt\Contracts\FunctionalComponent;
 use Livewire\Volt\Support\Reflection;
@@ -42,9 +43,19 @@ abstract class Component extends LivewireComponent
             ? (new ReturnViewData)->execute(static::$__context, $this, []) // @phpstan-ignore-line
             : [];
 
-        return ($fragment = ExtractedFragment::fromAlias($alias))
+        $layout = $this instanceof FunctionalComponent
+            ? (new ReturnLayout)->execute(static::$__context, $this, []) // @phpstan-ignore-line
+            : null;
+
+        $view = ($fragment = ExtractedFragment::fromAlias($alias))
             ? View::file($fragment->extractIfStale()->path(), $data)
             : View::make('volt-livewire::'.$alias, $data);
+
+        if ($layout) {
+            $view->layout($layout);
+        }
+
+        return $view;
     }
 
     /**

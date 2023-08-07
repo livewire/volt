@@ -86,6 +86,14 @@ function computed(Closure $closure): ComputedMethod
 }
 
 /**
+ * Define the component's layout.
+ */
+function layout(string $layout): void
+{
+    CompileContext::instance()->layout = $layout;
+}
+
+/**
  * Define the component's view data.
  */
 function with(mixed ...$data): void

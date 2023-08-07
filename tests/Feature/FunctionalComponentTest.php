@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\View;
+use Illuminate\View\FileViewFinder;
 use Livewire\Exceptions\ComponentNotFoundException;
 use Livewire\Exceptions\MethodNotFoundException;
 use Livewire\Exceptions\MissingRulesException;
@@ -17,6 +19,8 @@ use Pest\TestSuite;
 use Tests\Fixtures\GlobalTrait;
 
 beforeEach(function () {
+    View::setFinder(new FileViewFinder(app()['files'], [__DIR__.'/resources/views']));
+
     Volt::mount([__DIR__.'/resources/views/functional-api-pages', __DIR__.'/resources/views/functional-api'], [GlobalTrait::class]);
 });
 
@@ -748,4 +752,22 @@ it('does not reuse component template if original view changed', function () {
                     'new class extends Component',
                 ]);
         });
+});
+
+it('allows to define components as routes', function () {
+    Volt::route('/with-default-layout', 'navigate.with-default-layout');
+
+    $this->get('/with-default-layout')
+        ->assertSee('Title: default title.')
+        ->assertSee('Layout: default layout.')
+        ->assertSee('Content: content with default layout.');
+});
+
+it('allows to define components as routes with custom layout', function () {
+    Volt::route('/with-custom-layout', 'navigate.with-custom-layout');
+
+    $this->get('/with-custom-layout')
+        ->assertSee('Title: custom title.')
+        ->assertSee('Layout: custom layout.')
+        ->assertSee('Content: content with custom layout.');
 });
