@@ -2,6 +2,9 @@
 
 namespace Livewire\Volt;
 
+use Illuminate\Container\Container;
+use Illuminate\Contracts\Routing\Registrar;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Artisan;
 use Livewire\Features\SupportTesting\Testable;
 use Livewire\Livewire;
@@ -17,8 +20,21 @@ class VoltManager
      * Create a new volt manager instance.
      */
     public function __construct(
-        protected MountedDirectories $mountedDirectories
+        protected LivewireManager $manager,
+        protected MountedDirectories $mountedDirectories,
+        protected Registrar $router,
     ) {
+    }
+
+    /**
+     * Registers a new Volt route.
+     */
+    public function route(string $uri, string $componentName): Route
+    {
+        return $this->router->get($uri, fn () => Container::getInstance()->call([
+            $this->manager->new($componentName),
+            '__invoke',
+        ]));
     }
 
     /**
