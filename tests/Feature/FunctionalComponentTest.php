@@ -771,3 +771,12 @@ it('allows to define components as routes with custom layout', function () {
         ->assertSee('Layout: custom layout.')
         ->assertSee('Content: content with custom layout.');
 });
+
+test('`assertSeeVolt` testing method', function () {
+    Volt::route('/basic-component', 'basic-component');
+
+    $this->get('/basic-component')
+        ->assertOk()
+        ->assertSeeVolt('basic-component')
+        ->assertOk();
+});
