@@ -62,17 +62,25 @@ class VoltManager
      */
     public function test(string $name, array $params = []): Testable
     {
-        if (! static::$viewsAreCached) {
-            Artisan::call('view:cache');
-
-            static::$viewsAreCached = true;
-        }
+        $this->ensureViewsAreCached();
 
         if (FragmentMap::has($name)) {
             $name = FragmentMap::get($name);
         }
 
         return Livewire::test($name, $params);
+    }
+
+    /**
+     * Ensure that the views are cached for testing.
+     */
+    public function ensureViewsAreCached(): void
+    {
+        if (! static::$viewsAreCached) {
+            Artisan::call('view:cache');
+
+            static::$viewsAreCached = true;
+        }
     }
 
     /**

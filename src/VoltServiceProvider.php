@@ -5,6 +5,7 @@ namespace Livewire\Volt;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Testing\TestResponse;
 use Livewire\Livewire;
 use Livewire\LivewireServiceProvider;
 use Livewire\Volt\Precompilers\ExtractFragments;
@@ -36,6 +37,7 @@ class VoltServiceProvider extends ServiceProvider
     {
         $this->registerCommands();
         $this->registerPublishing();
+        $this->registerTestingMacros();
 
         Blade::prepareStringsForCompilationUsing(function (string $value) {
             foreach ([ExtractFragments::class, ExtractTemplate::class] as $precompiler) {
@@ -100,5 +102,21 @@ class VoltServiceProvider extends ServiceProvider
                 __DIR__.'/../stubs/VoltServiceProvider.stub' => app_path('Providers/VoltServiceProvider.php'),
             ], 'volt-provider');
         }
+    }
+
+    /**
+     * Register the package's testing macros.
+     */
+    protected function registerTestingMacros(): void
+    {
+        TestResponse::macro('assertSeeVolt', function ($component) {
+            Volt::ensureViewsAreCached();
+
+            if (FragmentMap::has($component)) {
+                $component = FragmentMap::get($component);
+            }
+
+            return $this->assertSeeLivewire($component);
+        });
     }
 }

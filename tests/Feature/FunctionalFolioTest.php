@@ -149,3 +149,12 @@ test('authorization with mount', function () {
 
     $response->assertStatus(403);
 });
+
+test('`assertSeeVolt` testing method', function () {
+    Folio::route(__DIR__.'/resources/views/functional-api-pages');
+
+    $this->get('/page-with-fragment')
+        ->assertOk()
+        ->assertSeeVolt('fragment-component')
+        ->assertOk();
+});
