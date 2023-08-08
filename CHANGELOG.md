@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.0.0-beta.3...master)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.0.0-beta.4...main)
+
+## [v1.0.0-beta.4](https://github.com/livewire/volt/compare/v1.0.0-beta.3...v1.0.0-beta.4) - 2023-08-08
+
+- Adds `Volt::route` for full page components ([#22](https://github.com/livewire/volt/pull/22))
+- Adds `assertSeeVolt` testing method ([#23](https://github.com/livewire/volt/pull/23))
 
 ## v1.0.0-beta.3 - 2023-08-03
 
