@@ -116,7 +116,7 @@ class VoltServiceProvider extends ServiceProvider
                 $component = FragmentMap::get($component);
             }
 
-            return $this->assertSeeLivewire($component);
+            return $this->assertSeeLivewire($component); // @phpstan-ignore-line
         });
     }
 }
