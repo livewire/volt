@@ -12,8 +12,6 @@ beforeEach(function () {
         __DIR__.'/resources/views/class-api-pages',
         __DIR__.'/resources/views/class-api',
     ]);
-
-    $this->artisan('migrate:refresh');
 });
 
 test('page definition after template and component', function () {

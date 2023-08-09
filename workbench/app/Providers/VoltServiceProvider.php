@@ -2,9 +2,9 @@
 
 namespace Workbench\App\Providers;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Volt\Volt;
-use function Orchestra\Testbench\workbench_path;
 
 class VoltServiceProvider extends ServiceProvider
 {
@@ -21,6 +21,6 @@ class VoltServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Route::view('/', 'welcome');
     }
 }
