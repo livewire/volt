@@ -1,11 +1,7 @@
 {
     "name": "livewire/volt",
     "description": "An elegantly crafted functional API for Laravel Livewire.",
-    "keywords": [
-        "laravel",
-        "livewire",
-        "volt"
-    ],
+    "keywords": ["laravel", "livewire", "volt"],
     "homepage": "https://github.com/livewire/volt",
     "license": "MIT",
     "support": {
