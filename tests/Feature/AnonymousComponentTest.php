@@ -10,25 +10,6 @@ beforeEach(function () {
         __DIR__.'/resources/views/functional-api-pages',
         __DIR__.'/resources/views/functional-api',
     ]);
-
-    $this->app['config']->set('database.default', 'testbench');
-
-    $this->app['config']->set('database.connections.testbench', [
-        'driver' => 'sqlite',
-        'database' => ':memory:',
-        'prefix' => '',
-    ]);
-
-    $this->artisan('migrate', [
-        '--database' => 'testbench',
-        '--path' => 'migrations',
-    ]);
-
-    $this->artisan('migrate', [
-        '--database' => 'testbench',
-        '--path' => __DIR__.'/resources/migrations',
-        '--realpath' => true,
-    ]);
 });
 
 it('may be tested', function () {
