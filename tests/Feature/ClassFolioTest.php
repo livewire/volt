@@ -13,24 +13,7 @@ beforeEach(function () {
         __DIR__.'/resources/views/class-api',
     ]);
 
-    $this->app['config']->set('database.default', 'testbench');
-
-    $this->app['config']->set('database.connections.testbench', [
-        'driver' => 'sqlite',
-        'database' => ':memory:',
-        'prefix' => '',
-    ]);
-
-    $this->artisan('migrate', [
-        '--database' => 'testbench',
-        '--path' => 'migrations',
-    ]);
-
-    $this->artisan('migrate', [
-        '--database' => 'testbench',
-        '--path' => __DIR__.'/resources/migrations',
-        '--realpath' => true,
-    ]);
+    $this->artisan('migrate:refresh');
 });
 
 test('page definition after template and component', function () {

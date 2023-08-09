@@ -1,0 +1,11 @@
+providers:
+  - Laravel\Folio\FolioServiceProvider
+  - Livewire\LivewireServiceProvider
+  - Livewire\Volt\VoltServiceProvider
+  - Workbench\App\Providers\VoltServiceProvider
+
+migrations:
+  - workbench/database/migrations
+
+workbench:
+  start: '/'

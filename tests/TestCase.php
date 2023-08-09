@@ -2,13 +2,17 @@
 
 namespace Tests;
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Folio\FolioServiceProvider;
 use Livewire\LivewireServiceProvider;
 use Livewire\Volt\VoltServiceProvider;
+use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
 {
+    use DatabaseMigrations, WithWorkbench;
+
     /**
      * {@inheritDoc}
      */

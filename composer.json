@@ -1,7 +1,11 @@
 {
     "name": "livewire/volt",
     "description": "An elegantly crafted functional API for Laravel Livewire.",
-    "keywords": ["laravel", "livewire", "volt"],
+    "keywords": [
+        "laravel",
+        "livewire",
+        "volt"
+    ],
     "homepage": "https://github.com/livewire/volt",
     "license": "MIT",
     "support": {
@@ -20,13 +24,13 @@
     ],
     "require": {
         "php": "^8.1",
-        "laravel/framework": "^10.16|^11.0",
+        "laravel/framework": "^10.17|^11.0",
         "livewire/livewire": "^3.0"
     },
     "require-dev": {
         "laravel/folio": "^1.0",
         "mockery/mockery": "^1.6",
-        "orchestra/testbench": "^8.5",
+        "orchestra/testbench": "^8.6.2",
         "pestphp/pest": "^2.9.5",
         "phpstan/phpstan": "^1.10"
     },
@@ -40,7 +44,9 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\": "workbench/database/"
         }
     },
     "extra": {
@@ -58,6 +64,19 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
+    },
+    "scripts": {
+        "post-autoload-dump": "@composer run prepare",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": [
+            "@composer run prepare",
+            "@php vendor/bin/testbench workbench:create-sqlite-db",
+            "@php vendor/bin/testbench migrate:refresh"
+        ],
+        "start": [
+            "@composer run build",
+            "@php vendor/bin/testbench serve"
+        ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true
