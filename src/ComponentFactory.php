@@ -34,7 +34,7 @@ class ComponentFactory
 
         if (static::$latestCreatedComponentClass) {
             opcache_invalidate($path, true);
-            
+
             return static::$latestCreatedComponentClass;
         }
 
