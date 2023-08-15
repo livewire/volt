@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.0.0-beta.4...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.0.0-beta.5...main)
+
+## [v1.0.0-beta.5](https://github.com/livewire/volt/compare/v1.0.0-beta.4...v1.0.0-beta.5) - 2023-08-15
+
+- Improves testbench development workflow ([#24](https://github.com/livewire/volt/pull/24))
+- Fixes Class API when used with multiple fragments ([#26](https://github.com/livewire/volt/pull/26))
 
 ## [v1.0.0-beta.4](https://github.com/livewire/volt/compare/v1.0.0-beta.3...v1.0.0-beta.4) - 2023-08-08
 
