@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.0.0-beta.5...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.0.0-beta.6...main)
+
+## [v1.0.0-beta.6](https://github.com/livewire/volt/compare/v1.0.0-beta.5...v1.0.0-beta.6) - 2023-08-17
+
+- Fixes `call to undefined function "opcache_invalidate"` when opcache is not installed ([#28](https://github.com/livewire/volt/pull/28))
 
 ## [v1.0.0-beta.5](https://github.com/livewire/volt/compare/v1.0.0-beta.4...v1.0.0-beta.5) - 2023-08-15
 
