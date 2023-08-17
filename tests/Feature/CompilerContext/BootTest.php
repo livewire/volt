@@ -1,7 +1,8 @@
 <?php
 
-use function Livewire\Volt\boot;
 use Livewire\Volt\CompileContext;
+
+use function Livewire\Volt\boot;
 
 it('may not be defined', function () {
     $context = CompileContext::instance();

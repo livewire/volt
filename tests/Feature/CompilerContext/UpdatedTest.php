@@ -1,6 +1,7 @@
 <?php
 
 use Livewire\Volt\CompileContext;
+
 use function Livewire\Volt\updated;
 
 it('may not be defined', function () {

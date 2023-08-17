@@ -2,6 +2,7 @@
 
 use Livewire\Volt\CompileContext;
 use Livewire\Volt\Compiler;
+
 use function Livewire\Volt\usesFileUploads;
 
 it('may not be defined', function () {

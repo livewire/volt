@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Auth\User;
 use Livewire\Volt\CompileContext;
 use Livewire\Volt\Compiler;
+
 use function Livewire\Volt\protect;
 
 it('may not be defined', function () {

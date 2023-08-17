@@ -4,6 +4,7 @@ use Livewire\Volt\Actions\ResolveListeners;
 use Livewire\Volt\CompileContext;
 use Livewire\Volt\Component;
 use Livewire\Volt\InlineListenerName;
+
 use function Livewire\Volt\{on};
 
 it('resolves the registered listeners', function () {

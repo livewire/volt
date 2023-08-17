@@ -1,9 +1,10 @@
 <?php
 
 use Livewire\Volt\CompileContext;
-use function Livewire\Volt\uses;
 use Livewire\WithFileUploads;
 use Tests\Fixtures\IncrementInterface;
+
+use function Livewire\Volt\uses;
 
 it('is not used by default', function () {
     $context = CompileContext::instance();

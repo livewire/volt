@@ -3,6 +3,7 @@
 use Livewire\Volt\Actions\CallMethod;
 use Livewire\Volt\CompileContext;
 use Livewire\Volt\Component;
+
 use function Livewire\Volt\computed;
 use function Livewire\Volt\protect;
 

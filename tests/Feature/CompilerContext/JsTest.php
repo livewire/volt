@@ -2,8 +2,9 @@
 
 use Livewire\Attributes\Js;
 use Livewire\Volt\CompileContext;
-use function Livewire\Volt\js;
 use Livewire\Volt\Methods\Method;
+
+use function Livewire\Volt\js;
 
 it('may not be defined', function () {
     $context = CompileContext::instance();

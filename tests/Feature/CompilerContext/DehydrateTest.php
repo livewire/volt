@@ -1,6 +1,7 @@
 <?php
 
 use Livewire\Volt\CompileContext;
+
 use function Livewire\Volt\dehydrate;
 
 it('may not be defined', function () {

@@ -1,9 +1,10 @@
 <?php
 
 use Livewire\Attributes\Renderless;
-use function Livewire\Volt\action;
 use Livewire\Volt\CompileContext;
 use Livewire\Volt\Methods\ActionMethod;
+
+use function Livewire\Volt\action;
 
 it('may not be defined', function () {
     $context = CompileContext::instance();

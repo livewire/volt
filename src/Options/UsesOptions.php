@@ -3,9 +3,10 @@
 namespace Livewire\Volt\Options;
 
 use Livewire\Volt\CompileContext;
-use function Livewire\Volt\uses;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+
+use function Livewire\Volt\uses;
 
 class UsesOptions
 {

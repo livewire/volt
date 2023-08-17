@@ -4,9 +4,10 @@ use Livewire\Volt\CompileContext;
 use Livewire\Volt\Compiler;
 use Livewire\Volt\Compilers\Traits;
 use Livewire\Volt\Exceptions\TraitOrInterfaceNotFound;
-use function Livewire\Volt\uses;
 use Livewire\WithFileUploads;
 use Tests\Fixtures\IncrementInterface;
+
+use function Livewire\Volt\uses;
 
 it('may not be defined', function () {
     $code = Compiler::contextToString(CompileContext::instance());

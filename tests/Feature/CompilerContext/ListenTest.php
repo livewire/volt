@@ -2,6 +2,7 @@
 
 use Livewire\Volt\CompileContext;
 use Livewire\Volt\Component;
+
 use function Livewire\Volt\on;
 
 it('may not be defined', function () {

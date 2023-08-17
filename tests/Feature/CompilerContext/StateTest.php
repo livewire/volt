@@ -2,6 +2,7 @@
 
 use Livewire\Volt\CompileContext;
 use Livewire\Volt\Property;
+
 use function Livewire\Volt\state;
 
 it('may be empty', function () {

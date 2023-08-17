@@ -2,6 +2,7 @@
 
 use Livewire\Volt\CompileContext;
 use Livewire\Volt\Compiler;
+
 use function Livewire\Volt\usesPagination;
 
 it('may not be defined', function () {

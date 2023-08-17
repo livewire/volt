@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Session\SessionManager;
-use function Livewire\Volt\booted;
 use Livewire\Volt\CompileContext;
 use Livewire\Volt\Compiler;
+
+use function Livewire\Volt\booted;
 
 it('may not be defined', function () {
     $code = Compiler::contextToString(CompileContext::instance());

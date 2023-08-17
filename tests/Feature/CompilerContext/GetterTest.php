@@ -2,8 +2,9 @@
 
 use Livewire\Attributes\Computed;
 use Livewire\Volt\CompileContext;
-use function Livewire\Volt\computed;
 use Livewire\Volt\Methods\Method;
+
+use function Livewire\Volt\computed;
 
 it('may not be defined', function () {
     $context = CompileContext::instance();

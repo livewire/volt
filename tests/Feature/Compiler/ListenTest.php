@@ -3,6 +3,7 @@
 use Illuminate\Session\SessionManager;
 use Livewire\Volt\CompileContext;
 use Livewire\Volt\Compiler;
+
 use function Livewire\Volt\on;
 
 it('may not be defined', function () {

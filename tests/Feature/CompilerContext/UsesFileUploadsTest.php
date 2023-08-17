@@ -1,8 +1,9 @@
 <?php
 
 use Livewire\Volt\CompileContext;
-use function Livewire\Volt\usesFileUploads;
 use Livewire\WithFileUploads;
+
+use function Livewire\Volt\usesFileUploads;
 
 it('is not used by default', function () {
     $context = CompileContext::instance();

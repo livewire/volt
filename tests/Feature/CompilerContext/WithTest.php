@@ -2,6 +2,7 @@
 
 use Livewire\Volt\CompileContext;
 use Livewire\Volt\Exceptions\WithAlreadyDefinedException;
+
 use function Livewire\Volt\with;
 
 it('may be empty', function () {

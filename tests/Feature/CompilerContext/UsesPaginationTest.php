@@ -1,8 +1,9 @@
 <?php
 
 use Livewire\Volt\CompileContext;
-use function Livewire\Volt\usesPagination;
 use Livewire\WithPagination;
+
+use function Livewire\Volt\usesPagination;
 
 it('is not used by default', function () {
     $context = CompileContext::instance();

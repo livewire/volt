@@ -2,8 +2,9 @@
 
 use Livewire\Attributes\Locked;
 use Livewire\Volt\CompileContext;
-use function Livewire\Volt\state;
 use Pest\Expectation;
+
+use function Livewire\Volt\state;
 
 it('may be defined', function () {
     $context = CompileContext::instance();
