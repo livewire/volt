@@ -84,7 +84,8 @@ it('allows to define components as routes with custom layout', function () {
         ->assertSee('Content: content with custom layout.');
 });
 
-class PlusOne {
+class PlusOne
+{
     public function __invoke($value)
     {
         return $value + 1;
