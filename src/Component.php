@@ -41,7 +41,7 @@ abstract class Component extends LivewireComponent
 
         $data = $this instanceof FunctionalComponent
             ? (new ReturnViewData)->execute(static::$__context, $this, []) // @phpstan-ignore-line
-            : [];
+            : (method_exists($this, 'with') ? Container::getInstance()->call([$this, 'with']) : []);
 
         $layout = $this instanceof FunctionalComponent
             ? (new ReturnLayout)->execute(static::$__context, $this, []) // @phpstan-ignore-line
