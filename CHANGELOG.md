@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.0.0-beta.6...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.0.0-beta.7...main)
+
+## [v1.0.0-beta.7](https://github.com/livewire/volt/compare/v1.0.0-beta.6...v1.0.0-beta.7) - 2023-08-22
+
+- Adds `with` method to the class API ([#31](https://github.com/livewire/volt/pull/31))
 
 ## [v1.0.0-beta.6](https://github.com/livewire/volt/compare/v1.0.0-beta.5...v1.0.0-beta.6) - 2023-08-17
 
