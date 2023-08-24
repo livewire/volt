@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.0.0-beta.7...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.0.0...main)
+
+## [v1.0.0](https://github.com/livewire/volt/compare/v1.0.0-beta.7...v1.0.0) - 2023-08-24
+
+- Stable release of Volt. For more information, please consult the [Volt documentation](https://livewire.laravel.com/docs/volt).
 
 ## [v1.0.0-beta.7](https://github.com/livewire/volt/compare/v1.0.0-beta.6...v1.0.0-beta.7) - 2023-08-22
 
