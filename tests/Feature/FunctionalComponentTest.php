@@ -772,6 +772,15 @@ it('allows to define components as routes with custom layout', function () {
         ->assertSee('Content: content with custom layout.');
 });
 
+it('allows to define components as routes with custom title', function () {
+    Volt::route('/with-custom-title', 'navigate.with-custom-title');
+
+    $this->get('/with-custom-title')
+        ->assertSee('Title: custom title.')
+        ->assertSee('Layout: default layout.')
+        ->assertSee('Content: content with custom title.');
+});
+
 test('`assertSeeVolt` testing method', function () {
     Volt::route('/basic-component', 'basic-component');
 
