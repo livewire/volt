@@ -94,6 +94,14 @@ function layout(string $layout): void
 }
 
 /**
+ * Define the component's title.
+ */
+function title(string $title): void
+{
+    CompileContext::instance()->title = $title;
+}
+
+/**
  * Define the component's view data.
  */
 function with(mixed ...$data): void
