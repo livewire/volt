@@ -58,10 +58,6 @@ function protect(Closure $closure): ProtectedMethod
  */
 function placeholder(Closure|Renderable|string $closure): void
 {
-    if (CompileContext::instance()->placeholder !== null) {
-        throw new PlaceholderAlreadyDefinedException();
-    }
-
     if (! $closure instanceof Closure) {
         $closure = fn () => $closure;
     }
@@ -106,10 +102,6 @@ function title(string $title): void
  */
 function with(mixed ...$data): void
 {
-    if (CompileContext::instance()->viewData !== null) {
-        throw new WithAlreadyDefinedException();
-    }
-
     if (array_key_exists(0, $data)) {
         if (count($data) === 1) {
             if ($data[0] instanceof Closure) {
