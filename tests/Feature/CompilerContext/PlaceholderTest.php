@@ -1,7 +1,6 @@
 <?php
 
 use Livewire\Volt\CompileContext;
-use Livewire\Volt\Exceptions\PlaceholderAlreadyDefinedException;
 
 use function Livewire\Volt\placeholder;
 

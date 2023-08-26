@@ -1,7 +1,6 @@
 <?php
 
 use Livewire\Volt\CompileContext;
-use Livewire\Volt\Exceptions\WithAlreadyDefinedException;
 
 use function Livewire\Volt\with;
 
