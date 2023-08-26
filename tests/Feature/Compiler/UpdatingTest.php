@@ -19,7 +19,7 @@ it('may be defined', function () {
     expect($code)->toContain(<<<'PHP'
         public function updating($name)
         {
-            $arguments = [static::$__context, $this, func_get_args()];
+            $arguments = [static::$__context, $this, array_slice(func_get_args(), 1)];
 
             return (new Actions\CallPropertyHook('updating', $name))->execute(...$arguments);
         }

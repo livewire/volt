@@ -13,13 +13,13 @@ it('may not be defined', function () {
 
 it('may be defined', function () {
     updated(name: fn () => null);
-
+    
     $code = Compiler::contextToString(CompileContext::instance());
 
     expect($code)->toContain(<<<'PHP'
         public function updated($name)
         {
-            $arguments = [static::$__context, $this, func_get_args()];
+            $arguments = [static::$__context, $this, array_slice(func_get_args(), 1)];
 
             return (new Actions\CallPropertyHook('updated', $name))->execute(...$arguments);
         }

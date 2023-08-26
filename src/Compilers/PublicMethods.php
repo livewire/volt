@@ -94,7 +94,7 @@ class PublicMethods implements Compiler
             ->map(fn (string $hook) => <<<PHP
                 public function {$hook}(\$name)
                 {
-                    \$arguments = [static::\$__context, \$this, func_get_args()];
+                    \$arguments = [static::\$__context, \$this, array_slice(func_get_args(), 1)];
 
                     return (new Actions\CallPropertyHook('$hook', \$name))->execute(...\$arguments);
                 }
