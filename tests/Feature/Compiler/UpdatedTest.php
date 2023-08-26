@@ -13,7 +13,7 @@ it('may not be defined', function () {
 
 it('may be defined', function () {
     updated(name: fn () => null);
-    
+
     $code = Compiler::contextToString(CompileContext::instance());
 
     expect($code)->toContain(<<<'PHP'
