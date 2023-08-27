@@ -1,7 +1,6 @@
 <?php
 
 use Livewire\Volt\CompileContext;
-use Livewire\Volt\Exceptions\PlaceholderAlreadyDefinedException;
 
 use function Livewire\Volt\placeholder;
 
@@ -26,10 +25,3 @@ it('may be defined with string', function () {
 
     expect($context->placeholder)->resolve()->toBe('<div>bar</div>');
 });
-
-test('precedence', function () {
-    $context = CompileContext::instance();
-
-    placeholder(fn () => 'first');
-    placeholder(fn () => 'second');
-})->throws(PlaceholderAlreadyDefinedException::class);

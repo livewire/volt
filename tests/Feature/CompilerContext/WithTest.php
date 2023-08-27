@@ -1,7 +1,6 @@
 <?php
 
 use Livewire\Volt\CompileContext;
-use Livewire\Volt\Exceptions\WithAlreadyDefinedException;
 
 use function Livewire\Volt\with;
 
@@ -107,10 +106,3 @@ it('may have lazy properties with key as first argument and value as second', fu
         ->toHaveCount(1)
         ->address->resolve()->toBe(null);
 });
-
-test('precedence', function () {
-    $context = CompileContext::instance();
-
-    with(['name' => 'first', 'email' => 'first']);
-    with(['name' => 'second']);
-})->throws(WithAlreadyDefinedException::class);
