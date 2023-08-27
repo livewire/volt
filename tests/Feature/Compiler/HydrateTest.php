@@ -36,7 +36,7 @@ it('may be defined for a property', function () {
     expect($code)->toContain(<<<'PHP'
         public function hydrateProperty($name)
         {
-            $arguments = [static::$__context, $this, func_get_args()];
+            $arguments = [static::$__context, $this, array_slice(func_get_args(), 1)];
 
             return (new Actions\CallPropertyHook('hydrateProperty', $name))->execute(...$arguments);
         }
