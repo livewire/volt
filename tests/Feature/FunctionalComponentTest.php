@@ -17,6 +17,7 @@ use Livewire\Volt\ComponentResolver;
 use Livewire\Volt\Volt;
 use Pest\TestSuite;
 use Tests\Fixtures\GlobalTrait;
+use Tests\Fixtures\User;
 
 beforeEach(function () {
     View::setFinder(new FileViewFinder(app()['files'], [__DIR__.'/resources/views']));
@@ -788,4 +789,19 @@ test('`assertSeeVolt` testing method', function () {
         ->assertOk()
         ->assertSeeVolt('basic-component')
         ->assertOk();
+});
+
+test('user imports on bottom do not conflict', function () {
+    User::create([
+        'name' => 'Taylor',
+        'email' => 'taylor@laravel.com',
+        'password' => 'password',
+    ]);
+
+    Livewire::test('component-with-user-imports', ['name' => 'Taylor'])
+        ->assertSet('counter', 0)
+        ->call('increment')
+        ->call('increment')
+        ->call('increment')
+        ->assertSet('counter', 3);
 });
