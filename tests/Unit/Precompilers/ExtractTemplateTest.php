@@ -398,6 +398,17 @@ $conflictsDataset = collect([
         <span></span>
         HTML
     ], // ---
+    [<<<'HTML'
+        HTML, <<<'HTML'
+        HTML
+    ], // ---
+    [<<<'HTML'
+        <?php
+
+        use App;
+        use function Livewire\Volt\{state};
+        HTML, '',
+    ], // ---
 ])->keyBy(function (array $value) {
     return htmlspecialchars($value[0]);
 })->toArray();
