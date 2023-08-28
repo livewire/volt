@@ -392,7 +392,12 @@ $conflictsDataset = collect([
         <div/>
         HTML
     ], // ---
-
+    [<<<'HTML'
+        <span></span>
+        HTML, <<<'HTML'
+        <span></span>
+        HTML
+    ], // ---
 ])->keyBy(function (array $value) {
     return htmlspecialchars($value[0]);
 })->toArray();
