@@ -96,3 +96,325 @@ it('does not allow "return new class extends Component" ending execution', funct
 
     $this->precompiler->__invoke($template);
 })->throws(ReturnNewClassExecutionEndingException::class);
+
+$conflictsDataset = collect([
+    [<<<'HTML'
+        <?php
+
+        use App;
+
+        ?>
+
+        <div/>
+        HTML, <<<'HTML'
+        <?php
+
+        use App;
+
+        ?>
+
+        <div/>
+        HTML,
+    ], // ---
+    [<<<'HTML'
+        <?php
+
+        use App; ?>
+
+        <div/>
+        HTML, <<<'HTML'
+        <?php
+
+        use App;
+
+        ?>
+
+        <div/>
+        HTML
+    ], // ---
+    [<<<'HTML'
+        <?php
+
+        use App;
+        use function Livewire\Volt\{state}; ?>
+
+        <div/>
+        HTML, <<<'HTML'
+        <?php
+
+        use App;
+
+        ?>
+
+        <div/>
+        HTML
+    ], // ---
+    [<<<'HTML'
+        <button />
+
+        <?php
+
+        use App;
+
+        ?>
+
+        <div/>
+        HTML, <<<'HTML'
+        <?php
+
+        use App;
+
+        ?>
+
+        <button />
+
+
+
+        <div/>
+        HTML,
+    ], // ---
+    [<<<'HTML'
+        <button />
+
+        <?php
+
+        use App; ?>
+
+        <div/>
+        HTML, <<<'HTML'
+        <?php
+
+        use App;
+
+        ?>
+
+        <button />
+
+
+
+        <div/>
+        HTML
+    ], // ---
+    [<<<'HTML'
+        <button />
+
+        <?php
+
+        use App;
+        use function Livewire\Volt\{state}; ?>
+
+        <div/>
+        HTML, <<<'HTML'
+        <?php
+
+        use App;
+
+        ?>
+
+        <button />
+
+
+
+        <div/>
+        HTML
+    ], // ---
+    [<<<'HTML'
+        <button />
+
+        <?php
+
+        use App\User;
+
+        ?>
+
+        <?php
+
+        use App;
+
+        ?>
+
+        <div/>
+        HTML, <<<'HTML'
+        <?php
+
+        use App\User;
+        use App;
+
+        ?>
+
+        <button />
+
+
+
+
+
+        <div/>
+        HTML,
+    ], // ---
+    [<<<'HTML'
+        <button />
+
+        <?php
+
+        use App\User; ?>
+
+        <?php
+
+        use App; ?>
+
+        <div/>
+        HTML, <<<'HTML'
+        <?php
+
+        use App\User;
+        use App;
+
+        ?>
+
+        <button />
+
+
+
+
+
+        <div/>
+        HTML
+    ], // ---
+    [<<<'HTML'
+        <button />
+
+        <?php
+
+        use App\User;
+
+        ?>
+
+        <?php
+
+        use App;
+        use function Livewire\Volt\{state}; ?>
+
+        <div/>
+        HTML, <<<'HTML'
+        <?php
+
+        use App\User;
+        use App;
+
+        ?>
+
+        <button />
+
+
+
+
+
+        <div/>
+        HTML
+    ], // ---
+    [<<<'HTML'
+        <button />
+
+        <?php
+
+        use App\User;
+
+        ?>
+
+        <div/>
+
+        <?php
+
+        use App;
+        HTML, <<<'HTML'
+        <?php
+
+        use App\User;
+
+        ?>
+
+        <button />
+
+
+
+        <div/>
+        HTML,
+    ], // ---
+    [<<<'HTML'
+        <button />
+
+        <?php
+
+        use App\User; ?>
+
+        <div/>
+
+        <?php
+
+        use App; ?>
+        HTML, <<<'HTML'
+        <?php
+
+        use App\User;
+        use App;
+
+        ?>
+
+        <button />
+
+
+
+        <div/>
+        HTML
+    ], // ---
+    [<<<'HTML'
+        <?php
+
+        use App\User; ?>
+
+        <button />
+
+        <div/>
+
+        <?php
+
+        use App;
+        use function Livewire\Volt\{state};
+        HTML, <<<'HTML'
+        <?php
+
+        use App\User;
+
+        ?>
+
+        <button />
+
+        <div/>
+        HTML
+    ], // ---
+    [<<<'HTML'
+        <span></span>
+        HTML, <<<'HTML'
+        <span></span>
+        HTML
+    ], // ---
+    [<<<'HTML'
+        HTML, <<<'HTML'
+        HTML
+    ], // ---
+    [<<<'HTML'
+        <?php
+
+        use App;
+        use function Livewire\Volt\{state};
+        HTML, '',
+    ], // ---
+])->keyBy(function (array $value) {
+    return htmlspecialchars($value[0]);
+})->toArray();
+
+test('import conflicts', function (string $template, string $expected) {
+    $result = $this->precompiler->__invoke($template);
+
+    expect(trim($result))->toBe($expected);
+})->with($conflictsDataset);

@@ -44,15 +44,21 @@ class ExtractTemplate
      */
     protected function imports(string $template): string
     {
-        $phpScript = trim(preg_replace('/.*<\?php\s*(.*?)\s*\?>.*/s', '$1', $template));
-        $phpScript = trim(preg_replace('/^(?!use\s+.*?;).*$/m', '', $phpScript));
-        $phpScript = trim(preg_replace('/^use\s+function\s+Livewire\\\\Volt.*$/m', '', $phpScript));
+        preg_match_all('/<\?php\s*(.*?)\s*\?>/s', $template, $matches);
 
-        if (! empty($phpScript)) {
-            $phpScript = '<?php'."\n\n".$phpScript."\n\n".'?>'."\n\n";
+        $script = collect($matches[1])
+            ->map(fn (string $script) => trim($script))
+            ->reject(fn (string $script) => empty($script))
+            ->implode("\n");
+
+        $script = trim(preg_replace('/^(?!use\s+.*?;).*$/m', '', $script));
+        $script = trim(preg_replace('/^use\s+function\s+Livewire\\\\Volt.*$/m', '', $script));
+
+        if (! empty($script)) {
+            $script = '<?php'."\n\n".$script."\n\n".'?>'."\n\n";
         }
 
-        return $phpScript;
+        return $script;
     }
 
     /**
@@ -60,7 +66,9 @@ class ExtractTemplate
      */
     protected function html(string $template): string
     {
-        return trim(preg_replace('/<\?php\s*(.*?)\s*\?>/s', '', $template));
+        $template = trim(preg_replace('/<\?php\s*(.*?)\s*\?>/s', '', $template));
+
+        return str($template)->beforeLast('<?php')->trim()->value();
     }
 
     /**
