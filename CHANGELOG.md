@@ -1,6 +1,13 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.0.0...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.1.0...main)
+
+## [v1.1.0](https://github.com/livewire/volt/compare/v1.0.0...v1.1.0) - 2023-08-28
+
+- [1.x] Adds `title` function by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/livewire/volt/pull/34
+- [1.x] Fixes sending "name" as property hook argument by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/livewire/volt/pull/37
+- [1.x] Fixes already defined `with` by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/livewire/volt/pull/35
+- [1.x] Fixes bottom script being included as template by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/livewire/volt/pull/38
 
 ## [v1.0.0](https://github.com/livewire/volt/compare/v1.0.0-beta.7...v1.0.0) - 2023-08-24
 
