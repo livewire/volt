@@ -24,7 +24,7 @@
         "livewire/livewire": "^3.0"
     },
     "require-dev": {
-        "laravel/folio": "^1.0",
+        "laravel/folio": "^1.1",
         "mockery/mockery": "^1.6",
         "orchestra/testbench": "^8.6.2",
         "pestphp/pest": "^2.9.5",

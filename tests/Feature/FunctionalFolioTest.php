@@ -139,3 +139,20 @@ test('`assertSeeVolt` testing method', function () {
         ->assertSeeVolt('fragment-component')
         ->assertOk();
 });
+
+test('page with view content', function () {
+    Folio::route(__DIR__.'/resources/views/functional-api-pages');
+
+    $response = $this->get('page-with-view-content');
+
+    $response->assertStatus(200)
+        ->assertSee('Hello from view.');
+});
+
+test('page with authorization on render', function () {
+    Folio::route(__DIR__.'/resources/views/functional-api-pages');
+
+    $response = $this->get('authorization-on-render');
+
+    $response->assertStatus(403);
+});
