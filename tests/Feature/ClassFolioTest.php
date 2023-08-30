@@ -113,3 +113,20 @@ test('`@livewireStyles` and `@livewireScripts` blade directives may be used in a
 
     $response->assertStatus(200)->assertSee('Page Livewire Styles and Scripts');
 });
+
+test('page with view content', function () {
+    Folio::route(__DIR__.'/resources/views/class-api-pages');
+
+    $response = $this->get('page-with-view-content');
+
+    $response->assertStatus(200)
+        ->assertSee('Hello from view.');
+});
+
+test('page with authorization on render', function () {
+    Folio::route(__DIR__.'/resources/views/class-api-pages');
+
+    $response = $this->get('authorization-on-render');
+
+    $response->assertStatus(403);
+});
