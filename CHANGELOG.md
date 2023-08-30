@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.1.0...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.1.1...main)
+
+## [v1.1.1](https://github.com/livewire/volt/compare/v1.1.0...v1.1.1) - 2023-08-30
+
+- Fixes `Segmentation fault` on `route:cache` ([#42](https://github.com/livewire/volt/pull/42))
 
 ## [v1.1.0](https://github.com/livewire/volt/compare/v1.0.0...v1.1.0) - 2023-08-28
 
