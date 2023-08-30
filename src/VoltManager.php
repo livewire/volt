@@ -31,10 +31,14 @@ class VoltManager
      */
     public function route(string $uri, string $componentName): Route
     {
-        return $this->router->get($uri, fn () => Container::getInstance()->call([
-            $this->manager->new($componentName),
-            '__invoke',
-        ]));
+        return $this->router->get($uri, function () use ($componentName) {
+            $container = Container::getInstance();
+
+            return $container->call([
+                $container->make(LivewireManager::class)->new($componentName),
+                '__invoke',
+            ]);
+        });
     }
 
     /**
