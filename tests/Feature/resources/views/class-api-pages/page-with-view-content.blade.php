@@ -14,7 +14,7 @@ new class extends Component
 ?>
 
 <div>
-    @volt('fragment-component')
+    @volt
     <div>
         <span>Hello {{ $name }}.</span>
     </div>

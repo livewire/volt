@@ -10,7 +10,7 @@ render(fn ($view) => $view->with('name', 'from view'));
 state('name', 'from component'); ?>
 
 <div>
-    @volt('fragment-component')
+    @volt
     <div>
         <span>Hello {{ $name }}.</span>
     </div>
