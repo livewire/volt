@@ -56,9 +56,11 @@ class MakeCommand extends GeneratorCommand
      */
     protected function getStub(): string
     {
-        return file_exists($customPath = $this->laravel->basePath('stubs/volt-component.stub'))
+        $stubName = $this->option('class') ? 'volt-component-class.stub' : 'volt-component.stub';
+
+        return file_exists($customPath = $this->laravel->basePath('stubs/'.$stubName))
             ? $customPath
-            : __DIR__.'/../../stubs/volt-component.stub';
+            : __DIR__.'/../../stubs/'.$stubName;
     }
 
     /**
@@ -170,6 +172,7 @@ class MakeCommand extends GeneratorCommand
     protected function getOptions(): array
     {
         return [
+            ['class', null, InputOption::VALUE_NONE, 'Create a class based component'],
             ['force', 'f', InputOption::VALUE_NONE, 'Create the Volt component even if the component already exists'],
         ];
     }
