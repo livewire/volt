@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.1.1...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.2.0...main)
+
+## [v1.2.0](https://github.com/livewire/volt/compare/v1.1.1...v1.2.0) - 2023-08-31
+
+- Adds `--class` option to `make:volt` command ([#43](https://github.com/livewire/volt/pull/43))
 
 ## [v1.1.1](https://github.com/livewire/volt/compare/v1.1.0...v1.1.1) - 2023-08-30
 
