@@ -118,5 +118,15 @@ class VoltServiceProvider extends ServiceProvider
 
             return $this->assertSeeLivewire($component); // @phpstan-ignore-line
         });
+
+        TestResponse::macro('assertDontSeeVolt', function ($component) {
+            Volt::ensureViewsAreCached();
+
+            if (FragmentMap::has($component)) {
+                $component = FragmentMap::get($component);
+            }
+
+            return $this->assertDontSeeLivewire($component); // @phpstan-ignore-line
+        });
     }
 }

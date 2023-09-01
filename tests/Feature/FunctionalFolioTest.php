@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Laravel\Folio\Folio;
 use Livewire\Volt\Volt;
+use PHPUnit\Framework\ExpectationFailedException;
 use Tests\Fixtures\User;
 
 beforeEach(function () {
@@ -137,6 +138,25 @@ test('`assertSeeVolt` testing method', function () {
     $this->get('/page-with-fragment')
         ->assertOk()
         ->assertSeeVolt('fragment-component')
+        ->assertOk();
+});
+
+test('`assertDontSeeVolt` testing method', function () {
+    Folio::route(__DIR__.'/resources/views/functional-api-pages');
+
+    $this->get('/page-with-fragment')
+        ->assertSeeVolt('fragment-component')
+        ->assertDontSeeVolt('second-component')
+        ->assertOk();
+});
+
+test('`assertDontSeeVolt` testing method can fail', function () {
+    $this->expectException(ExpectationFailedException::class);
+
+    Folio::route(__DIR__.'/resources/views/functional-api-pages');
+
+    $this->get('/page-with-fragment')
+        ->assertDontSeeVolt('fragment-component')
         ->assertOk();
 });
 
