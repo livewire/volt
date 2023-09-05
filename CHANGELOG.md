@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.2.0...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.3.0...main)
+
+## [v1.3.0](https://github.com/livewire/volt/compare/v1.2.0...v1.3.0) - 2023-09-01
+
+- Add `assertDontSeeVolt` Test Expectation by [@devajmeireles](https://github.com/devajmeireles) in https://github.com/livewire/volt/pull/44
 
 ## [v1.2.0](https://github.com/livewire/volt/compare/v1.1.1...v1.2.0) - 2023-08-31
 
