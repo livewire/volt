@@ -36,7 +36,11 @@ class ExtractTemplate
      */
     protected function shouldExtractTemplate(string $template): bool
     {
-        return $this->mountedDirectories->isWithinMountedDirectory(Blade::getPath());
+        if (is_null($path = Blade::getPath())) {
+            return false;
+        }
+
+        return $this->mountedDirectories->isWithinMountedDirectory($path);
     }
 
     /**
