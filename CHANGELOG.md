@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.3.0...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.3.1...main)
+
+## [v1.3.1](https://github.com/livewire/volt/compare/v1.3.0...v1.3.1) - 2023-09-11
+
+- Fixing Bug in Precompiler when Blade::getPath() is null by [@joaopalopes24](https://github.com/joaopalopes24) in https://github.com/livewire/volt/pull/48
 
 ## [v1.3.0](https://github.com/livewire/volt/compare/v1.2.0...v1.3.0) - 2023-09-01
 
