@@ -117,7 +117,7 @@ it('can have query parameters', function () {
     $component->assertDontSeeHtml([
         '<li>Taylor</li>',
     ]);
-})->only();
+});
 
 it('can have locked state', function () {
     $component = Livewire::test('component-with-locked-state');
