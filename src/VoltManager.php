@@ -76,6 +76,16 @@ class VoltManager
     }
 
     /**
+     * Define the query parameters for testing.
+     */
+    public function withQueryParams(array $params): static
+    {
+        $this->manager->withQueryParams($params);
+
+        return $this;
+    }
+
+    /**
      * Ensure that the views are cached for testing.
      */
     public function ensureViewsAreCached(): void
