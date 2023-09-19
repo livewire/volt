@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.3.1...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.3.2...main)
+
+## [v1.3.2](https://github.com/livewire/volt/compare/v1.3.1...v1.3.2) - 2023-09-19
+
+- [1.x] Adds `withQueryParams` by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/livewire/volt/pull/51
+- [1.x] Adds `rendering` callback by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/livewire/volt/pull/52
 
 ## [v1.3.1](https://github.com/livewire/volt/compare/v1.3.0...v1.3.1) - 2023-09-11
 
