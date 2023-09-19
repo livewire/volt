@@ -96,4 +96,14 @@ class VoltManager
     {
         return $this->mountedDirectories->paths();
     }
+
+    /**
+     * Set the query params for testing.
+     */
+    public function withQueryParams(array $params): static
+    {
+        $this->manager->withQueryParams($params);
+
+        return $this;
+    }
 }

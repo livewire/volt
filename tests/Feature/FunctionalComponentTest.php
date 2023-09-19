@@ -105,6 +105,20 @@ it('can have parameters', function (array $parameters, array $state) {
     [['string' => 'overridden-string', 'null' => 'overridden-null'], ['string' => 'overridden-string', 'null' => 'overridden-null']],
 ]);
 
+it('can have query parameters', function () {
+    $component = Volt::withQueryParams(['search' => 'Nuno'])
+        ->test('component-with-url-state');
+
+    $component->assertSeeHtml([
+        '<li>Nuno Maduro</li>',
+        '<li>Nuno</li>',
+    ]);
+
+    $component->assertDontSeeHtml([
+        '<li>Taylor</li>',
+    ]);
+})->only();
+
 it('can have locked state', function () {
     $component = Livewire::test('component-with-locked-state');
 
