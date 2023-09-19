@@ -5,7 +5,8 @@ namespace Livewire\Volt;
 use AllowDynamicProperties;
 use BadMethodCallException;
 use Illuminate\Container\Container;
-use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades;
+use Illuminate\View\View;
 use Illuminate\Support\Str;
 use Livewire\Component as LivewireComponent;
 use Livewire\Mechanisms\ComponentRegistry;
@@ -53,8 +54,8 @@ abstract class Component extends LivewireComponent
             : null;
 
         $view = ($fragment = ExtractedFragment::fromAlias($alias))
-            ? View::file($fragment->extractIfStale()->path(), $data)
-            : View::make('volt-livewire::'.$alias, $data);
+            ? Facades\View::file($fragment->extractIfStale()->path(), $data)
+            : Facades\View::make('volt-livewire::'.$alias, $data);
 
         if ($layout) {
             $view->layout($layout);
@@ -64,6 +65,14 @@ abstract class Component extends LivewireComponent
             $view->title($title);
         }
 
+        return $this->rendering($view);
+    }
+
+    /**
+     * Triggered before the component is rendered.
+     */
+    public function rendering(View $view): View
+    {
         return $view;
     }
 
