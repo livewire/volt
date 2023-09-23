@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static void mount(array|string $paths = [], array|string $uses = [])
  * @method static array paths()
  * @method static \Livewire\Features\SupportTesting\Testable test(string $name, array $params = [])
+ * @method static self withQueryParams(array $params = [])
  * @method static \Illuminate\Routing\Route route(string $uri, string $componentName)
  */
 class Volt extends Facade
