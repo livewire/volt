@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.3.2...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.3.3...main)
+
+## [v1.3.3](https://github.com/livewire/volt/compare/v1.3.2...v1.3.3) - 2023-09-25
+
+- Add docblock for `Volt::withQueryParams()` by [@robsontenorio](https://github.com/robsontenorio) in https://github.com/livewire/volt/pull/55
 
 ## [v1.3.2](https://github.com/livewire/volt/compare/v1.3.1...v1.3.2) - 2023-09-19
 
