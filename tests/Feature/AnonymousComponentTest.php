@@ -23,6 +23,11 @@ it('may be tested', function () {
         ->assertSee('Second - Hello Taylor');
 });
 
+it('may have php blocks', function () {
+    Volt::test('fragment-component-with-php-blocks')
+        ->assertSee('Hello Nuno');
+});
+
 it('may be lazy', function () {
     Folio::route(__DIR__.'/resources/views/functional-api-pages');
 
