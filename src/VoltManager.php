@@ -3,6 +3,7 @@
 namespace Livewire\Volt;
 
 use Illuminate\Container\Container;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Routing\Registrar;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -81,6 +82,16 @@ class VoltManager
     public function withQueryParams(array $params): static
     {
         $this->manager->withQueryParams($params);
+
+        return $this;
+    }
+
+    /**
+     * Set the currently logged in user for the application.
+     */
+    public function actingAs(Authenticatable $user, string $driver = null): static
+    {
+        $this->manager->actingAs($user, $driver);
 
         return $this;
     }
