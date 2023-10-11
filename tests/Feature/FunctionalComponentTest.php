@@ -119,6 +119,16 @@ it('can have query parameters', function () {
     ]);
 });
 
+it('can act as logged user', function () {
+    $user = new User([
+        'name' => 'Taylor',
+    ]);
+
+    Livewire::actingAs($user)
+        ->test('component-with-logged-user')
+        ->assertSee('Hello Taylor.');
+});
+
 it('can have locked state', function () {
     $component = Livewire::test('component-with-locked-state');
 
