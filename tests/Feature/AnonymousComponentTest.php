@@ -67,3 +67,8 @@ it('throws component not found exception when the component alias was tampered',
     ComponentNotFoundException::class,
     'Unable to find component'
 );
+
+it('may use imports from page definition', function () {
+    Volt::test('fragment-component-using-imports-on-template')
+        ->assertSee('In fragment: published.');
+});

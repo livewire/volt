@@ -124,6 +124,16 @@ test('folio imports dont conflict with fragments imports', function () {
         ->assertSee('Taylor');
 });
 
+test('imports may be used', function () {
+    Folio::route(__DIR__.'/resources/views/functional-api-pages');
+
+    $response = $this->get('page-with-fragment-using-imports-on-template');
+
+    $response->assertStatus(200)
+        ->assertSee('Out fragment: draft.')
+        ->assertSee('In fragment: published.');
+});
+
 test('authorization with mount', function () {
     Folio::route(__DIR__.'/resources/views/functional-api-pages');
 

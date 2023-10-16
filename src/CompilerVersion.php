@@ -7,5 +7,5 @@ class CompilerVersion
     /**
      * The current version of the Volt's compiler.
      */
-    public const NUMBER = 2;
+    public const NUMBER = 3;
 }

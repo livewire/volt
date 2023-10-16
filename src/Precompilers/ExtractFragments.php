@@ -11,6 +11,8 @@ use Livewire\Volt\FragmentMap;
 
 class ExtractFragments
 {
+    use Concerns\ExtractsImports;
+
     /**
      * Create a new precompiler instance.
      */
@@ -31,7 +33,9 @@ class ExtractFragments
             return $template;
         }
 
-        $template = preg_replace_callback('/(?<!@)@volt\((.*?)\)(.*?)@endvolt/s', function (array $matches) {
+        $imports = $this->imports($template);
+
+        $template = preg_replace_callback('/(?<!@)@volt\((.*?)\)(.*?)@endvolt/s', function (array $matches) use ($imports) {
             [$name, $arguments] = $this->argumentsFromMatch($matches[1]);
 
             if (is_null($name)) {
@@ -40,18 +44,18 @@ class ExtractFragments
 
             File::put(
                 $this->compiledViewPath.DIRECTORY_SEPARATOR.md5($name).'.blade.php',
-                $matches[2]
+                $imports.$matches[2]
             );
 
             return $this->directive($name, $arguments);
         }, $template);
 
-        return preg_replace_callback('/(?<!@)@volt(.*?)@endvolt/s', function (array $matches) {
+        return preg_replace_callback('/(?<!@)@volt(.*?)@endvolt/s', function (array $matches) use ($imports) {
             $name = 'volt-anonymous-fragment-'.md5($matches[1]);
 
             File::put(
                 $this->compiledViewPath.DIRECTORY_SEPARATOR.md5($name).'.blade.php',
-                $matches[1]
+                $imports.$matches[1]
             );
 
             return $this->directive($name, []);
