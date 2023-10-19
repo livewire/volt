@@ -65,14 +65,6 @@ abstract class Component extends LivewireComponent
             $view->title($title);
         }
 
-        return $this->rendering($view);
-    }
-
-    /**
-     * Triggered before the component is rendered.
-     */
-    public function rendering(View $view): View
-    {
         return $view;
     }
 
