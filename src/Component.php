@@ -7,7 +7,6 @@ use BadMethodCallException;
 use Illuminate\Container\Container;
 use Illuminate\Support\Facades;
 use Illuminate\Support\Str;
-use Illuminate\View\View;
 use Livewire\Component as LivewireComponent;
 use Livewire\Mechanisms\ComponentRegistry;
 use Livewire\Volt\Actions\ReturnLayout;
@@ -65,14 +64,6 @@ abstract class Component extends LivewireComponent
             $view->title($title);
         }
 
-        return $this->rendering($view);
-    }
-
-    /**
-     * Triggered before the component is rendered.
-     */
-    public function rendering(View $view): View
-    {
         return $view;
     }
 
