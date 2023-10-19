@@ -7,7 +7,6 @@ use BadMethodCallException;
 use Illuminate\Container\Container;
 use Illuminate\Support\Facades;
 use Illuminate\Support\Str;
-use Illuminate\View\View;
 use Livewire\Component as LivewireComponent;
 use Livewire\Mechanisms\ComponentRegistry;
 use Livewire\Volt\Actions\ReturnLayout;
