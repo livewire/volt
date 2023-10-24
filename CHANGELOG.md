@@ -1,6 +1,13 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.3.3...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.4.0...main)
+
+## [v1.4.0](https://github.com/livewire/volt/compare/v1.3.3...v1.4.0) - 2023-10-19
+
+- [1.x] Adds tests around php blocks by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/livewire/volt/pull/58
+- [1.x] Adds `actingAs` to Volt facade by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/livewire/volt/pull/61
+- [1.x] Fixes imports used on fragments by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/livewire/volt/pull/63
+- [1.x] Removes custom `rendering` call by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/livewire/volt/pull/65
 
 ## [v1.3.3](https://github.com/livewire/volt/compare/v1.3.2...v1.3.3) - 2023-09-25
 
