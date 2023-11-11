@@ -15,6 +15,7 @@ use Livewire\Volt\Methods\ProtectedMethod;
 use Livewire\Volt\Options\RuleOptions;
 use Livewire\Volt\Options\StateOptions;
 use Livewire\Volt\Options\UsesOptions;
+use function is_callable;
 
 /**
  * Define the component's state.
@@ -261,7 +262,11 @@ function on(Closure|array|string ...$listeners): void
 function rules(mixed ...$rules): RuleOptions
 {
     if (count($rules) === 1 && array_key_exists(0, $rules)) {
-        $rules = $rules[0];
+        if (is_callable($rules[0])) {
+            $rules = $rules[0]();
+        } else {
+            $rules = $rules[0];
+        }
     }
 
     CompileContext::instance()->rules = array_merge(

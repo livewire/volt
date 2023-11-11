@@ -43,3 +43,17 @@ test('precedence', function () {
         'email' => 'first',
     ]);
 });
+
+test('may be defined with mixed methods', function () {
+    $context = CompileContext::instance();
+
+    rules(['name' => 'required|min:6']);
+    rules(fn () => [
+        'email' => 'nullable|email',
+    ]);
+
+    expect($context->rules)->toBe([
+        'name' => 'required|min:6',
+        'email' => 'nullable|email',
+    ]);
+});
