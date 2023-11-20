@@ -318,7 +318,7 @@ it('throws exception when rules are not found', function () {
         ->call('store');
 })->throws(
     MissingRulesException::class,
-    '[rules()] declaration not found in [component-with-missing-rules].',
+    'Missing [$rules/rules()] property/method on: [component-with-missing-rules].',
 );
 
 it('throws exception when method is not found within action', function () {

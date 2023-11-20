@@ -3,7 +3,6 @@
 namespace Livewire\Volt\Actions;
 
 use Closure;
-use Livewire\Exceptions\MissingRulesException;
 use Livewire\Exceptions\PropertyNotFoundException;
 use Livewire\Volt\CompileContext;
 use Livewire\Volt\Component;
@@ -41,10 +40,6 @@ class CallMethod implements Action
             Reflection::setExceptionMessage(
                 $e, "State definition for [$propertyName] not found on component [{$component->voltComponentName()}]."
             );
-
-            throw $e;
-        } catch (MissingRulesException $e) {
-            Reflection::setExceptionMessage($e, "[rules()] declaration not found in [{$component->voltComponentName()}].");
 
             throw $e;
         }

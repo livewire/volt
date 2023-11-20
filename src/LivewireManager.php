@@ -3,6 +3,7 @@
 namespace Livewire\Volt;
 
 use Livewire\Exceptions\MethodNotFoundException;
+use Livewire\Exceptions\MissingRulesException;
 use Livewire\LivewireManager as BaseLivewireManager;
 use Livewire\Volt\Actions\InitializeState;
 use Livewire\Volt\Support\Reflection;
@@ -41,6 +42,17 @@ class LivewireManager extends BaseLivewireManager
                 )), fn () => throw $e)['method'];
 
                 Reflection::setExceptionMessage($e, "Method or action [$method] does not exist on component [{$componentInstance->voltComponentName()}].");
+            }
+
+            throw $e;
+        } catch (MissingRulesException $e) {
+            $componentInstance = $this->current();
+
+            if ($componentInstance instanceof Component) {
+                Reflection::setExceptionMessage(
+                    $e,
+                    "Missing [\$rules/rules()] property/method on: [{$componentInstance->voltComponentName()}].",
+                );
             }
 
             throw $e;
