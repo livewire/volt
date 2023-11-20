@@ -9,7 +9,7 @@ beforeEach(function () {
 it('makes components', function (string $name, string $viewPath, string $testPath) {
     $this->artisan('make:volt', ['name' => $name])->assertOk();
 
-    $viewPath = resource_path('views/livewire/'.$viewPath);
+    $viewPath = resource_path(config('livewire.view_path').'/'.$viewPath);
     $testPath = base_path('tests/Feature/Livewire'.$testPath);
 
     expect($viewPath)->toBeFile()
@@ -113,7 +113,7 @@ it('makes components with pest tests', function (string $name, string $alias, st
 
 afterEach(function () {
     collect([
-        resource_path('views/livewire'),
+        resource_path(config('livewire.view_path')),
         base_path('tests/Feature/Livewire'),
     ])->each(function (string $path) {
         if (File::exists($path)) {
