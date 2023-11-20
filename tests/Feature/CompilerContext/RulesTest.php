@@ -32,6 +32,14 @@ it('may be defined using named arguments', function () {
     ]);
 });
 
+it('may be defined using closures', function () {
+    $context = CompileContext::instance();
+
+    rules(fn () => ['name' => 'required|min:6', 'email' => 'nullable|email']);
+
+    expect($context->rules)->resolve()->toBe(['name' => 'required|min:6', 'email' => 'nullable|email']);
+});
+
 test('precedence', function () {
     $context = CompileContext::instance();
 
@@ -41,5 +49,11 @@ test('precedence', function () {
     expect($context->rules)->toBe([
         'name' => 'second',
         'email' => 'first',
+    ]);
+
+    rules(fn () => ['name' => 'third']);
+
+    expect($context->rules)->resolve()->toBe([
+        'name' => 'third',
     ]);
 });
