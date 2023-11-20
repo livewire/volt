@@ -246,6 +246,19 @@ it('can have dynamic properties', function () {
     ]);
 });
 
+it('can have rules', function () {
+    $component = Livewire::test('component-with-rules');
+
+    $component->assertSet('saved', false)
+        ->call('save')
+        ->assertSee('The title field is missing.')
+        ->assertSet('saved', false)
+        ->updateProperty('title', 'Hello')
+        ->call('save')
+        ->assertDontSee('The title field is missing.')
+        ->assertSet('saved', true);
+});
+
 it('can have reactive state', function () {
     $component = Livewire::test('component-with-reactive-state.todos');
 

@@ -23,7 +23,7 @@ class CompileContext
         public ?string $title,
         public ?Closure $listeners,
         public array $inlineListeners,
-        public array $rules,
+        public Closure|array $rules,
         public array $messages,
         public array $validationAttributes,
         public ?string $paginationView,

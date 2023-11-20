@@ -261,6 +261,12 @@ function on(Closure|array|string ...$listeners): void
 function rules(mixed ...$rules): RuleOptions
 {
     if (count($rules) === 1 && array_key_exists(0, $rules)) {
+        if ($rules[0] instanceof Closure) {
+            CompileContext::instance()->rules = $rules[0];
+
+            return new RuleOptions;
+        }
+
         $rules = $rules[0];
     }
 
