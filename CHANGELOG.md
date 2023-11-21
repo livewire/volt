@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.4.0...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.5.0...main)
+
+## [v1.5.0](https://github.com/livewire/volt/compare/v1.4.0...v1.5.0) - 2023-11-20
+
+- [1.x] Fixes rules missing exception message by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/livewire/volt/pull/70
+- [1.x] Allows to specify rules as closure by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/livewire/volt/pull/71
 
 ## [v1.4.0](https://github.com/livewire/volt/compare/v1.3.3...v1.4.0) - 2023-10-19
 
