@@ -281,6 +281,13 @@ it('can listen events', function () {
         ->assertSee('Events received: 2.');
 });
 
+it('can have state with and without array keys', function () {
+    $component = Livewire::test('component-state-with-without-keys');
+
+    $component->assertSet('without', null);
+    $component->assertSet('with', 'value');
+});
+
 it('can have url state', function () {
     $component = Livewire::test('component-with-url-state');
 
