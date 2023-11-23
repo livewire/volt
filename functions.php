@@ -27,7 +27,7 @@ function state(mixed ...$properties): StateOptions
                 $properties = [$properties[0] => null];
             } elseif (Arr::isAssoc($properties[0])) {
                 $properties = array_map(
-                    static fn($key, $value) => is_numeric($key) ? [$value => null] : [$key => $value],
+                    static fn ($key, $value) => is_numeric($key) ? [$value => null] : [$key => $value],
                     array_keys($properties[0]),
                     $properties[0]
                 );
