@@ -20,7 +20,7 @@ class CompileContext
         public array $variables,
         public array $state,
         public ?string $layout,
-        public ?string $title,
+        public Closure|string|null $title,
         public ?Closure $listeners,
         public array $inlineListeners,
         public Closure|array $rules,

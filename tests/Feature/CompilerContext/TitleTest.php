@@ -17,3 +17,15 @@ it('may be defined', function () {
 
     expect($context->title)->toBe('my custom title');
 });
+
+it('may be set using closures', function () {
+    $context = CompileContext::instance();
+
+    title(fn () => 'my custom title from a closure');
+
+    expect($context->title)
+        ->toBeCallable()
+        ->and($context->title)
+        ->resolve()
+        ->toBe('my custom title from a closure');
+});
