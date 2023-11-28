@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.5.0...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.6.0...main)
+
+## [v1.6.0](https://github.com/livewire/volt/compare/v1.5.0...v1.6.0) - 2023-11-28
+
+* fix: State properties by [@lee-to](https://github.com/lee-to) in https://github.com/livewire/volt/pull/78
+* [1.x] Allow setting title using a closure in functional API by [@RVxLab](https://github.com/RVxLab) in https://github.com/livewire/volt/pull/79
 
 ## [v1.5.0](https://github.com/livewire/volt/compare/v1.4.0...v1.5.0) - 2023-11-20
 
