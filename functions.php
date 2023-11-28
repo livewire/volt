@@ -96,7 +96,7 @@ function layout(string $layout): void
 /**
  * Define the component's title.
  */
-function title(string $title): void
+function title(Closure|string $title): void
 {
     CompileContext::instance()->title = $title;
 }
