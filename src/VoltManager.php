@@ -9,6 +9,7 @@ use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Artisan;
 use Livewire\Features\SupportTesting\Testable;
 use Livewire\Livewire;
+use Livewire\Features\SupportPageComponents\SupportPageComponents;
 
 class VoltManager
 {
