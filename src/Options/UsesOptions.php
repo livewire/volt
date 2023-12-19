@@ -21,7 +21,7 @@ class UsesOptions
     /**
      * Indicate that the component should be compiled with pagination support.
      */
-    public function usesPagination(string $view = null, string $theme = null): static
+    public function usesPagination(?string $view = null, ?string $theme = null): static
     {
         CompileContext::instance()->paginationView = $view;
         CompileContext::instance()->paginationTheme = $theme;

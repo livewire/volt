@@ -9,7 +9,6 @@ use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Artisan;
 use Livewire\Features\SupportTesting\Testable;
 use Livewire\Livewire;
-use Livewire\Features\SupportPageComponents\SupportPageComponents;
 
 class VoltManager
 {
@@ -90,7 +89,7 @@ class VoltManager
     /**
      * Set the currently logged in user for the application.
      */
-    public function actingAs(Authenticatable $user, string $driver = null): static
+    public function actingAs(Authenticatable $user, ?string $driver = null): static
     {
         $this->manager->actingAs($user, $driver);
 

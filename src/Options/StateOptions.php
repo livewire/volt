@@ -70,7 +70,7 @@ class StateOptions
     /**
      * Indicate the state should be tracked in the URL.
      */
-    public function url(string $as = null, bool $history = null, bool $keep = null): static
+    public function url(?string $as = null, ?bool $history = null, ?bool $keep = null): static
     {
         return $this->attribute(Url::class, as: $as, history: $history, keep: $keep);
     }
