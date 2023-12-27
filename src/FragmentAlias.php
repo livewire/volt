@@ -12,7 +12,7 @@ class FragmentAlias
     /**
      * Encode the given fragment's component name and path into a base64 embedded alias.
      */
-    public static function encode(string $componentName, string $path, string $basePath = null): string
+    public static function encode(string $componentName, string $path, ?string $basePath = null): string
     {
         $basePath = $basePath ?? static::$basePath ?? base_path();
 
@@ -25,7 +25,7 @@ class FragmentAlias
     /**
      * Resolve the given fragment's component name and path from a base64 embedded alias.
      */
-    public static function decode(string $alias, string $basePath = null): ?array
+    public static function decode(string $alias, ?string $basePath = null): ?array
     {
         if (! static::isFragment($alias)) {
             return null;

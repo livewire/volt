@@ -295,7 +295,7 @@ function usesFileUploads(): UsesOptions
 /**
  * Indicate that the component supports pagination.
  */
-function usesPagination(string $view = null, string $theme = null): UsesOptions
+function usesPagination(?string $view = null, ?string $theme = null): UsesOptions
 {
     return (new UsesOptions)->usesPagination($view, $theme);
 }
