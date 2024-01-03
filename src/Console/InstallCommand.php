@@ -83,7 +83,7 @@ class InstallCommand extends Command
      */
     protected function ensureLivewireDirectoryExists(): void
     {
-        if (! is_dir($directory = resource_path('views/livewire'))) {
+        if (! is_dir($directory = config('livewire.view_path', resource_path('views/livewire')))) {
             File::ensureDirectoryExists($directory);
 
             File::put($directory.'/.gitkeep', '');
