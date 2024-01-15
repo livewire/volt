@@ -835,6 +835,43 @@ test('`assertSeeVolt` testing method', function () {
         ->assertOk();
 });
 
+it('test 200s model route binding on full page components', function (string $route, string $uri) {
+    User::create([
+        'name' => 'taylor',
+        'email' => 'taylor@laravel.com',
+        'password' => 'password',
+    ]);
+
+    Volt::route('/users/'.$route, 'navigate.with-model-route-binding');
+
+    $this->get('/users/'.$uri)
+        ->assertStatus(200)
+        ->assertSee('Volt 1 using mount.');
+})->with([
+    ['{user}', '1'],
+    ['{user:id}', '1'],
+    ['{user:name}', 'taylor'],
+    ['{user:email}', 'taylor@laravel.com'],
+]);
+
+it('test 404s model route binding on full page components', function (string $route, string $uri) {
+    User::create([
+        'name' => 'taylor',
+        'email' => 'taylor@laravel.com',
+        'password' => 'password',
+    ]);
+
+    Volt::route('/users/'.$route, 'navigate.with-model-route-binding');
+
+    $this->get('/users/'.$uri)
+        ->assertStatus(404);
+})->with([
+    ['{user}', '2'],
+    ['{user:id}', '2'],
+    ['{user:name}', 'nuno'],
+    ['{user:email}', 'nuno@laravel.com'],
+]);
+
 test('user imports on bottom do not conflict', function () {
     User::create([
         'name' => 'Taylor',

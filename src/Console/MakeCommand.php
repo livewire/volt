@@ -46,7 +46,7 @@ class MakeCommand extends GeneratorCommand
     {
         $paths = Volt::paths();
 
-        $mountPath = isset($paths[0]) ? $paths[0]->path : resource_path('views/livewire');
+        $mountPath = isset($paths[0]) ? $paths[0]->path : config('livewire.view_path', resource_path('views/livewire'));
 
         return $mountPath.'/'.Str::lower(Str::finish($this->argument('name'), '.blade.php'));
     }

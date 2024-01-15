@@ -108,7 +108,7 @@ class CompileContext
     /**
      * Register an event listener on the context.
      */
-    public function listen(Closure|array|string $listenersOrEventName, Closure|string $handler = null): void
+    public function listen(Closure|array|string $listenersOrEventName, Closure|string|null $handler = null): void
     {
         if (is_array($listenersOrEventName)) {
             $listeners = $this->registerInlineListeners($listenersOrEventName);

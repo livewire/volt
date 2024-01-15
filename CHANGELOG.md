@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.6.0...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.6.1...main)
+
+## [v1.6.1](https://github.com/livewire/volt/compare/v1.6.0...v1.6.1) - 2024-01-03
+
+* [1.x] Adds tests for model route binding by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/livewire/volt/pull/84
+* [1.x] Fixes non-usage of `livewire.view_path` configuration by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/livewire/volt/pull/85
 
 ## [v1.6.0](https://github.com/livewire/volt/compare/v1.5.0...v1.6.0) - 2023-11-28
 

@@ -20,8 +20,8 @@
     ],
     "require": {
         "php": "^8.1",
-        "laravel/framework": "^10.27|^11.0",
-        "livewire/livewire": "^3.0|dev-feat/l11"
+        "laravel/framework": "^10.38.2|^11.0",
+        "livewire/livewire": "^3.0"
     },
     "require-dev": {
         "laravel/folio": "^1.1",
