@@ -26,7 +26,7 @@
     "require-dev": {
         "laravel/folio": "^1.1",
         "mockery/mockery": "^1.6",
-        "orchestra/testbench": "^8.15.0",
+        "orchestra/testbench": "^8.15.0|^9.0",
         "pestphp/pest": "^2.9.5",
         "phpstan/phpstan": "^1.10"
     },
