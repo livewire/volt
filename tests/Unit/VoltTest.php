@@ -17,13 +17,21 @@ it('mounts paths into memory from strings', function () {
 
     expect(count($managerInstance->paths()))->toBe(1);
 
-    expect($path = (collect($managerInstance->paths())->first())->path)->toBe($path1);
+    expect($path = (collect($managerInstance->paths())->first())->path)->toBe(str_replace(
+        '/',
+        DIRECTORY_SEPARATOR,
+        $path1,
+    ));
 
     $managerInstance->mount($path2 = __DIR__ . '/resources/views/livewire');
 
     expect(count($managerInstance->paths()))->toBe(2);
 
-    expect($path = (collect($managerInstance->paths())->last())->path)->toBe($path2);
+    expect($path = (collect($managerInstance->paths())->last())->path)->toBe(str_replace(
+        '/',
+        DIRECTORY_SEPARATOR,
+        $path2,
+    ));
 });
 
 it('mounts paths into memory from arrays', function () {
@@ -36,11 +44,19 @@ it('mounts paths into memory from arrays', function () {
 
     expect(count($managerInstance->paths()))->toBe(1);
 
-    expect($path = (collect($managerInstance->paths())->first())->path)->toBe($path1);
+    expect($path = (collect($managerInstance->paths())->first())->path)->toBe(str_replace(
+        '/',
+        DIRECTORY_SEPARATOR,
+        $path1,
+    ));
 
     $managerInstance->mount([
         $path2 = __DIR__ . '/resources/views/livewire',
     ]);
 
-    expect($path = (collect($managerInstance->paths())->last())->path)->toBe($path2);
+    expect($path = (collect($managerInstance->paths())->last())->path)->toBe(str_replace(
+        '/',
+        DIRECTORY_SEPARATOR,
+        $path2,
+    ));
 });
