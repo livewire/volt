@@ -6,6 +6,7 @@ use Illuminate\Container\Container;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Routing\Registrar;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Artisan;
 use Livewire\Features\SupportTesting\Testable;
 use Livewire\Livewire;
@@ -50,6 +51,15 @@ class VoltManager
      */
     public function mount(array|string $paths = [], array|string $uses = []): void
     {
+
+        [$mountedPaths, $mountedUses] = collect($this->paths())->reduce(
+            fn (array $carry, MountedDirectory $mountedDirectory) => [
+                array_merge($carry[0], [$mountedDirectory->path]),
+                array_merge($carry[1], $mountedDirectory->uses),
+            ],
+            [[], []],
+        );
+
         $paths = collect(empty($paths) ? [
             config('view.paths')[0].'/livewire',
             config('view.paths')[0].'/pages',
@@ -58,6 +68,10 @@ class VoltManager
             DIRECTORY_SEPARATOR,
             $p,
         ))->all();
+
+        $paths = array_merge($mountedPaths, $paths);
+
+        $uses = array_merge($mountedUses, Arr::wrap($uses));
 
         $this->mountedDirectories->mount($paths, $uses);
     }

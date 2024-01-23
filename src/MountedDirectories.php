@@ -27,7 +27,10 @@ class MountedDirectories
             ->values()
             ->map(fn (string $path) => new MountedDirectory($path, Arr::wrap($uses)));
 
-        $this->paths = array_merge($this->paths, $paths->all());
+        $this->paths = collect(array_merge($this->paths, $paths->all()))
+            ->unique(fn (MountedDirectory $mountedDirectory) => $mountedDirectory->path)
+            ->values()
+            ->all();
 
         View::replaceNamespace('volt-livewire', $paths->pluck('path')->all());
     }
