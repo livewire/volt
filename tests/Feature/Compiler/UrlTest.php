@@ -15,10 +15,12 @@ it('may be defined', function () {
     state('searchOne')->url();
     state('searchTwo')->url(as: 'search', history: true);
     state('searchThree')->url(keep: true);
+    state('searchFour')->url(keep: true, except: '');
 
     $code = Compiler::contextToString(CompileContext::instance());
 
-    expect($code)->toContain(<<<'PHP'
+    expect($code)->toContain(
+        <<<'PHP'
         #[\Livewire\Attributes\Url()]
         public $searchOne;
 
@@ -27,6 +29,9 @@ it('may be defined', function () {
 
         #[\Livewire\Attributes\Url(keep: true)]
         public $searchThree;
+
+        #[\Livewire\Attributes\Url(keep: true, except: '')]
+        public $searchFour;
     PHP
     );
 });
