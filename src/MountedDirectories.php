@@ -10,7 +10,7 @@ class MountedDirectories
     /**
      * The mounted directory paths.
      *
-     * @var  array<int, \Livewire\Volt\MountedDirectory>
+     * @var array<int, \Livewire\Volt\MountedDirectory>
      */
     protected array $paths = [];
 
@@ -43,7 +43,7 @@ class MountedDirectories
     /**
      * Get the mounted directory paths.
      *
-     * @return  array<int, \Livewire\Volt\MountedDirectory>
+     * @return array<int, \Livewire\Volt\MountedDirectory>
      */
     public function paths(): array
     {
