@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.6.1...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.6.2...main)
+
+## [v1.6.2](https://github.com/livewire/volt/compare/v1.6.1...v1.6.2) - 2024-01-30
+
+* Fix: Add missing argument 'except' to function 'url' in state properties by [@bekepr](https://github.com/bekepr) in https://github.com/livewire/volt/pull/89
 
 ## [v1.6.1](https://github.com/livewire/volt/compare/v1.6.0...v1.6.1) - 2024-01-03
 
