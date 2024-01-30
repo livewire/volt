@@ -13,8 +13,9 @@ it('may be defined', function () {
     state(searchOne: 1)->url();
     state(searchTwo: 2)->url(as: 'search', history: true);
     state(searchThree: 3)->url(keep: true);
+    state(searchFour: 4)->url(keep: true, except: '');
 
-    expect($context->state)->toHaveKeys(['name', 'searchOne', 'searchTwo', 'searchThree'])
+    expect($context->state)->toHaveKeys(['name', 'searchOne', 'searchTwo', 'searchThree', 'searchFour'])
         ->sequence(
             fn (Expectation $property) => $property->attributes->toBe([]),
             fn (Expectation $property) => $property->attributes->toBe([
@@ -29,6 +30,12 @@ it('may be defined', function () {
             fn (Expectation $property) => $property->attributes->toBe([
                 Url::class => [
                     'keep' => true,
+                ],
+            ]),
+            fn (Expectation $property) => $property->attributes->toBe([
+                Url::class => [
+                    'keep' => true,
+                    'except' => '',
                 ],
             ]),
         );
