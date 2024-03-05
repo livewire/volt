@@ -28,7 +28,7 @@ class MountedDirectories
             ->values()
             ->map(fn (string $path) => new MountedDirectory($path, Arr::wrap($uses)))
             ->filter(fn (MountedDirectory $newMountedDirectory) => ! collect($this->paths)
-                ->contains(fn (MountedDirectory $mountedDirectory) => $mountedDirectory->path === $newMountedDirectory->path && $mountedDirectory->uses === $mountedDirectory->uses));
+                ->contains(fn (MountedDirectory $mountedDirectory) => $mountedDirectory->path === $newMountedDirectory->path && $mountedDirectory->uses === $newMountedDirectory->uses));
 
         $this->paths = array_merge($this->paths, $paths->all());
 
