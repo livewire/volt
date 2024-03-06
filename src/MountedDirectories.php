@@ -29,7 +29,7 @@ class MountedDirectories
 
         $this->paths = array_merge($this->paths, $paths->all());
 
-        View::replaceNamespace('volt-livewire', $paths->pluck('path')->all());
+        View::replaceNamespace('volt-livewire', collect($this->paths)->pluck('path')->all());
     }
 
     /**
