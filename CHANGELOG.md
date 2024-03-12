@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.6.2...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.6.3...main)
+
+## [v1.6.3](https://github.com/livewire/volt/compare/v1.6.2...v1.6.3) - 2024-03-06
+
+* Use paths from object property, not local variable by [@bookwyrm](https://github.com/bookwyrm) in https://github.com/livewire/volt/pull/95
 
 ## [v1.6.2](https://github.com/livewire/volt/compare/v1.6.1...v1.6.2) - 2024-01-30
 
