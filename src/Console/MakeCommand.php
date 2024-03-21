@@ -174,6 +174,7 @@ class MakeCommand extends GeneratorCommand
         return [
             ['class', null, InputOption::VALUE_NONE, 'Create a class based component'],
             ['force', 'f', InputOption::VALUE_NONE, 'Create the Volt component even if the component already exists'],
+            ['stub', 's', InputOption::VALUE_OPTIONAL, 'The stub file to use'],
         ];
     }
 
