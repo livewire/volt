@@ -16,6 +16,7 @@ use Symfony\Component\Console\Input\InputOption;
 class MakeCommand extends GeneratorCommand
 {
     use CreatesMatchingTest;
+    use GetStubOption;
 
     /**
      * The name and signature of the console command.
