@@ -3,6 +3,7 @@
 namespace Livewire\Volt\Console;
 
 use Illuminate\Console\Concerns\CreatesMatchingTest;
+use Illuminate\Console\Concerns\GetStubOption;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\File;
