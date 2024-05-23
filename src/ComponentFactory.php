@@ -79,11 +79,11 @@ class ComponentFactory
                         : $variable;
                 }, get_defined_vars());
             })();
+
             CompileContext::instance()->variables =  array_merge(CompileContext::instance()->variables, $variables);
         } finally {
             ob_get_clean();
         }
-
     }
 
     /**
