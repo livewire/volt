@@ -70,7 +70,7 @@ class ComponentFactory
 
             $__path = $path;
 
-            CompileContext::instance()->variables = (static function () use ($__path) {
+            $variables = (static function () use ($__path) {
                 require $__path;
 
                 return array_map(function (mixed $variable) {
@@ -79,6 +79,8 @@ class ComponentFactory
                         : $variable;
                 }, get_defined_vars());
             })();
+
+            CompileContext::instance()->variables =  array_merge(CompileContext::instance()->variables, $variables);
         } finally {
             ob_get_clean();
         }

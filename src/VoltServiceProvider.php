@@ -116,7 +116,7 @@ class VoltServiceProvider extends ServiceProvider
                 $component = FragmentMap::get($component);
             }
 
-            return $this->assertSeeLivewire($component); // @phpstan-ignore-line
+            return $this->assertSeeLivewire($component);
         });
 
         TestResponse::macro('assertDontSeeVolt', function ($component) {
@@ -126,7 +126,7 @@ class VoltServiceProvider extends ServiceProvider
                 $component = FragmentMap::get($component);
             }
 
-            return $this->assertDontSeeLivewire($component); // @phpstan-ignore-line
+            return $this->assertDontSeeLivewire($component);
         });
     }
 }

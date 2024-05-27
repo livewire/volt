@@ -36,7 +36,7 @@ abstract class Component extends LivewireComponent
     /**
      * Render the component.
      */
-    final public function render(): mixed
+    public function render(): mixed
     {
         $alias = $this->getAlias();
 
