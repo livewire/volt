@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.6.3...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.6.4...main)
+
+## [v1.6.4](https://github.com/livewire/volt/compare/v1.6.3...v1.6.4) - 2024-05-27
+
+* Remove final from render by [@deanmcpherson](https://github.com/deanmcpherson) in https://github.com/livewire/volt/pull/105
 
 ## [v1.6.3](https://github.com/livewire/volt/compare/v1.6.2...v1.6.3) - 2024-03-06
 
