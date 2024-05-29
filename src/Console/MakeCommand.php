@@ -56,11 +56,44 @@ class MakeCommand extends GeneratorCommand
      */
     protected function getStub(): string
     {
-        $stubName = $this->option('class') ? 'volt-component-class.stub' : 'volt-component.stub';
+        $stubName = $this->option('class')
+            ? 'volt-component-class.stub'
+            : ($this->option('functional')
+                ? 'volt-component.stub'
+            : ($this->usingClass()
+                ? 'volt-component-class.stub'
+                : 'volt-component.stub'
+         ));
 
         return file_exists($customPath = $this->laravel->basePath('stubs/'.$stubName))
             ? $customPath
             : __DIR__.'/../../stubs/'.$stubName;
+    }
+
+    /**
+     * Determine if the project is using class-based components.
+     *
+     * @return bool
+     */
+    protected function usingClass(): bool
+    {
+        $paths = Volt::paths();
+        $mountPath = isset($paths[0]) ? $paths[0]->path : config('livewire.view_path', resource_path('views/livewire'));
+
+        $files = collect(File::allFiles($mountPath));
+
+        foreach ($files as $file) {
+            if ($file->getExtension() === 'php' && str_ends_with($file->getFilename(), '.blade.php')) {
+                $content = File::get($file->getPathname());
+
+                if (str_contains($content, 'use Livewire\Volt\Component') ||
+                    str_contains($content, 'new class extends Component')) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -173,6 +206,7 @@ class MakeCommand extends GeneratorCommand
     {
         return [
             ['class', null, InputOption::VALUE_NONE, 'Create a class based component'],
+            ['functional', null, InputOption::VALUE_NONE, 'Create a functional component'],
             ['force', 'f', InputOption::VALUE_NONE, 'Create the Volt component even if the component already exists'],
         ];
     }
