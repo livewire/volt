@@ -56,14 +56,15 @@ class MakeCommand extends GeneratorCommand
      */
     protected function getStub(): string
     {
-        $stubName = $this->option('class')
-            ? 'volt-component-class.stub'
-            : ($this->option('functional')
-                ? 'volt-component.stub'
-            : ($this->usingClass()
-                ? 'volt-component-class.stub'
-                : 'volt-component.stub'
-         ));
+        if ($this->option('class')) {
+            $stubName = 'volt-component-class.stub';
+        } elseif ($this->option('functional')) {
+            $stubName = 'volt-component.stub';
+        } elseif ($this->usingClass()) {
+            $stubName = 'volt-component-class.stub';
+        } else {
+            $stubName = 'volt-component.stub';
+        }
 
         return file_exists($customPath = $this->laravel->basePath('stubs/'.$stubName))
             ? $customPath
