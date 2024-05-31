@@ -60,7 +60,7 @@ class MakeCommand extends GeneratorCommand
             $stubName = 'volt-component-class.stub';
         } elseif ($this->option('functional')) {
             $stubName = 'volt-component.stub';
-        } elseif ($this->usingClass()) {
+        } elseif ($this->alreadyUsingClasses()) {
             $stubName = 'volt-component-class.stub';
         } else {
             $stubName = 'volt-component.stub';
@@ -72,14 +72,17 @@ class MakeCommand extends GeneratorCommand
     }
 
     /**
-     * Determine if the project is using class-based components.
+     * Determine if the project is currently using class-based components.
      *
      * @return bool
      */
-    protected function usingClass(): bool
+    protected function alreadyUsingClasses(): bool
     {
         $paths = Volt::paths();
-        $mountPath = isset($paths[0]) ? $paths[0]->path : config('livewire.view_path', resource_path('views/livewire'));
+
+        $mountPath = isset($paths[0])
+            ? $paths[0]->path
+            : config('livewire.view_path', resource_path('views/livewire'));
 
         $files = collect(File::allFiles($mountPath));
 
