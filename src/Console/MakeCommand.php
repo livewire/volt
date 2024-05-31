@@ -73,8 +73,6 @@ class MakeCommand extends GeneratorCommand
 
     /**
      * Determine if the project is currently using class-based components.
-     *
-     * @return bool
      */
     protected function alreadyUsingClasses(): bool
     {
