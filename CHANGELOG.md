@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.6.4...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.6.5...main)
+
+## [v1.6.5](https://github.com/livewire/volt/compare/v1.6.4...v1.6.5) - 2024-05-31
+
+* Make class component if project uses Volt Class components by [@joshcirre](https://github.com/joshcirre) in https://github.com/livewire/volt/pull/106
 
 ## [v1.6.4](https://github.com/livewire/volt/compare/v1.6.3...v1.6.4) - 2024-05-27
 
