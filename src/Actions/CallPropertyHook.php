@@ -21,6 +21,11 @@ class CallPropertyHook implements Action
      */
     public function execute(CompileContext $context, Component $component, array $arguments): mixed
     {
+        if (! isset($context->{$this->hookName}[$this->propertyName]) && str_contains($this->propertyName, '.')) {
+            [$this->propertyName, $additionalArgument] = explode('.', $this->propertyName, 2);
+            $arguments = array_merge([$additionalArgument], $arguments);
+        }
+
         $hook = $context->{$this->hookName}[$this->propertyName] ?? fn () => null;
 
         return call_user_func_array(
