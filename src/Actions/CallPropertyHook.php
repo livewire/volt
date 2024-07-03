@@ -28,7 +28,7 @@ class CallPropertyHook implements Action
             $matchingProperty = Arr::first($hookedProperties, fn ($key) => str($this->propertyName)->is("$key*"));
 
             if ($matchingProperty) {
-                $additionalArgument = str($this->propertyName)->after($matchingProperty)->chopStart('.')->value();
+                $additionalArgument = str($this->propertyName)->after($matchingProperty)->trim('.')->value();
 
                 $this->propertyName = $matchingProperty;
 
