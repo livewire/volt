@@ -9,9 +9,7 @@ it('calls hooks on the component', function () {
 
     $context->booted = fn () => 'foo';
 
-    $component = new class extends Component
-    {
-    };
+    $component = new class extends Component {};
 
     $result = (new CallHook('booted'))->execute($context, $component, []);
 

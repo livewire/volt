@@ -15,9 +15,7 @@ class CallMethod implements Action
     /**
      * Create a new action instance.
      */
-    public function __construct(protected string $methodName)
-    {
-    }
+    public function __construct(protected string $methodName) {}
 
     /**
      * {@inheritDoc}

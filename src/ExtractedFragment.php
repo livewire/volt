@@ -13,8 +13,7 @@ class ExtractedFragment
     public function __construct(
         protected string $componentName,
         protected string $componentPath
-    ) {
-    }
+    ) {}
 
     /**
      * Resolve an extracted fragmnet instance from a given alias.

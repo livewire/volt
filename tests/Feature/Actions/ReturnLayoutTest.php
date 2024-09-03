@@ -9,9 +9,7 @@ it('returns the layout view', function () {
 
     $context->layout = 'layouts.guest';
 
-    $component = new class extends Component
-    {
-    };
+    $component = new class extends Component {};
 
     $result = (new ReturnLayout)->execute($context, $component, []);
 

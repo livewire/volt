@@ -11,11 +11,9 @@ it('returns the validation attributes', function () {
         'email' => 'email address',
     ];
 
-    $component = new class extends Component
-    {
-    };
+    $component = new class extends Component {};
 
-    $result = (new ReturnValidationAttributes())->execute($context, $component, []);
+    $result = (new ReturnValidationAttributes)->execute($context, $component, []);
 
     expect($result)->toBe([
         'email' => 'email address',

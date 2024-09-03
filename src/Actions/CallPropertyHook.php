@@ -12,9 +12,7 @@ class CallPropertyHook implements Action
     /**
      * Create a new action instance.
      */
-    public function __construct(protected string $hookName, protected string $propertyName)
-    {
-    }
+    public function __construct(protected string $hookName, protected string $propertyName) {}
 
     /**
      * {@inheritDoc}

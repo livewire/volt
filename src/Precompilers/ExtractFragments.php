@@ -16,9 +16,7 @@ class ExtractFragments
     /**
      * Create a new precompiler instance.
      */
-    public function __construct(protected string $compiledViewPath)
-    {
-    }
+    public function __construct(protected string $compiledViewPath) {}
 
     /**
      * Extract @volt Livewire fragments from the template and write them to their own template file.

@@ -11,8 +11,7 @@ class ComponentResolver
      */
     public function __construct(
         protected ComponentFactory $factory
-    ) {
-    }
+    ) {}
 
     /**
      * Attempt to resolve the given component name into a Volt component class name.

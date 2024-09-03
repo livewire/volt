@@ -12,9 +12,7 @@ it('returns the validation messages', function () {
         'email.email' => 'The Email Address format is not valid.',
     ];
 
-    $component = new class extends Component
-    {
-    };
+    $component = new class extends Component {};
 
     $result = (new ReturnValidationMessages)->execute($context, $component, []);
 

@@ -12,9 +12,7 @@ it('calls actions methods on the component', function () {
 
     $context->variables = ['foo' => fn () => 'bar'];
 
-    $component = new class extends Component
-    {
-    };
+    $component = new class extends Component {};
 
     $result = (new CallMethod('foo'))->execute($context, $component, []);
 
@@ -26,9 +24,7 @@ it('calls computed methods on the component', function () {
 
     $context->variables = ['foo' => computed(fn () => 'bar')];
 
-    $component = new class extends Component
-    {
-    };
+    $component = new class extends Component {};
 
     $result = (new CallMethod('foo'))->execute($context, $component, []);
 
@@ -40,9 +36,7 @@ it('calls helpers methods on the component', function () {
 
     $context->variables = ['foo' => protect(fn () => 'bar')];
 
-    $component = new class extends Component
-    {
-    };
+    $component = new class extends Component {};
 
     $result = (new CallMethod('foo'))->execute($context, $component, []);
 

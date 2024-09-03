@@ -12,6 +12,5 @@ class MountedDirectory
     public function __construct(
         public string $path,
         public array $uses = [],
-    ) {
-    }
+    ) {}
 }

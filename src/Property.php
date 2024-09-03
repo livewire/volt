@@ -15,8 +15,7 @@ class Property
         public mixed $value,
         public ?string $type = null,
         public array $attributes = [],
-    ) {
-    }
+    ) {}
 
     /**
      * Create a property instance.

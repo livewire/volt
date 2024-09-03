@@ -13,9 +13,7 @@ class CallHook implements Action
     /**
      * Create a new action instance.
      */
-    public function __construct(protected string $hookName)
-    {
-    }
+    public function __construct(protected string $hookName) {}
 
     /**
      * {@inheritDoc}

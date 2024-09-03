@@ -9,9 +9,7 @@ it('returns the pagination view', function () {
 
     $context->paginationView = 'my-custom-view';
 
-    $component = new class extends Component
-    {
-    };
+    $component = new class extends Component {};
 
     $result = (new ReturnPaginationView)->execute($context, $component, []);
 

@@ -14,9 +14,7 @@ it('resolves the registered listeners', function () {
     on(['second' => 'bar']);
     on(['third' => 'baz']);
 
-    $component = new class extends Component
-    {
-    };
+    $component = new class extends Component {};
 
     $result = (new ResolveListeners)->execute($context, $component, []);
 

@@ -18,9 +18,7 @@ it('may have listeners using associative arrays', function () {
     on(['nameUpdated' => 'onNameUpdated', 'emailUpdated' => fn () => 'onEmailUpdated']);
 
     expect($context->inlineListeners['emailUpdated'])->resolve()->toBe('onEmailUpdated')
-        ->and($context->listeners)->resolve(new class extends Component
-        {
-        })->toBe([
+        ->and($context->listeners)->resolve(new class extends Component {})->toBe([
             'emailUpdated' => 'emailupdatedHandler',
             'nameUpdated' => 'onNameUpdated',
         ]);
@@ -32,9 +30,7 @@ it('may have listeners using named arguments', function () {
     on(nameUpdated: 'onNameUpdated', emailUpdated: fn () => 'onEmailUpdated');
 
     expect($context->inlineListeners['emailUpdated'])->resolve()->toBe('onEmailUpdated')
-        ->and($context->listeners)->resolve(new class extends Component
-        {
-        })->toBe([
+        ->and($context->listeners)->resolve(new class extends Component {})->toBe([
             'emailUpdated' => 'emailupdatedHandler',
             'nameUpdated' => 'onNameUpdated',
         ]);
@@ -45,9 +41,7 @@ it('may have listeners using a closure', function () {
 
     on(fn () => ['nameUpdated' => 'onNameUpdated', 'emailUpdated' => fn () => 'onEmailUpdated']);
 
-    expect($context->inlineListeners)->toBe([])->and($context->listeners)->resolve(new class extends Component
-    {
-    })->sequence(
+    expect($context->inlineListeners)->toBe([])->and($context->listeners)->resolve(new class extends Component {})->sequence(
         fn ($closure, $name) => $closure->toBe('onNameUpdated') && $name->toBe('nameUpdated'),
         fn ($closure, $name) => $closure->resolve()->toBe('onEmailUpdated') && $name->toBe('emailUpdated'),
     );
@@ -82,9 +76,7 @@ it('precedence', function () {
 
     expect($context->inlineListeners['name'])->resolve()->toBe('second')
         ->and($context->inlineListeners['email'])->resolve()->toBe('first')
-        ->and($context->listeners)->resolve(new class() extends Component
-        {
-        })->toBe([
+        ->and($context->listeners)->resolve(new class extends Component {})->toBe([
             'name' => 'nameHandler',
             'email' => 'emailHandler',
         ]);

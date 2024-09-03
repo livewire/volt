@@ -9,9 +9,7 @@ it('calls property hooks on the component', function () {
 
     $context->updating = ['foo' => fn () => 'bar'];
 
-    $component = new class extends Component
-    {
-    };
+    $component = new class extends Component {};
 
     $result = (new CallPropertyHook('updating', 'foo'))->execute($context, $component, []);
 

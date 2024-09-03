@@ -9,9 +9,7 @@ it('returns the validation rules', function () {
 
     $context->rules = ['foo'];
 
-    $component = new class extends Component
-    {
-    };
+    $component = new class extends Component {};
 
     $result = (new ReturnRules)->execute($context, $component, []);
 

@@ -17,8 +17,7 @@ abstract class Method
         protected Closure $closure,
         protected string $visibility = 'public',
         protected array $attributes = [],
-    ) {
-    }
+    ) {}
 
     /**
      * Add an attribute to the method.

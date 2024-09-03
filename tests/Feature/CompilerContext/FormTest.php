@@ -6,9 +6,7 @@ use Livewire\Volt\Property;
 
 use function Livewire\Volt\form;
 
-class ProductForm extends Form
-{
-}
+class ProductForm extends Form {}
 
 it('may be defined', function () {
     $context = CompileContext::instance();

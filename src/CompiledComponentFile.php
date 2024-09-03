@@ -14,9 +14,7 @@ class CompiledComponentFile
     /**
      * Create a new component file instance.
      */
-    public function __construct(protected string $originalPath, protected ?string $componentName = null)
-    {
-    }
+    public function __construct(protected string $originalPath, protected ?string $componentName = null) {}
 
     /**
      * Determine if the compiled component exists.

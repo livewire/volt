@@ -9,9 +9,7 @@ it('returns the title view', function () {
 
     $context->title = 'my title';
 
-    $component = new class extends Component
-    {
-    };
+    $component = new class extends Component {};
 
     $result = (new ReturnTitle)->execute($context, $component, []);
 
@@ -23,9 +21,7 @@ it('returns a static title using a closure', function () {
 
     $context->title = fn () => 'my title from a closure';
 
-    $component = new class extends Component
-    {
-    };
+    $component = new class extends Component {};
 
     $result = (new ReturnTitle)->execute($context, $component, []);
 

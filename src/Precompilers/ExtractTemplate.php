@@ -14,9 +14,7 @@ class ExtractTemplate
     /**
      * Create a new precompiler instance.
      */
-    public function __construct(protected MountedDirectories $mountedDirectories)
-    {
-    }
+    public function __construct(protected MountedDirectories $mountedDirectories) {}
 
     /**
      * Extracts the template from the given blade view content.

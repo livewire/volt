@@ -9,9 +9,7 @@ it('returns the pagination theme', function () {
 
     $context->paginationTheme = 'bootstrap';
 
-    $component = new class extends Component
-    {
-    };
+    $component = new class extends Component {};
 
     $result = (new ReturnPaginationTheme)->execute($context, $component, []);
 

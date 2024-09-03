@@ -14,9 +14,7 @@ it('resolves an "custom" manager instance', function () {
 test('resolve missing component', function () {
     /** @var LivewireManager $managerInstance */
     $managerInstance = Livewire::getFacadeRoot();
-    $componentInstance = new class extends Component
-    {
-    };
+    $componentInstance = new class extends Component {};
 
     expect(fn () => $managerInstance->new('basic-component'))
         ->toThrow(ComponentNotFoundException::class, 'Unable to find component: [basic-component]');

@@ -12,9 +12,7 @@ class CallListener implements Action
     /**
      * Create a new action instance.
      */
-    public function __construct(protected string $eventName)
-    {
-    }
+    public function __construct(protected string $eventName) {}
 
     /**
      * {@inheritDoc}

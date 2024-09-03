@@ -6,9 +6,7 @@ use Livewire\Volt\Compiler;
 
 use function Livewire\Volt\form;
 
-class UserForm extends Form
-{
-}
+class UserForm extends Form {}
 
 it('may be defined', function () {
     form(UserForm::class);

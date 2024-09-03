@@ -13,8 +13,7 @@ class ReflectionMethod
         public Closure $closure,
         public string $visibility,
         public array $attributes,
-    ) {
-    }
+    ) {}
 
     /**
      * Determine if the method is public.

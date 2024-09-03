@@ -18,7 +18,7 @@ it('may return view data lazily', function () {
         public string $b = 'b';
     };
 
-    $result = (new ReturnViewData())->execute($context, $component, []);
+    $result = (new ReturnViewData)->execute($context, $component, []);
 
     expect($result)->toBe([
         'a' => 'a',
@@ -41,7 +41,7 @@ it('may return view data from array', function () {
         public string $b = 'b';
     };
 
-    $result = (new ReturnViewData())->execute($context, $component, []);
+    $result = (new ReturnViewData)->execute($context, $component, []);
 
     expect($result)->toBe([
         'a' => 'a',

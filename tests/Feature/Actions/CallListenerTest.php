@@ -9,9 +9,7 @@ it('calls inline listeners on the component', function () {
 
     $context->inlineListeners['someEvent'] = fn ($amount) => $amount;
 
-    $component = new class extends Component
-    {
-    };
+    $component = new class extends Component {};
 
     $result = (new CallListener('someEvent'))->execute($context, $component, [1]);
 

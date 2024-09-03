@@ -24,8 +24,7 @@ class VoltManager
         protected LivewireManager $manager,
         protected MountedDirectories $mountedDirectories,
         protected Registrar $router,
-    ) {
-    }
+    ) {}
 
     /**
      * Registers a new Volt route.

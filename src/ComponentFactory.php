@@ -15,9 +15,7 @@ class ComponentFactory
     /**
      * Create a new component factory instance.
      */
-    public function __construct(protected MountedDirectories $mountedDirectories)
-    {
-    }
+    public function __construct(protected MountedDirectories $mountedDirectories) {}
 
     /**
      * Make a new component instance from the given path.
