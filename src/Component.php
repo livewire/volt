@@ -57,7 +57,7 @@ abstract class Component extends LivewireComponent
             : Facades\View::make('volt-livewire::'.$alias, $data);
 
         if ($layout) {
-            $view->layout($layout);
+            $view->layout($layout, $data);
         }
 
         if ($title) {
