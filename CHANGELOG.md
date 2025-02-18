@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.6.6...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.6.7...main)
+
+## [v1.6.7](https://github.com/livewire/volt/compare/v1.6.6...v1.6.7) - 2025-02-17
+
+* Supports Laravel 12 by [@crynobone](https://github.com/crynobone) in https://github.com/livewire/volt/pull/129
 
 ## [v1.6.6](https://github.com/livewire/volt/compare/v1.6.5...v1.6.6) - 2024-11-12
 
