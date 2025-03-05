@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.6.7...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.7.0...main)
+
+## [v1.7.0](https://github.com/livewire/volt/compare/v1.6.7...v1.7.0) - 2025-03-05
+
+* Bump Livewire minimum version to include fix from livewire/livewire#9216 by [@joshhanley](https://github.com/joshhanley) in https://github.com/livewire/volt/pull/131
 
 ## [v1.6.7](https://github.com/livewire/volt/compare/v1.6.6...v1.6.7) - 2025-02-17
 
