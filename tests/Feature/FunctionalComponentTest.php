@@ -288,6 +288,40 @@ it('can have state with and without array keys', function () {
     $component->assertSet('with', 'value');
 });
 
+it('can have session state', function () {
+    $component = Livewire::test('component-with-session-state');
+
+    $component->assertSet('tab', 'livewire');
+
+    $component->assertSeeHtmlInOrder([
+        '<li>Livewire 3</li>',
+        '<li>Laravel Volt</li>',
+        '<li>Flux UI</li>',
+    ]);
+
+    $component->set('tab', 'react');
+
+    $component->assertSeeHtmlInOrder([
+        '<li>React 19</li>',
+        '<li>Typescript</li>',
+        '<li>Inertia 2</li>',
+        '<li>shadcdn/ui</li>',
+    ]);
+
+    $component->set('tab', 'vue');
+
+    $component->assertSeeHtmlInOrder($tags = [
+        '<li>Vue 3</li>',
+        '<li>Typescript</li>',
+        '<li>Inertia 2</li>',
+        '<li>shadcdn-vue</li>',
+    ]);
+
+    $component->refresh();
+
+    $component->assertSeeHtmlInOrder($tags);
+});
+
 it('can have url state', function () {
     $component = Livewire::test('component-with-url-state');
 
