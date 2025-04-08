@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.7.0...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.7.1...main)
+
+## [v1.7.1](https://github.com/livewire/volt/compare/v1.7.0...v1.7.1) - 2025-04-08
+
+* Add missing session method to state options and related tests by [@mondesirm](https://github.com/mondesirm) in https://github.com/livewire/volt/pull/133
 
 ## [v1.7.0](https://github.com/livewire/volt/compare/v1.6.7...v1.7.0) - 2025-03-05
 
