@@ -5,6 +5,7 @@ namespace Livewire\Volt\Options;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Modelable;
 use Livewire\Attributes\Reactive;
+use Livewire\Attributes\Session;
 use Livewire\Attributes\Url;
 use Livewire\Volt\Property;
 
@@ -65,6 +66,14 @@ class StateOptions
     public function reactive(): static
     {
         return $this->attribute(Reactive::class);
+    }
+
+    /**
+     * Indicate the state should be tracked in the session.
+     */
+    public function session(?string $key = null): static
+    {
+        return $this->attribute(Session::class, key: $key);
     }
 
     /**
