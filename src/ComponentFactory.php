@@ -31,10 +31,6 @@ class ComponentFactory
         );
 
         if (static::$latestCreatedComponentClass) {
-            if (function_exists('opcache_invalidate')) {
-                opcache_invalidate($path, true);
-            }
-
             return static::$latestCreatedComponentClass;
         }
 
