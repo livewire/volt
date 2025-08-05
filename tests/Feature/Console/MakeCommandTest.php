@@ -33,6 +33,7 @@ it('makes components', function (string $name, string $viewPath, string $testPat
 })->with([
     ['index', 'index.blade.php', 'IndexTest.php'],
     ['chirps/index', 'chirps/index.blade.php', 'Chirps/IndexTest.php'],
+    ['chirps.index', 'chirps/index.blade.php', 'Chirps/IndexTest.php'],
     ['chirps-index.blade.php', 'chirps-index.blade.php', 'ChirpsIndexTest.php'],
     ['chirps_index.blade.php', 'chirps_index.blade.php', 'ChirpsIndexTest.php'],
     ['chirps/index.blade.php', 'chirps/index.blade.php', 'Chirps/IndexTest.php'],
@@ -73,6 +74,7 @@ it('makes components with phpunit tests', function (string $name, string $alias,
 })->with([
     ['index', 'index', 'index.blade.php', '', 'IndexTest', 'IndexTest.php'],
     ['chirps/index', 'chirps.index', 'chirps/index.blade.php', '\Chirps', 'IndexTest', 'Chirps/IndexTest.php'],
+    ['chirps.index', 'chirps.index', 'chirps/index.blade.php', '\Chirps', 'IndexTest', 'Chirps/IndexTest.php'],
     ['chirps_index.blade.php', 'chirps_index', 'chirps_index.blade.php', '', 'ChirpsIndexTest', 'ChirpsIndexTest.php'],
     ['chirps-index.blade.php', 'chirps-index', 'chirps-index.blade.php', '', 'ChirpsIndexTest', 'ChirpsIndexTest.php'],
     ['chirps/index.blade.php', 'chirps.index', 'chirps/index.blade.php', '\Chirps', 'IndexTest', 'Chirps/IndexTest.php'],
@@ -106,6 +108,7 @@ it('makes components with pest tests', function (string $name, string $alias, st
 })->with([
     ['index', 'index', 'index.blade.php', '', 'IndexTest', 'IndexTest.php'],
     ['chirps/index', 'chirps.index', 'chirps/index.blade.php', '\Chirps', 'IndexTest', 'Chirps/IndexTest.php'],
+    ['chirps.index', 'chirps.index', 'chirps/index.blade.php', '\Chirps', 'IndexTest', 'Chirps/IndexTest.php'],
     ['chirps_index.blade.php', 'chirps_index', 'chirps_index.blade.php', '', 'ChirpsIndexTest', 'ChirpsIndexTest.php'],
     ['chirps-index.blade.php', 'chirps-index', 'chirps-index.blade.php', '', 'ChirpsIndexTest', 'ChirpsIndexTest.php'],
     ['chirps/index.blade.php', 'chirps.index', 'chirps/index.blade.php', '\Chirps', 'IndexTest', 'Chirps/IndexTest.php'],

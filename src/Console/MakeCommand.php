@@ -48,7 +48,9 @@ class MakeCommand extends GeneratorCommand
 
         $mountPath = isset($paths[0]) ? $paths[0]->path : config('livewire.view_path', resource_path('views/livewire'));
 
-        return $mountPath.'/'.Str::lower(Str::finish($this->argument('name'), '.blade.php'));
+        $view = str_replace('.', '/', $this->argument('name'));
+
+        return $mountPath.'/'.Str::lower(Str::finish($view, '.blade.php'));
     }
 
     /**
@@ -184,7 +186,7 @@ class MakeCommand extends GeneratorCommand
      */
     protected function fullyQualifiedTestName(): string
     {
-        $name = Str::of(Str::lower($this->argument('name')))->replace('.blade.php', '');
+        $name = Str::of(Str::lower(str_replace('.', '/', $this->argument('name'))))->replace('.blade.php', '');
 
         $namespacedName = Str::of(
             Str::of($name)
