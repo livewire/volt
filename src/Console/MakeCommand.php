@@ -199,7 +199,7 @@ class MakeCommand extends GeneratorCommand
         } else {
             $processedName = $argumentName;
         }
-       
+
         $name = Str::of(Str::lower($processedName))->replace('.blade.php', '');
 
         $namespacedName = Str::of(
