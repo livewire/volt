@@ -50,10 +50,10 @@ class MakeCommand extends GeneratorCommand
 
         $argumentName = $this->argument('name');
 
-        if (!str_contains($argumentName, '.blade.php')) {
+        if (! str_contains($argumentName, '.blade.php')) {
             $view = str_replace('.', '/', $argumentName);
         } else {
-           $view = $argumentName;
+            $view = $argumentName;
         }
 
         return $mountPath.'/'.Str::lower(Str::finish($view, '.blade.php'));
@@ -194,7 +194,7 @@ class MakeCommand extends GeneratorCommand
     {
         $argumentName = $this->argument('name');
 
-        if (!str_contains($argumentName, '.blade.php')) {
+        if (! str_contains($argumentName, '.blade.php')) {
             $processedName = str_replace('.', '/', $argumentName);
         } else {
             $processedName = $argumentName;
