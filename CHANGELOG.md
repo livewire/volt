@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.7.1...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.7.2...main)
+
+## [v1.7.2](https://github.com/livewire/volt/compare/v1.7.1...v1.7.2) - 2025-08-06
+
+* Support the dot in the make:volt command by [@morpheus7CS](https://github.com/morpheus7CS) in https://github.com/livewire/volt/pull/140
 
 ## [v1.7.1](https://github.com/livewire/volt/compare/v1.7.0...v1.7.1) - 2025-04-08
 
