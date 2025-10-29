@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.7.2...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.8.0...main)
+
+## [v1.8.0](https://github.com/livewire/volt/compare/v1.7.2...v1.8.0) - 2025-10-29
+
+* Allow Livewire v4 by [@bookwyrm](https://github.com/bookwyrm) in https://github.com/livewire/volt/pull/143
 
 ## [v1.7.2](https://github.com/livewire/volt/compare/v1.7.1...v1.7.2) - 2025-08-06
 
