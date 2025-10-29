@@ -13,14 +13,14 @@ class LivewireManager extends BaseLivewireManager
     /**
      * {@inheritDoc}
      */
-    public function mount($name, $params = [], $key = null)
+    public function mount($name, $params = [], $key = null, $slots = [])
     {
         $params = is_string($params) ? [] : $params;
 
         try {
             InitializeState::$currentMountParameters = array_keys($params);
 
-            return parent::mount($name, $params, $key);
+            return parent::mount($name, $params, $key, $slots);
         } finally {
             InitializeState::$currentMountParameters = [];
         }
