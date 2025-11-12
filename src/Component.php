@@ -81,6 +81,14 @@ abstract class Component extends LivewireComponent
      */
     public function getAlias(): string
     {
+        // Livewire 3.x alias registry...
+        if (app()->has(ComponentRegistry::class)) {
+            return $this->__alias ??= array_search(static::class, (fn () => $this->aliases)->call(
+                app(ComponentRegistry::class),
+            ));
+        }
+
+        // Livewire 4.x alias registry...
         return $this->__alias ??= array_search(static::class, (fn () => $this->resolvedComponentCache)->call(
             app('livewire.factory'),
         ));
