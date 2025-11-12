@@ -25,6 +25,22 @@ beforeEach(function () {
     Volt::mount([__DIR__.'/resources/views/functional-api-pages', __DIR__.'/resources/views/functional-api'], [GlobalTrait::class]);
 });
 
+/**
+ * Reset the resolved component names cache to simulate a new request.
+ */
+function resetResolvedComponentNames(): void
+{
+    // Livewire 3.x alias registry...
+    if (app()->has(ComponentRegistry::class)) {
+        (fn () => $this->aliases = [])->call(app(ComponentRegistry::class));
+
+        return;
+    }
+
+    // Livewire 4.x alias registry...
+    (fn () => $this->resolvedComponentCache = [])->call(app('livewire.factory'));
+}
+
 it('can be rendered', function () {
     Livewire::test('basic-component')
         ->assertSee('Hello World');
@@ -419,7 +435,7 @@ it('does not reuse components compiled classes in subsequent requests', function
     $componentA->assertSee('Hello Taylor');
     $componentAClass = get_class($componentA->instance());
 
-    (fn () => $this->aliases = [])->call(app(ComponentRegistry::class));
+    resetResolvedComponentNames();
 
     $componentB = Livewire::test('basic-component', ['name' => 'Nuno']);
     $componentB->assertSee('Hello Nuno');
@@ -443,7 +459,7 @@ it('does not reuse components compiled classes in subsequent requests if `view:c
     $componentA->assertSee('Hello Taylor');
     $componentAClass = get_class($componentA->instance());
 
-    (fn () => $this->aliases = [])->call(app(ComponentRegistry::class));
+    resetResolvedComponentNames();
 
     // Clear the views cache...
     Artisan::call('view:clear');
@@ -471,7 +487,7 @@ it('does not reuse components compiled classes when the component file changes',
     $componentA->assertSee('Hello Taylor');
     $componentAClass = get_class($componentA->instance());
 
-    (fn () => $this->aliases = [])->call(app(ComponentRegistry::class));
+    resetResolvedComponentNames();
 
     touch($original); // Simulate a change to the component file...
     clearstatcache();
@@ -674,16 +690,16 @@ it('reuses cached fragment components in subsequent requests', function () {
     Volt::test('first-fragment-component', ['name' => 'Taylor'])
         ->assertSee('First - Hello Taylor');
 
-    (fn () => $this->aliases = [])->call(app(ComponentRegistry::class));
+    resetResolvedComponentNames();
 
     Volt::test('first-fragment-component', ['name' => 'Taylor'])
         ->assertSee('First - Hello Taylor');
 
-    (fn () => $this->aliases = [])->call(app(ComponentRegistry::class));
+    resetResolvedComponentNames();
 
     view()->file(__DIR__.'/resources/views/functional-api-pages/page-with-multiple-fragments.blade.php')->render();
 
-    (fn () => $this->aliases = [])->call(app(ComponentRegistry::class));
+    resetResolvedComponentNames();
 
     view()->file(__DIR__.'/resources/views/functional-api-pages/page-with-multiple-fragments.blade.php')->render();
 
@@ -710,22 +726,22 @@ it('reuses fragment components in subsequent requests', function () {
     Volt::test('first-fragment-component', ['name' => 'Taylor'])
         ->assertSee('First - Hello Taylor');
 
-    (fn () => $this->aliases = [])->call(app(ComponentRegistry::class));
+    resetResolvedComponentNames();
 
     Volt::test('first-fragment-component', ['name' => 'Taylor'])
         ->assertSee('First - Hello Taylor');
 
-    (fn () => $this->aliases = [])->call(app(ComponentRegistry::class));
+    resetResolvedComponentNames();
 
     Volt::test('first-fragment-component', ['name' => 'Taylor'])
         ->assertSee('First - Hello Taylor');
 
-    (fn () => $this->aliases = [])->call(app(ComponentRegistry::class));
+    resetResolvedComponentNames();
 
     Volt::test('first-fragment-component', ['name' => 'Taylor'])
         ->assertSee('First - Hello Taylor');
 
-    (fn () => $this->aliases = [])->call(app(ComponentRegistry::class));
+    resetResolvedComponentNames();
 
     Volt::test('first-fragment-component', ['name' => 'Taylor'])
         ->assertSee('First - Hello Taylor');
@@ -749,7 +765,7 @@ it('does not reuse component components in subsequent requests if `view:clear` w
 
     File::partialMock();
 
-    (fn () => $this->aliases = [])->call(app(ComponentRegistry::class));
+    resetResolvedComponentNames();
     Artisan::call('view:clear');
 
     Volt::test('first-fragment-component', ['name' => 'Taylor'])
@@ -765,7 +781,7 @@ it('does not reuse component components in subsequent requests if `view:clear` w
                 ]);
         });
 
-    (fn () => $this->aliases = [])->call(app(ComponentRegistry::class));
+    resetResolvedComponentNames();
     Artisan::call('view:clear');
 
     Volt::test('first-fragment-component', ['name' => 'Taylor'])
