@@ -2,18 +2,18 @@
 
 namespace Livewire\Volt;
 
-use Livewire\Volt\Support\Reflection;
-use Livewire\Volt\Contracts\FunctionalComponent;
-use Livewire\Volt\Actions\ReturnViewData;
-use Livewire\Volt\Actions\ReturnTitle;
-use Livewire\Volt\Actions\ReturnLayout;
-use Livewire\Mechanisms\ComponentRegistry;
-use Livewire\Component as LivewireComponent;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades;
-use Illuminate\Container\Container;
-use BadMethodCallException;
 use AllowDynamicProperties;
+use BadMethodCallException;
+use Illuminate\Container\Container;
+use Illuminate\Support\Facades;
+use Illuminate\Support\Str;
+use Livewire\Component as LivewireComponent;
+use Livewire\Mechanisms\ComponentRegistry;
+use Livewire\Volt\Actions\ReturnLayout;
+use Livewire\Volt\Actions\ReturnTitle;
+use Livewire\Volt\Actions\ReturnViewData;
+use Livewire\Volt\Contracts\FunctionalComponent;
+use Livewire\Volt\Support\Reflection;
 
 #[AllowDynamicProperties]
 abstract class Component extends LivewireComponent
