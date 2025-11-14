@@ -4,12 +4,10 @@
 
 <div>
     Hello {{ $first }}
-</div>
 
-<?php state('first'); ?>
+    <?php state('first'); ?>
 
-<div>
     Hello {{ $second }}
-</div>
 
-<?php state(['second' => 'Otwell']); ?>
+    <?php state(['second' => 'Otwell']); ?>
+</div>
