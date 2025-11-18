@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.9.0...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.10.0...main)
+
+## [v1.10.0](https://github.com/livewire/volt/compare/v1.9.0...v1.10.0) - 2025-11-14
+
+* Fix multiple scripts test to use a single root element by [@calebporzio](https://github.com/calebporzio) in https://github.com/livewire/volt/pull/147
+* Fix component alias resolution for Livewire 4 by [@calebporzio](https://github.com/calebporzio) in https://github.com/livewire/volt/pull/146
 
 ## [v1.9.0](https://github.com/livewire/volt/compare/v1.8.0...v1.9.0) - 2025-10-30
 
