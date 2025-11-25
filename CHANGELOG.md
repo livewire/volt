@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.10.0...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.10.1...main)
+
+## [v1.10.1](https://github.com/livewire/volt/compare/v1.10.0...v1.10.1) - 2025-11-25
+
+* [1.x] PHP 8.5 Compatibility by [@crynobone](https://github.com/crynobone) in https://github.com/livewire/volt/pull/148
 
 ## [v1.10.0](https://github.com/livewire/volt/compare/v1.9.0...v1.10.0) - 2025-11-14
 
