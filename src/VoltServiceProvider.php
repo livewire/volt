@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Testing\TestResponse;
 use Livewire\Livewire;
+use Livewire\LivewireManager as BaseLivewireManager;
 use Livewire\LivewireServiceProvider;
 use Livewire\Volt\Precompilers\ExtractFragments;
 use Livewire\Volt\Precompilers\ExtractTemplate;
@@ -61,8 +62,10 @@ class VoltServiceProvider extends ServiceProvider
     {
         $this->app->singleton(LivewireManager::class);
         $this->app->alias(LivewireManager::class, 'livewire');
+        $this->app->alias(LivewireManager::class, BaseLivewireManager::class);
 
         Facade::clearResolvedInstance('livewire');
+        Facade::clearResolvedInstance(BaseLivewireManager::class);
 
         $this->app->get(LivewireManager::class)->setProvider(
             $this->app->getProvider(LivewireServiceProvider::class),
