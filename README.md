@@ -1,4 +1,7 @@
-<p align="center"><img width="300" src="/art/logo.svg" alt="Volt Package Logo"></p>
+<p align="center">
+    <img alt="Volt Logo Dark Mode" src="/art/volt-light.svg#gh-light-mode-only"/>
+    <img alt="Volt Logo Dark Mode" src="/art/volt-dark.svg#gh-dark-mode-only"/>
+</p>
 
 <p align="center">
     <a href="https://github.com/livewire/volt/actions">
