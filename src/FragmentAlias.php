@@ -12,13 +12,13 @@ class FragmentAlias
     /**
      * Encode the given fragment's component name and path into a base64 embedded alias.
      */
-    public static function encode(string $componentName, string $path, ?string $basePath = null): string
+    public static function encode(string $componentName, ?string $path, ?string $basePath = null): string
     {
         $basePath = $basePath ?? static::$basePath ?? base_path();
 
         return 'volt-anonymous-fragment-'.base64_encode(json_encode([
             'name' => $componentName,
-            'path' => str_replace($basePath.DIRECTORY_SEPARATOR, '', $path),
+            'path' => $path ? str_replace($basePath.DIRECTORY_SEPARATOR, '', $path) : '',
         ]));
     }
 
