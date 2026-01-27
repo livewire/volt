@@ -6,3 +6,5 @@ parameters:
 
   ignoreErrors:
     - "#Unsafe usage of new static\\(\\)#"
+    - "#Class Livewire\\\\Mechanisms\\\\ComponentRegistry not found#"
+    - "#Access to property \\$aliases on an unknown class Livewire\\\\Mechanisms\\\\ComponentRegistry#"
