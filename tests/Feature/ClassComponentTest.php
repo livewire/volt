@@ -10,6 +10,8 @@ use Livewire\Volt\Volt;
 beforeEach(function () {
     View::setFinder(new FileViewFinder(app()['files'], [__DIR__.'/resources/views']));
 
+    View::addNamespace('layouts', __DIR__.'/resources/views/components/layouts');
+
     Volt::mount([__DIR__.'/resources/views/class-api-pages', __DIR__.'/resources/views/class-api']);
 });
 
