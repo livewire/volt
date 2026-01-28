@@ -22,6 +22,8 @@ use Tests\Fixtures\User;
 beforeEach(function () {
     View::setFinder(new FileViewFinder(app()['files'], [__DIR__.'/resources/views']));
 
+    View::addNamespace('layouts', __DIR__.'/resources/views/components/layouts');
+
     Volt::mount([__DIR__.'/resources/views/functional-api-pages', __DIR__.'/resources/views/functional-api'], [GlobalTrait::class]);
 });
 
