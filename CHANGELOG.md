@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.10.1...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.10.2...main)
+
+## [v1.10.2](https://github.com/livewire/volt/compare/v1.10.1...v1.10.2) - 2026-01-28
+
+* Fix TypeError when Blade::getPath() returns null during view caching by [@chriscupas](https://github.com/chriscupas) in https://github.com/livewire/volt/pull/150
 
 ## [v1.10.1](https://github.com/livewire/volt/compare/v1.10.0...v1.10.1) - 2025-11-25
 
