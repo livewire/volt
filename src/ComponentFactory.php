@@ -87,7 +87,7 @@ class ComponentFactory
     /**
      * Set the latest created component class.
      *
-     * @param  class-string<\Livewire\Volt\Component>  $componentClass
+     * @param  class-string<Component>  $componentClass
      */
     public function setLatestCreatedComponentClass(string $componentClass): void
     {

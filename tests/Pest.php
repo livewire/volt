@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Artisan;
 use Livewire\Volt\CompileContext;
 use Livewire\Volt\FragmentAlias;
 use Livewire\Volt\VoltManager;
+use Tests\TestCase;
 
-uses(Tests\TestCase::class)
+uses(TestCase::class)
     ->beforeEach(function () {
         Artisan::call('view:clear');
         (fn () => VoltManager::$viewsAreCached = false)->bindTo(null, VoltManager::class)();

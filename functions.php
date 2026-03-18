@@ -134,7 +134,7 @@ function with(mixed ...$data): void
  *
  * @param  class-string<Form>  $class
  *
- * @throws \InvalidArgumentException
+ * @throws InvalidArgumentException
  */
 function form(string $class, string $propertyName = 'form'): void
 {

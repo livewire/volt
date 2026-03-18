@@ -2,6 +2,7 @@
 
 namespace Livewire\Volt\Console;
 
+use App\Providers\VoltServiceProvider;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
@@ -45,7 +46,7 @@ class InstallCommand extends Command
     protected function registerVoltServiceProvider(): void
     {
         if (method_exists(ServiceProvider::class, 'addProviderToBootstrapFile') &&
-            ServiceProvider::addProviderToBootstrapFile(\App\Providers\VoltServiceProvider::class)) { // @phpstan-ignore-line
+            ServiceProvider::addProviderToBootstrapFile(VoltServiceProvider::class)) { // @phpstan-ignore-line
             return;
         }
 

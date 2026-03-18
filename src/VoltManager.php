@@ -110,7 +110,7 @@ class VoltManager
     /**
      * Get the mounted directory paths.
      *
-     * @return array<int, \Livewire\Volt\MountedDirectory>
+     * @return array<int, MountedDirectory>
      */
     public function paths(): array
     {

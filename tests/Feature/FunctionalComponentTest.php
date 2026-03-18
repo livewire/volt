@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
 use Illuminate\View\FileViewFinder;
+use Livewire\Component;
 use Livewire\Exceptions\ComponentNotFoundException;
 use Livewire\Exceptions\MethodNotFoundException;
 use Livewire\Exceptions\MissingRulesException;
@@ -362,7 +363,7 @@ it('can have url state', function () {
 });
 
 it('throws exception when "method" is not found', function () {
-    LiveWire::component('vanilla-component', new class extends \Livewire\Component
+    Livewire::component('vanilla-component', new class extends Component
     {
         public function render()
         {

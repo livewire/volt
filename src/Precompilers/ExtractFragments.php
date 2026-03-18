@@ -101,7 +101,7 @@ class ExtractFragments
     /**
      * Ensure that Folio pages using fragments have the "@volt" directive.
      *
-     * @throws \Livewire\Volt\Exceptions\VoltDirectiveMissingException
+     * @throws VoltDirectiveMissingException
      */
     protected function ensurePagesUsingFragmentsUseDirective(string $template): void
     {

@@ -64,7 +64,7 @@ class Reflection
     /**
      * Get the method signature of combined closures as a string.
      *
-     * @param  array<int, \Closure>  $closures
+     * @param  array<int, Closure>  $closures
      */
     public static function toSingleMethodSignatureFromClosures(string $name, array $closures): string
     {
@@ -104,7 +104,7 @@ class Reflection
     /**
      * Get the reflection parameters of the given closure keyed by their name.
      *
-     * @return \Illuminate\Support\Collection<string, \ReflectionParameter>
+     * @return Collection<string, ReflectionParameter>
      */
     protected static function getParametersFromClosure(?Closure $closure): Collection
     {
