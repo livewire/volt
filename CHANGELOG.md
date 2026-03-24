@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.10.4...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.10.5...main)
+
+## [v1.10.5](https://github.com/livewire/volt/compare/v1.10.4...v1.10.5) - 2026-03-18
+
+* Remove redundant "When to Apply" section from skill body by [@pushpak1300](https://github.com/pushpak1300) in https://github.com/livewire/volt/pull/154
 
 ## [v1.10.4](https://github.com/livewire/volt/compare/v1.10.3...v1.10.4) - 2026-03-05
 
