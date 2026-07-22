@@ -23,8 +23,16 @@ class ComponentResolver
         foreach ($paths as $path) {
             if (File::exists($possiblePath = $path.'/'.str_replace('.', '/', $alias).'.blade.php')) {
                 return $this->extractComponentClass($alias, realpath($possiblePath));
-            } elseif (is_array($component = FragmentAlias::decode($alias))) {
-                return $this->extractComponentClass($alias, realpath($component['path']));
+            }
+        }
+
+        if (is_array($component = FragmentAlias::decode($alias)) &&
+            ($componentPath = realpath($component['path'])) !== false) {
+            foreach (array_merge($paths, config('view.paths', [])) as $path) {
+                if (($path = realpath($path)) !== false &&
+                    str_starts_with($componentPath, $path.DIRECTORY_SEPARATOR)) {
+                    return $this->extractComponentClass($alias, $componentPath);
+                }
             }
         }
 
