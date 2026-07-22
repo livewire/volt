@@ -34,6 +34,22 @@ it('resolves fragment paths within a configured view directory', function () {
         ->toBe('ResolvedComponent');
 });
 
+it('resolves fragment paths within the compiled view directory', function () {
+    $path = __FILE__;
+    $alias = FragmentAlias::encode('fragment', $path);
+
+    config()->set('view.compiled', __DIR__);
+
+    $factory = Mockery::mock(ComponentFactory::class);
+    $factory->shouldReceive('make')
+        ->once()
+        ->with($alias, realpath($path))
+        ->andReturn('ResolvedComponent');
+
+    expect((new ComponentResolver($factory))->resolve($alias, []))
+        ->toBe('ResolvedComponent');
+});
+
 it('does not resolve fragment paths outside the trusted directories', function () {
     $factory = Mockery::mock(ComponentFactory::class);
     $factory->shouldNotReceive('make');

@@ -28,7 +28,7 @@ class ComponentResolver
 
         if (is_array($component = FragmentAlias::decode($alias)) &&
             ($componentPath = realpath($component['path'])) !== false) {
-            foreach (array_merge($paths, config('view.paths', [])) as $path) {
+            foreach (array_merge($paths, config('view.paths', []), [config('view.compiled')]) as $path) {
                 if (($path = realpath($path)) !== false &&
                     str_starts_with($componentPath, $path.DIRECTORY_SEPARATOR)) {
                     return $this->extractComponentClass($alias, $componentPath);
