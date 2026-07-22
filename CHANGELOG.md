@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.11.0...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.11.1...main)
+
+## [v1.11.1](https://github.com/livewire/volt/compare/v1.11.0...v1.11.1) - 2026-07-22
+
+**Full Changelog**: https://github.com/livewire/volt/compare/v1.11.0...v1.11.1
 
 ## [v1.11.0](https://github.com/livewire/volt/compare/v1.10.5...v1.11.0) - 2026-07-22
 
