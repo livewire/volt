@@ -132,6 +132,7 @@ class ExtractFragments
             '__livewire' => null,
             '__path' => null,
             '__split' => null,
+            '__blaze' => null,
             '_instance' => null,
             'app' => null,
             'component' => null,
