@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/livewire/volt/compare/v1.11.1...main)
+## [Unreleased](https://github.com/livewire/volt/compare/v1.11.2...main)
+
+## [v1.11.2](https://github.com/livewire/volt/compare/v1.11.1...v1.11.2) - 2026-07-31
+
+* Fix Blaze compatibility by [@ganyicz](https://github.com/ganyicz) in https://github.com/livewire/volt/pull/156
 
 ## [v1.11.1](https://github.com/livewire/volt/compare/v1.11.0...v1.11.1) - 2026-07-22
 
