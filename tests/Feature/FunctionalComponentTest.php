@@ -939,3 +939,11 @@ test('user imports on bottom do not conflict', function () {
         ->call('increment')
         ->assertSet('counter', 3);
 });
+
+it('renders PHP tags in state strings before and after an update', function () {
+    Volt::test('php-tags-in-strings')
+        ->assertSee('Example of ?> causing problems')
+        ->assertSee('PHP starts with <?php and ends with ?>')
+        ->call('update')
+        ->assertSee('Updated text containing ?>');
+});

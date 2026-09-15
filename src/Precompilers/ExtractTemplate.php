@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Blade;
 use Livewire\Volt\Exceptions\ReturnNewClassExecutionEndingException;
 use Livewire\Volt\MountedDirectories;
 use Livewire\Volt\Volt;
+use PhpToken;
 
 class ExtractTemplate
 {
@@ -48,9 +49,21 @@ class ExtractTemplate
      */
     protected function html(string $template): string
     {
-        $template = trim(preg_replace('/<\?php\s*(.*?)\s*\?>/s', '', $template));
+        $html = '';
+        $inPhp = false;
 
-        return str($template)->beforeLast('<?php')->trim()->value();
+        foreach (PhpToken::tokenize($template) as $token) {
+            if ($token->is(T_OPEN_TAG)) {
+                $inPhp = true;
+            } elseif ($inPhp && $token->is(T_CLOSE_TAG)) {
+                $inPhp = false;
+                $html .= substr($token->text, 2);
+            } elseif (! $inPhp) {
+                $html .= $token->text;
+            }
+        }
+
+        return trim($html);
     }
 
     /**

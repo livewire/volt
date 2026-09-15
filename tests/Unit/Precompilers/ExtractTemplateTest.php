@@ -418,3 +418,65 @@ test('import conflicts', function (string $template, string $expected) {
 
     expect(trim($result))->toBe($expected);
 })->with($conflictsDataset);
+
+it('ignores PHP tags inside strings when extracting the template', function () {
+    $template = <<<'HTML'
+        <?php
+
+        use function Livewire\Volt\state;
+
+        state([
+            'title' => 'Example of ?> causing problems',
+            'message' => 'PHP starts with <?php and ends with ?>',
+        ]);
+
+        ?>
+
+        <div>
+            <h1>{{ $title }}</h1>
+            <p>{{ $message }}</p>
+        </div>
+        HTML;
+
+    $expected = <<<'HTML'
+        <div>
+            <h1>{{ $title }}</h1>
+            <p>{{ $message }}</p>
+        </div>
+        HTML;
+
+    expect($this->precompiler->__invoke($template))->toBe($expected);
+});
+
+it('ignores PHP tags inside comments and multiline strings', function () {
+    $template = <<<'HTML'
+        <?php
+
+        /* A comment containing ?> and <?php */
+        $message = <<<'TEXT'
+        PHP starts with <?php and ends with ?>
+        TEXT;
+
+        ?>
+
+        <div>{{ $message }}</div>
+        HTML;
+
+    expect($this->precompiler->__invoke($template))->toBe('<div>{{ $message }}</div>');
+});
+
+it('preserves short echo tags in the template', function () {
+    $template = <<<'HTML'
+        <?php
+
+        use function Livewire\Volt\state;
+
+        state('name');
+
+        ?>
+
+        <div><?= $name ?></div>
+        HTML;
+
+    expect($this->precompiler->__invoke($template))->toBe('<div><?= $name ?></div>');
+});
